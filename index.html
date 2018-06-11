@@ -1,265 +1,305 @@
 <!DOCTYPE html>
-<html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <title>Scar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Scar">
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Scar&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Scar">
+<meta property="og:site_name" content="Scar&#39;s Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Scar">
+<meta name="twitter:title" content="Scar&#39;s Blog">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
+
+  <title>Scar's Blog</title>
   
-    <link rel="alternate" href="/atom.xml" title="Scar" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
-  
+
+
+
+
+
+
+
 
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <div class="outer">
-        <div class="widget-wrap mobile-header">
-  <h3 class="widget-title"></h3>
-  <div class="widget">
-    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
-    <h2 class="author">Scar</h2>
-    <h3 class="description">null</h3>
-    <div class="count-box">
-      <a href="/archives"><div><strong>3</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>0</strong><br>标签</div></a>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Scar's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <ul class="blog-link">
-     
-          <a href="/" title="Home">
-            <li>主页</li>
-          </a>
-        
-          <a href="/archives" title="Archives">
-            <li>归档</li>
-          </a>
-        
-          <a href="/categories" title="Categories">
-            <li>分类</li>
-          </a>
-        
-          <a href="/tags" title="Tags">
-            <li>标签</li>
-          </a>
-        
-    </ul>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
 </div>
 
-        <section id="main">
+<nav class="site-nav">
   
-    <article id="post-README" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/11/README/" class="article-date">
-  <time class="post-time" datetime="2017-06-11T11:11:34.055Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">11</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+
+  
+    <ul id="menu" class="menu">
+      
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/11/README/">readme</a>
-    </h1>
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
   
 
-        <div>
-          
-          
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高佳睿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Scar's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/17/hello-world/" itemprop="url">Hello World</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-17T09:44:28+08:00">
+                2017-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a><a href="http://getbootstrap.com" target="_blank" rel="external">Bootstrap</a></h1><p><a href="https://bootstrap-slack.herokuapp.com" target="_blank" rel="external"><img src="https://bootstrap-slack.herokuapp.com/badge.svg" alt="Slack"></a><br><img src="https://img.shields.io/bower/v/bootstrap.svg" alt="Bower version"><br><a href="https://www.npmjs.com/package/bootstrap" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/bootstrap.svg" alt="npm version"></a><br><a href="https://travis-ci.org/twbs/bootstrap" target="_blank" rel="external"><img src="https://img.shields.io/travis/twbs/bootstrap/master.svg" alt="Build Status"></a><br><a href="https://david-dm.org/twbs/bootstrap#info=devDependencies" target="_blank" rel="external"><img src="https://img.shields.io/david/dev/twbs/bootstrap.svg" alt="devDependency Status"></a><br><a href="https://www.nuget.org/packages/Bootstrap" target="_blank" rel="external"><img src="https://img.shields.io/nuget/v/bootstrap.svg" alt="NuGet"></a><br><a href="https://saucelabs.com/u/bootstrap" target="_blank" rel="external"><img src="https://saucelabs.com/browser-matrix/bootstrap.svg" alt="Selenium Test Status"></a></p>
-<p>Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by <a href="https://twitter.com/mdo" target="_blank" rel="external">Mark Otto</a> and <a href="https://twitter.com/fat" target="_blank" rel="external">Jacob Thornton</a>, and maintained by the <a href="https://github.com/orgs/twbs/people" target="_blank" rel="external">core team</a> with the massive support and involvement of the community.</p>
-<p>To get started, check out <a href="http://getbootstrap.com" target="_blank" rel="external">http://getbootstrap.com</a>!</p>
-<h2 id="Table-of-contents"><a href="#Table-of-contents" class="headerlink" title="Table of contents"></a>Table of contents</h2><ul>
-<li><a href="#quick-start">Quick start</a></li>
-<li><a href="#bugs-and-feature-requests">Bugs and feature requests</a></li>
-<li><a href="#documentation">Documentation</a></li>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#community">Community</a></li>
-<li><a href="#versioning">Versioning</a></li>
-<li><a href="#creators">Creators</a></li>
-<li><a href="#copyright-and-license">Copyright and license</a></li>
-</ul>
-<h2 id="Quick-start"><a href="#Quick-start" class="headerlink" title="Quick start"></a>Quick start</h2><p>Several quick start options are available:</p>
-<ul>
-<li><a href="https://github.com/twbs/bootstrap/archive/v3.3.7.zip" target="_blank" rel="external">Download the latest release</a>.</li>
-<li>Clone the repo: <code>git clone https://github.com/twbs/bootstrap.git</code>.</li>
-<li>Install with <a href="http://bower.io" target="_blank" rel="external">Bower</a>: <code>bower install bootstrap</code>.</li>
-<li>Install with <a href="https://www.npmjs.com" target="_blank" rel="external">npm</a>: <code>npm install bootstrap@3</code>.</li>
-<li>Install with <a href="https://www.meteor.com" target="_blank" rel="external">Meteor</a>: <code>meteor add twbs:bootstrap</code>.</li>
-<li>Install with <a href="https://getcomposer.org" target="_blank" rel="external">Composer</a>: <code>composer require twbs/bootstrap</code>.</li>
-</ul>
-<p>Read the <a href="http://getbootstrap.com/getting-started/" target="_blank" rel="external">Getting started page</a> for information on the framework contents, templates and examples, and more.</p>
-<h3 id="What’s-included"><a href="#What’s-included" class="headerlink" title="What’s included"></a>What’s included</h3><p>Within the download you’ll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You’ll see something like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">bootstrap/</div><div class="line">├── css/</div><div class="line">│   ├── bootstrap.css</div><div class="line">│   ├── bootstrap.css.map</div><div class="line">│   ├── bootstrap.min.css</div><div class="line">│   ├── bootstrap.min.css.map</div><div class="line">│   ├── bootstrap-theme.css</div><div class="line">│   ├── bootstrap-theme.css.map</div><div class="line">│   ├── bootstrap-theme.min.css</div><div class="line">│   └── bootstrap-theme.min.css.map</div><div class="line">├── js/</div><div class="line">│   ├── bootstrap.js</div><div class="line">│   └── bootstrap.min.js</div><div class="line">└── fonts/</div><div class="line">    ├── glyphicons-halflings-regular.eot</div><div class="line">    ├── glyphicons-halflings-regular.svg</div><div class="line">    ├── glyphicons-halflings-regular.ttf</div><div class="line">    ├── glyphicons-halflings-regular.woff</div><div class="line">    └── glyphicons-halflings-regular.woff2</div></pre></td></tr></table></figure>
-<p>We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). CSS <a href="https://developer.chrome.com/devtools/docs/css-preprocessors" target="_blank" rel="external">source maps</a> (<code>bootstrap.*.map</code>) are available for use with certain browsers’ developer tools. Fonts from Glyphicons are included, as is the optional Bootstrap theme.</p>
-<h2 id="Bugs-and-feature-requests"><a href="#Bugs-and-feature-requests" class="headerlink" title="Bugs and feature requests"></a>Bugs and feature requests</h2><p>Have a bug or a feature request? Please first read the <a href="https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker" target="_blank" rel="external">issue guidelines</a> and search for existing and closed issues. If your problem or idea is not addressed yet, <a href="https://github.com/twbs/bootstrap/issues/new" target="_blank" rel="external">please open a new issue</a>.</p>
-<p>Note that <strong>feature requests must target <a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="external">Bootstrap v4</a>,</strong> because Bootstrap v3 is now in maintenance mode and is closed off to new features. This is so that we can focus our efforts on Bootstrap v4.</p>
-<h2 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h2><p>Bootstrap’s documentation, included in this repo in the root directory, is built with <a href="http://jekyllrb.com" target="_blank" rel="external">Jekyll</a> and publicly hosted on GitHub Pages at <a href="http://getbootstrap.com" target="_blank" rel="external">http://getbootstrap.com</a>. The docs may also be run locally.</p>
-<h3 id="Running-documentation-locally"><a href="#Running-documentation-locally" class="headerlink" title="Running documentation locally"></a>Running documentation locally</h3><ol>
-<li>If necessary, <a href="http://jekyllrb.com/docs/installation" target="_blank" rel="external">install Jekyll</a> and other Ruby dependencies with <code>bundle install</code>.<br><strong>Note for Windows users:</strong> Read <a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="external">this unofficial guide</a> to get Jekyll up and running without problems.</li>
-<li>From the root <code>/bootstrap</code> directory, run <code>bundle exec jekyll serve</code> in the command line.</li>
-<li>Open <code>http://localhost:9001</code> in your browser, and voilà.</li>
-</ol>
-<p>Learn more about using Jekyll by reading its <a href="http://jekyllrb.com/docs/home/" target="_blank" rel="external">documentation</a>.</p>
-<h3 id="Documentation-for-previous-releases"><a href="#Documentation-for-previous-releases" class="headerlink" title="Documentation for previous releases"></a>Documentation for previous releases</h3><p>Documentation for v2.3.2 has been made available for the time being at <a href="http://getbootstrap.com/2.3.2/" target="_blank" rel="external">http://getbootstrap.com/2.3.2/</a> while folks transition to Bootstrap 3.</p>
-<p><a href="https://github.com/twbs/bootstrap/releases" target="_blank" rel="external">Previous releases</a> and their documentation are also available for download.</p>
-<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>Please read through our <a href="https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md" target="_blank" rel="external">contributing guidelines</a>. Included are directions for opening issues, coding standards, and notes on development.</p>
-<p>Moreover, if your pull request contains JavaScript patches or features, you must include <a href="https://github.com/twbs/bootstrap/tree/master/js/tests" target="_blank" rel="external">relevant unit tests</a>. All HTML and CSS should conform to the <a href="https://github.com/mdo/code-guide" target="_blank" rel="external">Code Guide</a>, maintained by <a href="https://github.com/mdo" target="_blank" rel="external">Mark Otto</a>.</p>
-<p><strong>Bootstrap v3 is now closed off to new features.</strong> It has gone into maintenance mode so that we can focus our efforts on <a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="external">Bootstrap v4</a>, the future of the framework. Pull requests which add new features (rather than fix bugs) should target <a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="external">Bootstrap v4 (the <code>v4-dev</code> git branch)</a> instead.</p>
-<p>Editor preferences are available in the <a href="https://github.com/twbs/bootstrap/blob/master/.editorconfig" target="_blank" rel="external">editor config</a> for easy use in common text editors. Read more and download plugins at <a href="http://editorconfig.org" target="_blank" rel="external">http://editorconfig.org</a>.</p>
-<h2 id="Community"><a href="#Community" class="headerlink" title="Community"></a>Community</h2><p>Get updates on Bootstrap’s development and chat with the project maintainers and community members.</p>
-<ul>
-<li>Follow <a href="https://twitter.com/getbootstrap" target="_blank" rel="external">@getbootstrap on Twitter</a>.</li>
-<li>Read and subscribe to <a href="http://blog.getbootstrap.com" target="_blank" rel="external">The Official Bootstrap Blog</a>.</li>
-<li>Join <a href="https://bootstrap-slack.herokuapp.com" target="_blank" rel="external">the official Slack room</a>.</li>
-<li>Chat with fellow Bootstrappers in IRC. On the <code>irc.freenode.net</code> server, in the <code>##bootstrap</code> channel.</li>
-<li>Implementation help may be found at Stack Overflow (tagged <a href="https://stackoverflow.com/questions/tagged/twitter-bootstrap-3" target="_blank" rel="external"><code>twitter-bootstrap-3</code></a>).</li>
-<li>Developers should use the keyword <code>bootstrap</code> on packages which modify or add to the functionality of Bootstrap when distributing through <a href="https://www.npmjs.com/browse/keyword/bootstrap" target="_blank" rel="external">npm</a> or similar delivery mechanisms for maximum discoverability.</li>
-</ul>
-<h2 id="Versioning"><a href="#Versioning" class="headerlink" title="Versioning"></a>Versioning</h2><p>For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under <a href="http://semver.org/" target="_blank" rel="external">the Semantic Versioning guidelines</a>. Sometimes we screw up, but we’ll adhere to those rules whenever possible.</p>
-<p>See <a href="https://github.com/twbs/bootstrap/releases" target="_blank" rel="external">the Releases section of our GitHub project</a> for changelogs for each release version of Bootstrap. Release announcement posts on <a href="http://blog.getbootstrap.com" target="_blank" rel="external">the official Bootstrap blog</a> contain summaries of the most noteworthy changes made in each release.</p>
-<h2 id="Creators"><a href="#Creators" class="headerlink" title="Creators"></a>Creators</h2><p><strong>Mark Otto</strong></p>
-<ul>
-<li><a href="https://twitter.com/mdo" target="_blank" rel="external">https://twitter.com/mdo</a></li>
-<li><a href="https://github.com/mdo" target="_blank" rel="external">https://github.com/mdo</a></li>
-</ul>
-<p><strong>Jacob Thornton</strong></p>
-<ul>
-<li><a href="https://twitter.com/fat" target="_blank" rel="external">https://twitter.com/fat</a></li>
-<li><a href="https://github.com/fat" target="_blank" rel="external">https://github.com/fat</a></li>
-</ul>
-<h2 id="Copyright-and-license"><a href="#Copyright-and-license" class="headerlink" title="Copyright and license"></a>Copyright and license</h2><p>Code and documentation copyright 2011-2016 Twitter, Inc. Code released under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank" rel="external">the MIT license</a>. Docs released under <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE" target="_blank" rel="external">Creative Commons</a>.</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/11/README/" data-id="cj3smg19j0001iso075tockne" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-CHANGELOG" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/11/CHANGELOG/" class="article-date">
-  <time class="post-time" datetime="2017-06-11T11:03:05.943Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">11</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
     
     
-      <header class="article-header">
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/11/CHANGELOG/">changelog</a>
-    </h1>
-  
-
-        <div>
           
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Bootstrap uses <a href="https://github.com/blog/1547-release-your-software" target="_blank" rel="external">GitHub’s Releases feature</a> for its changelogs.</p>
-<p>See <a href="https://github.com/twbs/bootstrap/releases" target="_blank" rel="external">the Releases section of our GitHub project</a> for changelogs for each release version of Bootstrap.</p>
-<p>Release announcement posts on <a href="http://blog.getbootstrap.com" target="_blank" rel="external">the official Bootstrap blog</a> contain summaries of the most noteworthy changes made in each release.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/11/CHANGELOG/" data-id="cj3smg1860000iso0i57jj86h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-hello-world" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/11/hello-world/" class="article-date">
-  <time class="post-time" datetime="2017-06-11T10:17:20.424Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">11</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/11/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
@@ -269,171 +309,307 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/11/hello-world/" data-id="cj3smg1as0002iso09mkel4uz" class="article-share-link">Share</a>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
   
-</article>
-
-
-
-
   
-
-</section>
-        
-          <aside id="sidebar">
   
-    <div class="widget-wrap">
-  <h3 class="widget-title"></h3>
-  <div class="widget">
-    <h1 class="blog-title">Scar</h1>
-    <h2 class="blog-subtitle">null</h2>
-    <ul class="blog-link">
-     
-          <a href="/" title="Home">
-            <li>主页</li>
-          </a>
-        
-          <a href="/archives" title="Archives">
-            <li>归档</li>
-          </a>
-        
-          <a href="/categories" title="Categories">
-            <li>分类</li>
-          </a>
-        
-          <a href="/tags" title="Tags">
-            <li>标签</li>
-          </a>
-        
-    </ul>
-  </div>
-</div>
-
-  
-    <div class="widget-wrap">
-  <h3 class="widget-title"></h3>
-  <div class="widget">
-    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
-    <h2 class="author">Scar</h2>
-    <h3 class="description">null</h3>
-    <div class="count-box">
-      <a href="/archives"><div><strong>3</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>0</strong><br>标签</div></a>
-    </div>
+  </article>
 
 
-
-    <div class="social-link">
-      
-        <a class="hvr-bounce-in" href="http://github.com/ShanaMaid" target="_blank" title="Github">
-          Github
-        </a>
-      
-    </div>
-
-    <div class="friend-link">
-      <h2>友情链接</h2>
-      
-        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
-          ShanaMaid
-        </a>
-      
-    </div>
-  </div>
-</div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy;2016 - 2017 Scar<br>
-      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
-      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
-      
-    </div>
     
-  </div>
-</footer>
-    </div>
-    
+  </section>
 
-<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
-<script>
-new WOW().init();
-</script>   
+  
 
 
-  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
-  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+          </div>
+          
 
 
+          
 
-  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
-  <script src="/plugin/galmenu/GalMenu.js"></script>
-  <div class="GalMenu GalDropDown">
-      <div class="circle" id="gal">
-        <div class="ring">
-          
-            <a href="/" title="" class="menuItem">首页</a>
-          
-            <a href="/tags" title="" class="menuItem">标签</a>
-          
-            <a href="/categories" title="" class="menuItem">分类</a>
-          
-            <a href="/archives" title="" class="menuItem">归档</a>
-          
-            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
-          
-            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
-          
         </div>
         
-          <audio id="audio" src="#"></audio>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">高佳睿</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
         
-      </div> 
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高佳睿</span>
+
+  
 </div>
-<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
-  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
-    for (var i = 0,
-    l = items.length; i < l; i++) {
-      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
-      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
-    }</script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('body').GalMenu({
-      'menu': 'GalDropDown'
-    })
-  });
-</script>
-
-  <section class="hidden-xs"> 
-  <ul class="cb-slideshow"> 
-    <li><span>苟利</span></li> 
-    <li><span>国家</span></li> 
-    <li><span>生死以</span></li> 
-    <li><span>岂能</span></li> 
-    <li><span>祸福</span></li> 
-    <li><span>趋避之</span></li> 
-  </ul>
-</section>
-<script src="/js/script.js"></script>
 
 
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
 
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
