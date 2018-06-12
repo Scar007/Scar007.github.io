@@ -103,13 +103,13 @@
           
             
               <li>
-                <a href="/" title="Homepage">Homepage</a>
+                <a href="/" title="Homepage[主页]">Homepage[主页]</a>
               </li>
             
           
             
               <li>
-                <a href="/archives" title="By Year">By Year</a>
+                <a href="/archives" title="By Year[年份]">By Year[年份]</a>
               </li>
             
           
@@ -184,9 +184,8 @@
 </ul>
 <p>创建hexo目录并初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate 或 hexo g</div><div class="line">hexo server 或 hexo s</div></pre></td></tr></table></figure></p>
 <p>然后就可以生成网站，启动服务了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
-<p>hexo文件夹<br><br>    先来看一下hexo文件夹下的内容：</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    hexo/</div><div class="line">|- node_modules/  # hexo需要的模块，不需要上传GitHub</div><div class="line">|- themes/        # 主题文件，需要上传GitHub的dev分支</div><div class="line">|- sources/       # 博文md文件，需要上传GitHub的dev分支</div><div class="line">|- public/        # 生成的静态页面，由hexo deploy自动上传到gh-page分支</div><div class="line">|- package.json   # 记录hexo需要的包信息，不需要上传GitHub</div><div class="line">|- _config.yml    # 全局配置文件，需要上传GitHub的dev分支</div><div class="line">|- .gitignore     # hexo生成默认的.gitignore，它已经配置好了不需要上传的hexo文件</div></pre></td></tr></table></figure>
-</code></pre><h2 id="关联到gitHub"><a href="#关联到gitHub" class="headerlink" title="关联到gitHub"></a>关联到gitHub</h2><p>在github上创建项目仓库,仓库名为yourBlogName/github.io【注意后边的github.io是固定写法，前边的用户名你可以随便起】</p>
+<p>hexo文件夹<br><br>    先来看一下hexo文件夹下的内容：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    hexo/</div><div class="line">|- node_modules/  # hexo需要的模块，不需要上传GitHub</div><div class="line">|- themes/        # 主题文件，需要上传GitHub的dev分支</div><div class="line">|- sources/       # 博文md文件，需要上传GitHub的dev分支</div><div class="line">|- public/        # 生成的静态页面，由hexo deploy自动上传到gh-page分支</div><div class="line">|- package.json   # 记录hexo需要的包信息，不需要上传GitHub</div><div class="line">|- _config.yml    # 全局配置文件，需要上传GitHub的dev分支</div><div class="line">|- .gitignore     # hexo生成默认的.gitignore，它已经配置好了不需要上传的hexo文件</div></pre></td></tr></table></figure></p>
+<h2 id="关联到gitHub"><a href="#关联到gitHub" class="headerlink" title="关联到gitHub"></a>关联到gitHub</h2><p>在github上创建项目仓库,仓库名为yourBlogName/github.io【注意后边的github.io是固定写法，前边的用户名你可以随便起】</p>
 <ul>
 <li>在本地打开hexo文件，修改_config.yml配置文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">title: 高佳睿的博客   # 标题</div><div class="line">subtitle:</div><div class="line">description:</div><div class="line">author: 高佳睿</div><div class="line">language: zh-CN         # 语言设置</div><div class="line">url: http://palanceli.github.io/blog</div><div class="line">root: /blog/</div></pre></td></tr></table></figure>
 </li>
