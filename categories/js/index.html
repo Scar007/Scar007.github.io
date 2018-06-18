@@ -84,7 +84,7 @@
 <meta name="description" content="你当温柔，亦有力量！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Scar&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/js/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/JS/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
 <meta property="og:description" content="你当温柔，亦有力量！">
 <meta name="twitter:card" content="summary">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/js/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/JS/"/>
 
 
 
 
 
-  <title>分类: js | Scar's Blog</title>
+  <title>分类: JS | Scar's Blog</title>
   
 
 
@@ -376,7 +376,7 @@ $(function() {
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>js<small>分类</small>
+        <h1>JS<small>分类</small>
         </h1>
       </div>
 
@@ -388,7 +388,119 @@ $(function() {
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2015/04/02/js中this指向问题总结/" itemprop="url">
+            <a class="post-title-link" href="/2015/05/16/JS中的预解释机制/" itemprop="url">
+              
+                <span itemprop="name">JS中的预解释机制</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-05-16T00:00:00+08:00"
+              content="2015-05-16" >
+          05-16
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2015/05/11/JS中私有作用域的预解释/" itemprop="url">
+              
+                <span itemprop="name">关于JS中私有作用域中的预解释</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-05-11T00:00:00+08:00"
+              content="2015-05-11" >
+          05-11
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2015/05/06/JS中的数据类型/" itemprop="url">
+              
+                <span itemprop="name">关于JS中的数据类型</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-05-06T00:00:00+08:00"
+              content="2015-05-06" >
+          05-06
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2015/05/03/JS面向对象中的继承/" itemprop="url">
+              
+                <span itemprop="name">关于JS面向对象继承问题</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-05-03T00:00:00+08:00"
+              content="2015-05-03" >
+          05-03
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2015/04/02/JS中this指向问题总结/" itemprop="url">
               
                 <span itemprop="name">js中this指向问题总结</span>
               
@@ -476,7 +588,7 @@ $(function() {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -487,7 +599,7 @@ $(function() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1164,66 +1276,6 @@ $(function() {
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
-
-
-</body>
-</html>
-e);
               }
             });
           } else {
