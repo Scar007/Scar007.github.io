@@ -210,6 +210,31 @@
   </entry>
   
   <entry>
+    <title>关于前端性能优化</title>
+    <link href="http://yoursite.com/2015/10/19/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>http://yoursite.com/2015/10/19/前端性能优化/</id>
+    <published>2015-10-18T16:00:00.000Z</published>
+    <updated>2018-06-21T09:17:37.187Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常用的优化有两部分"><a href="#常用的优化有两部分" class="headerlink" title="常用的优化有两部分"></a>常用的优化有两部分</h2><h4 id="第一：面向内容的优化"><a href="#第一：面向内容的优化" class="headerlink" title="第一：面向内容的优化"></a>第一：面向内容的优化</h4><ul><li>减少 HTTP 请求</li><li>减少 DNS 查找</li><li>避免重定向</li><li>使用 Ajax 缓存</li><li>延迟载入组件</li><li>预先载入组件</li><li>减少 DOM 元素数量</li><li>切分组件到多个域</li><li>最小化 iframe 的数量</li><li>不要出现http 404 错误<h4 id="第二：面向-Server"><a href="#第二：面向-Server" class="headerlink" title="第二：面向 Server"></a>第二：面向 Server</h4></li><li>缩小 Cookie</li><li>针对 Web 组件使用域名无关性的</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;常用的优化有两部分&quot;&gt;&lt;a href=&quot;#常用的优化有两部分&quot; class=&quot;headerlink&quot; title=&quot;常用的优化有两部分&quot;&gt;&lt;/a&gt;常用的优化有两部分&lt;/h2&gt;&lt;h4 id=&quot;第一：面向内容的优化&quot;&gt;&lt;a href=&quot;#第一：面向内容的优化&quot; cla
+      
+    
+    </summary>
+    
+      <category term="性能优化" scheme="http://yoursite.com/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="优化" scheme="http://yoursite.com/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于jsonp跨域的问题以及解决方法(跨域、同源与非同源)</title>
     <link href="http://yoursite.com/2015/10/19/jsonp%E8%B7%A8%E5%9F%9F%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
     <id>http://yoursite.com/2015/10/19/jsonp跨域的问题以及解决方法/</id>
@@ -511,33 +536,6 @@
     
     
       <category term="预解释" scheme="http://yoursite.com/tags/%E9%A2%84%E8%A7%A3%E9%87%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于JS中私有作用域中的预解释</title>
-    <link href="http://yoursite.com/2015/05/11/JS%E4%B8%AD%E7%A7%81%E6%9C%89%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E9%A2%84%E8%A7%A3%E9%87%8A/"/>
-    <id>http://yoursite.com/2015/05/11/JS中私有作用域的预解释/</id>
-    <published>2015-05-10T16:00:00.000Z</published>
-    <updated>2018-06-18T10:27:36.472Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-如何区私有变量还是全局变量"><a href="#1-如何区私有变量还是全局变量" class="headerlink" title="1.如何区私有变量还是全局变量"></a>1.如何区私有变量还是全局变量</h2><pre><code>1）在全局作用域下声明（预解释的时候）的变量是全局变量2）在“私有作用域中声明的变量”和“函数的形参”都是私有变量</code></pre><p>在私有作用域中，我们代码执行的时候遇到一个变量，首先我们需要确定它是否为私有变量，那么这个变量和外边的没有任何关系；如果不是私有的，则往当前作用域的上级作用域进行查找，如果上级作用域也没有则继续查找，一直找到window为止…（作用域链）</p><h2 id="2-当函数执行的时候（直接目的：让函数体中的代码执行），首先会形成一个新的私有作用域，然后按照如下的步骤执行："><a href="#2-当函数执行的时候（直接目的：让函数体中的代码执行），首先会形成一个新的私有作用域，然后按照如下的步骤执行：" class="headerlink" title="2.当函数执行的时候（直接目的：让函数体中的代码执行），首先会形成一个新的私有作用域，然后按照如下的步骤执行："></a>2.当函数执行的时候（直接目的：让函数体中的代码执行），首先会形成一个新的私有作用域，然后按照如下的步骤执行：</h2><pre><code>+ 1）如果有形参，则先给形参赋值+ 2）进行私有作用域中的预解释+ 3）私有作用域中的代码从上到下执行...</code></pre><p>函数执行形成一个新的私有作用域保护了里边的私有变量不受外界的干扰（外边修改不了私有的，私有的也修改不了外边的）-&gt;“闭包”</p><pre><code class="javascript"><span class="built_in">console</span>.log(total);  <span class="comment">//undefined</span><span class="keyword">var</span> total = <span class="number">0</span>;<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1,num2</span>)</span>{    <span class="built_in">console</span>.log(total);    <span class="comment">// -&gt; total不是私有的，找全局下的total，也就是在这里出现的所有的total其实应该都是全局的，-&gt;0</span>    total = num1 + num2;    <span class="built_in">console</span>.log(total); <span class="comment">//-&gt; 300</span>};fn(<span class="number">100</span>,<span class="number">200</span>);<span class="built_in">console</span>.log(total); <span class="comment">//300</span></code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1-如何区私有变量还是全局变量&quot;&gt;&lt;a href=&quot;#1-如何区私有变量还是全局变量&quot; class=&quot;headerlink&quot; title=&quot;1.如何区私有变量还是全局变量&quot;&gt;&lt;/a&gt;1.如何区私有变量还是全局变量&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1）在全局作用域下声
-      
-    
-    </summary>
-    
-      <category term="JS" scheme="http://yoursite.com/categories/JS/"/>
-    
-    
-      <category term="预解释" scheme="http://yoursite.com/tags/%E9%A2%84%E8%A7%A3%E9%87%8A/"/>
-    
-      <category term="作用域" scheme="http://yoursite.com/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
     
   </entry>
   
