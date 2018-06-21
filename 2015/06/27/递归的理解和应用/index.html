@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo,next," />
+  <meta name="keywords" content="函数,递归," />
 
 
 
@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="之前有在博客园【http://www.cnblogs.com/Scar007/ 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。 hexo是一款基于Node.js的静态博客框架,官网地址:https://hexo.io/zh-cn/. 安装环境 安装node.js，去官网下载安">
-<meta name="keywords" content="hexo,next">
+<meta name="description" content="什么是递归？就是函数自己调用自己执行12345678function sum(num)&amp;#123;    if(num&amp;gt;0)&amp;#123;        return num + sum(num - 1);    &amp;#125;else&amp;#123;        return 0    &amp;#125;&amp;#125;console.log(sum(4))  // 10 这个函数内部是发生了什么改变呢？">
+<meta name="keywords" content="函数,递归">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo + gitHub免费搭建一个属于自己的专属博客">
-<meta property="og:url" content="http://yoursite.com/2015/03/14/hexo+github搭建博客/index.html">
+<meta property="og:title" content="递归的理解和简单应用">
+<meta property="og:url" content="http://yoursite.com/2015/06/27/递归的理解和应用/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="之前有在博客园【http://www.cnblogs.com/Scar007/ 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。 hexo是一款基于Node.js的静态博客框架,官网地址:https://hexo.io/zh-cn/. 安装环境 安装node.js，去官网下载安">
-<meta property="og:updated_time" content="2018-06-18T11:20:54.664Z">
+<meta property="og:description" content="什么是递归？就是函数自己调用自己执行12345678function sum(num)&amp;#123;    if(num&amp;gt;0)&amp;#123;        return num + sum(num - 1);    &amp;#125;else&amp;#123;        return 0    &amp;#125;&amp;#125;console.log(sum(4))  // 10 这个函数内部是发生了什么改变呢？">
+<meta property="og:updated_time" content="2018-06-21T03:06:55.471Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo + gitHub免费搭建一个属于自己的专属博客">
-<meta name="twitter:description" content="之前有在博客园【http://www.cnblogs.com/Scar007/ 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。 hexo是一款基于Node.js的静态博客框架,官网地址:https://hexo.io/zh-cn/. 安装环境 安装node.js，去官网下载安">
+<meta name="twitter:title" content="递归的理解和简单应用">
+<meta name="twitter:description" content="什么是递归？就是函数自己调用自己执行12345678function sum(num)&amp;#123;    if(num&amp;gt;0)&amp;#123;        return num + sum(num - 1);    &amp;#125;else&amp;#123;        return 0    &amp;#125;&amp;#125;console.log(sum(4))  // 10 这个函数内部是发生了什么改变呢？">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/03/14/hexo+github搭建博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/06/27/递归的理解和应用/"/>
 
 
 
 
 
-  <title>Hexo + gitHub免费搭建一个属于自己的专属博客 | Scar's Blog</title>
+  <title>递归的理解和简单应用 | Scar's Blog</title>
   
 
 
@@ -385,7 +385,7 @@ $(function() {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/03/14/hexo+github搭建博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/27/递归的理解和应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="高佳睿">
@@ -402,7 +402,7 @@ $(function() {
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo + gitHub免费搭建一个属于自己的专属博客</h1>
+          <h1 class="post-title" itemprop="name headline">递归的理解和简单应用</h1>
         
 
         <div class="post-meta">
@@ -414,8 +414,8 @@ $(function() {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-03-14T08:37:59+08:00">
-                2015-03-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-27T00:00:00+08:00">
+                2015-06-27
               </time>
             
 
@@ -437,8 +437,8 @@ $(function() {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Blog/" itemprop="url" rel="index">
-                    <span itemprop="name">Blog</span>
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
                   </a>
                 </span>
 
@@ -455,8 +455,8 @@ $(function() {
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/03/14/hexo+github搭建博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/14/hexo+github搭建博客/" itemprop="commentCount"></span>
+                <a href="/2015/06/27/递归的理解和应用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/27/递归的理解和应用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -464,7 +464,7 @@ $(function() {
 
           
           
-             <span id="/2015/03/14/hexo+github搭建博客/" class="leancloud_visitors" data-flag-title="Hexo + gitHub免费搭建一个属于自己的专属博客">
+             <span id="/2015/06/27/递归的理解和应用/" class="leancloud_visitors" data-flag-title="递归的理解和简单应用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -495,45 +495,13 @@ $(function() {
       
 
       
-        <p>之前有在博客园【<a href="http://www.cnblogs.com/Scar007/" target="_blank" rel="external">http://www.cnblogs.com/Scar007/</a> 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。</p>
-<p>hexo是一款基于Node.js的静态博客框架,官网地址:<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">https://hexo.io/zh-cn/</a>.</p>
-<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><ul>
-<li>安装node.js，去官网下载安装即可，官网地址：<a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">https://nodejs.org/zh-cn/</a></li>
-<li>安装Hexo<br>  全局安装hexo<blockquote>
-<p>npm install hexo-cli -g</p>
+        <h2 id="什么是递归？就是函数自己调用自己执行"><a href="#什么是递归？就是函数自己调用自己执行" class="headerlink" title="什么是递归？就是函数自己调用自己执行"></a>什么是递归？就是函数自己调用自己执行</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(num&gt;<span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> num + sum(num - <span class="number">1</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(sum(<span class="number">4</span>))  <span class="comment">// 10</span></div></pre></td></tr></table></figure>
+<p>这个函数内部是发生了什么改变呢？我们来分析一下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、 <span class="number">4</span>+sum(<span class="number">4</span><span class="number">-1</span>)</div><div class="line"><span class="number">2</span>、 <span class="number">4</span>+<span class="number">3</span>+sum(<span class="number">3</span><span class="number">-1</span>)</div><div class="line"><span class="number">3</span>、 <span class="number">4</span>+<span class="number">3</span>+<span class="number">2</span>+sum(<span class="number">2</span><span class="number">-1</span>)</div><div class="line"><span class="number">4</span>、 <span class="number">4</span>+<span class="number">3</span>+<span class="number">2</span>+<span class="number">1</span>+sum(<span class="number">1</span><span class="number">-1</span>)  ---&gt;<span class="number">4</span>+<span class="number">3</span>+<span class="number">2</span>+<span class="number">1</span>+<span class="number">0</span>=<span class="number">10</span></div><div class="line">所以最后的结果输出是<span class="number">10</span></div></pre></td></tr></table></figure></p>
+<p>arguments 实现递归：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(num&gt;<span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> num + argument.callee(num<span class="number">-1</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> result = sum;</div><div class="line">sum = <span class="literal">null</span>;</div><div class="line"><span class="built_in">console</span>.log(result(<span class="number">15</span>));   <span class="comment">// 120</span></div></pre></td></tr></table></figure></p>
+<p>命名函数的递归：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newMethod = <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(num&gt;<span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> num + f (num - <span class="number">1</span>)</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> result = newMethod;</div><div class="line">newMethod = <span class="literal">null</span>;</div><div class="line"><span class="built_in">console</span>.log(result(<span class="number">6</span>))</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>附加：在JS中()的作用：创建一个块级作用域，独立，闭合的私有空间；在数学代码执行和数学运算中，优先运算执行。</p>
 </blockquote>
-</li>
-</ul>
-<p>创建hexo目录并初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate 或 hexo g</div><div class="line">hexo server 或 hexo s</div></pre></td></tr></table></figure></p>
-<p>然后就可以生成网站，启动服务了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
-<p>hexo文件夹<br><br>    先来看一下hexo文件夹下的内容：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    hexo/</div><div class="line">|- node_modules/  # hexo需要的模块，不需要上传GitHub</div><div class="line">|- themes/        # 主题文件，需要上传GitHub的dev分支</div><div class="line">|- sources/       # 博文md文件，需要上传GitHub的dev分支</div><div class="line">|- public/        # 生成的静态页面，由hexo deploy自动上传到gh-page分支</div><div class="line">|- package.json   # 记录hexo需要的包信息，不需要上传GitHub</div><div class="line">|- _config.yml    # 全局配置文件，需要上传GitHub的dev分支</div><div class="line">|- .gitignore     # hexo生成默认的.gitignore，它已经配置好了不需要上传的hexo文件</div></pre></td></tr></table></figure></p>
-<h2 id="关联到gitHub"><a href="#关联到gitHub" class="headerlink" title="关联到gitHub"></a>关联到gitHub</h2><p>在github上创建项目仓库,仓库名为yourBlogName/github.io【注意后边的github.io是固定写法，前边的用户名你可以随便起】</p>
-<ul>
-<li>在本地打开hexo文件，修改_config.yml配置文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">title: 高佳睿的博客   # 标题</div><div class="line">subtitle:</div><div class="line">description:</div><div class="line">author: 高佳睿</div><div class="line">language: zh-CN         # 语言设置</div><div class="line">url: http://palanceli.github.io/blog</div><div class="line">root: /blog/</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">    type: git </div><div class="line">    repository: https://github.com/Scar007/Scar007.github.io.git</div><div class="line">    branch: master</div></pre></td></tr></table></figure>
-<pre><code>&gt;  1.你需要将repository后的Scar007换成你自己的用户名。hexo 3.1.1版本后type:值为git。
-    2.注意在配置所有的_config.yml文件时（包括theme中的），在所有冒号后都要加一个空格，否则执行hexo命令会报错
-</code></pre><ul>
-<li>在hexo文件目录下执行生成静态命令页面命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate 或者：hexo g</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>若此时出现如下报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ERROR Local hexo not found in ~/blog</div><div class="line">ERROR Try runing: &apos;npm install hexo --save&apos;</div><div class="line">则执行命令：npm install hexo --save</div><div class="line">若无报错，自行忽略此步骤。</div></pre></td></tr></table></figure></p>
-<p>再执行配置命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy 或者：hexo d</div></pre></td></tr></table></figure></p>
-<p>若执行命令hexo deploy<br>仍然报错：无法连接git或找不到git，则执行如下命令来安装hexo-deployer-git：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>再次执行hexo generate和hexo deploy命令。<br>若你未关联Github，则执行hexo deploy<br>命令时终端会提示你输入Github的用户名和密码，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Username for &apos;https://github.com&apos;:</div><div class="line">Password for &apos;https://github.com&apos;:</div></pre></td></tr></table></figure></p>
-<p>hexo deploy<br>命令执行成功后，浏览器中打开网址<a href="http://yourBlogName.github.io（将yourBlogName" target="_blank" rel="external">http://yourBlogName.github.io（将yourBlogName</a><br>换成你的用户名）能看到和打开<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a><br>时一样的页面。</p>
-<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>这里有大量的主题：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a> 或 <a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>找到自己喜欢的主题，然后将它下载到themes文件夹下，同时更改_config.yml配置文件中的theme属性为你所下载主题的文件名，ok，接下来重新生成静态文件，可以本地预览，你就会看到一个自己比较满意的博客了，大功告成，尽情的发表你的所言所想吧！</p>
-<h3 id="next"><a href="#next" class="headerlink" title="next"></a>next</h3><p>个人目前用的就是next主题，简洁大方，而且各终端的支持也不错。<br><br>下边是关于next的一些配置，具体的一些东西还请阅读【<a href="https://hexo.io/zh-cn/docs/index.html】文档" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html】文档</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd your-hexo-site</div><div class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure></p>
-<p>克隆最新版本的主题，将博客下的_config.yml得theme配置修改为（上边已经说过）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: next</div></pre></td></tr></table></figure></p>
-<h4 id="标签、分类"><a href="#标签、分类" class="headerlink" title="标签、分类"></a>标签、分类</h4><p>想要添加标签、分类等，可以直接命令新建文件。这里用标签举例，其他的标签同理。<br><br>进入到你的博客的根目录下，命令执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd yourHexoBlog</div><div class="line">hexo new page tags</div></pre></td></tr></table></figure></p>
-<p>它会自动生成标签页面，找到tags文件，将文件内容修改为(可以按照自己的要求来自行设定，我这里只是个小demo)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line">type: &quot;tags&quot;</div></pre></td></tr></table></figure></p>
-<p>然后在自己的文章中加上(同上，只是举例),一个可以直接写，多个就像这样用-分开就好：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tags:</div><div class="line">    - 测试</div><div class="line">    - blog</div></pre></td></tr></table></figure></p>
-<p>记得修改主题下的配置哦，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: / || home</div><div class="line">  tags: /tags/ || tags</div></pre></td></tr></table></figure></p>
-<p>还有像关于我这一类的文章，就更简答了，只需要新建文件后在文件中直接写自己想要表达的内容就好了！</p>
-<h4 id="网站链接"><a href="#网站链接" class="headerlink" title="网站链接"></a>网站链接</h4><p>找到主题下的social，设置你想要添加的网站链接，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">social:</div><div class="line">  GitHub: https://github.com/Scar007 || github</div><div class="line">  博客园: http://www.cnblogs.com/Scar007/ || cnblogs</div><div class="line">  微博: https://weibo.com/5604488894/profile?rightmod=1&amp;wvr=6&amp;mod=personnumber || weibo</div></pre></td></tr></table></figure></p>
-<p>ok,这篇文章就先写到这，后边有问题再继续补充，谢谢支持！</p>
 
       
     </div>
@@ -559,9 +527,9 @@ $(function() {
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/函数/" rel="tag"># 函数</a>
           
-            <a href="/tags/next/" rel="tag"># next</a>
+            <a href="/tags/递归/" rel="tag"># 递归</a>
           
         </div>
       
@@ -574,14 +542,18 @@ $(function() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/06/18/匿名函数的理解和应用/" rel="next" title="匿名函数的简单理解和应用">
+                <i class="fa fa-chevron-left"></i> 匿名函数的简单理解和应用
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/04/02/JS中this指向问题总结/" rel="prev" title="js中this指向问题总结">
-                js中this指向问题总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/07/18/JS中事件问题的总结/" rel="prev" title="JS中事件问题的总结">
+                JS中事件问题的总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -639,8 +611,8 @@ var jiathis_config={
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2015/03/14/hexo+github搭建博客/"
-           data-title="Hexo + gitHub免费搭建一个属于自己的专属博客" data-url="http://yoursite.com/2015/03/14/hexo+github搭建博客/">
+      <div class="ds-thread" data-thread-key="2015/06/27/递归的理解和应用/"
+           data-title="递归的理解和简单应用" data-url="http://yoursite.com/2015/06/27/递归的理解和应用/">
       </div>
     </div>
 
@@ -798,7 +770,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装环境"><span class="nav-number">1.</span> <span class="nav-text">安装环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联到gitHub"><span class="nav-number">2.</span> <span class="nav-text">关联到gitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换主题"><span class="nav-number">3.</span> <span class="nav-text">更换主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next"><span class="nav-number">3.1.</span> <span class="nav-text">next</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签、分类"><span class="nav-number">3.1.1.</span> <span class="nav-text">标签、分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网站链接"><span class="nav-number">3.1.2.</span> <span class="nav-text">网站链接</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是递归？就是函数自己调用自己执行"><span class="nav-number">1.</span> <span class="nav-text">什么是递归？就是函数自己调用自己执行</span></a></li></ol></div>
             
 
           </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo,next," />
+  <meta name="keywords" content="事件," />
 
 
 
@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="之前有在博客园【http://www.cnblogs.com/Scar007/ 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。 hexo是一款基于Node.js的静态博客框架,官网地址:https://hexo.io/zh-cn/. 安装环境 安装node.js，去官网下载安">
-<meta name="keywords" content="hexo,next">
+<meta name="description" content="一.什么是事件？事件就是DOM和浏览器之间的交互行为(只要触发了这个行为，也就相当于触发了事件)，我们可以通过事件监听来绑定事件，例如：box.onclick=function(){}，如果我们点击了这个盒子，就触发了盒子的click事件，同样会把事件绑定给这个方法，让其执行某一些特定的操作。(事件是浏览器默认给的，与生俱来的，绑定事件时不过是给某一特定元素绑定对应的事件名以及方法，让其执行特定的">
+<meta name="keywords" content="事件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo + gitHub免费搭建一个属于自己的专属博客">
-<meta property="og:url" content="http://yoursite.com/2015/03/14/hexo+github搭建博客/index.html">
+<meta property="og:title" content="JS中事件问题的总结">
+<meta property="og:url" content="http://yoursite.com/2015/07/18/JS中事件问题的总结/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="之前有在博客园【http://www.cnblogs.com/Scar007/ 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。 hexo是一款基于Node.js的静态博客框架,官网地址:https://hexo.io/zh-cn/. 安装环境 安装node.js，去官网下载安">
-<meta property="og:updated_time" content="2018-06-18T11:20:54.664Z">
+<meta property="og:description" content="一.什么是事件？事件就是DOM和浏览器之间的交互行为(只要触发了这个行为，也就相当于触发了事件)，我们可以通过事件监听来绑定事件，例如：box.onclick=function(){}，如果我们点击了这个盒子，就触发了盒子的click事件，同样会把事件绑定给这个方法，让其执行某一些特定的操作。(事件是浏览器默认给的，与生俱来的，绑定事件时不过是给某一特定元素绑定对应的事件名以及方法，让其执行特定的">
+<meta property="og:updated_time" content="2018-06-21T03:35:58.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo + gitHub免费搭建一个属于自己的专属博客">
-<meta name="twitter:description" content="之前有在博客园【http://www.cnblogs.com/Scar007/ 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。 hexo是一款基于Node.js的静态博客框架,官网地址:https://hexo.io/zh-cn/. 安装环境 安装node.js，去官网下载安">
+<meta name="twitter:title" content="JS中事件问题的总结">
+<meta name="twitter:description" content="一.什么是事件？事件就是DOM和浏览器之间的交互行为(只要触发了这个行为，也就相当于触发了事件)，我们可以通过事件监听来绑定事件，例如：box.onclick=function(){}，如果我们点击了这个盒子，就触发了盒子的click事件，同样会把事件绑定给这个方法，让其执行某一些特定的操作。(事件是浏览器默认给的，与生俱来的，绑定事件时不过是给某一特定元素绑定对应的事件名以及方法，让其执行特定的">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/03/14/hexo+github搭建博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/07/18/JS中事件问题的总结/"/>
 
 
 
 
 
-  <title>Hexo + gitHub免费搭建一个属于自己的专属博客 | Scar's Blog</title>
+  <title>JS中事件问题的总结 | Scar's Blog</title>
   
 
 
@@ -385,7 +385,7 @@ $(function() {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/03/14/hexo+github搭建博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/18/JS中事件问题的总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="高佳睿">
@@ -402,7 +402,7 @@ $(function() {
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo + gitHub免费搭建一个属于自己的专属博客</h1>
+          <h1 class="post-title" itemprop="name headline">JS中事件问题的总结</h1>
         
 
         <div class="post-meta">
@@ -414,8 +414,8 @@ $(function() {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-03-14T08:37:59+08:00">
-                2015-03-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
+                2015-07-18
               </time>
             
 
@@ -437,8 +437,8 @@ $(function() {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Blog/" itemprop="url" rel="index">
-                    <span itemprop="name">Blog</span>
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
                   </a>
                 </span>
 
@@ -455,8 +455,8 @@ $(function() {
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/03/14/hexo+github搭建博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/14/hexo+github搭建博客/" itemprop="commentCount"></span>
+                <a href="/2015/07/18/JS中事件问题的总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/18/JS中事件问题的总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -464,7 +464,7 @@ $(function() {
 
           
           
-             <span id="/2015/03/14/hexo+github搭建博客/" class="leancloud_visitors" data-flag-title="Hexo + gitHub免费搭建一个属于自己的专属博客">
+             <span id="/2015/07/18/JS中事件问题的总结/" class="leancloud_visitors" data-flag-title="JS中事件问题的总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -495,45 +495,77 @@ $(function() {
       
 
       
-        <p>之前有在博客园【<a href="http://www.cnblogs.com/Scar007/" target="_blank" rel="external">http://www.cnblogs.com/Scar007/</a> 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。</p>
-<p>hexo是一款基于Node.js的静态博客框架,官网地址:<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">https://hexo.io/zh-cn/</a>.</p>
-<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><ul>
-<li>安装node.js，去官网下载安装即可，官网地址：<a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">https://nodejs.org/zh-cn/</a></li>
-<li>安装Hexo<br>  全局安装hexo<blockquote>
-<p>npm install hexo-cli -g</p>
+        <h2 id="一-什么是事件？"><a href="#一-什么是事件？" class="headerlink" title="一.什么是事件？"></a>一.什么是事件？</h2><p>事件就是DOM和浏览器之间的交互行为(只要触发了这个行为，也就相当于触发了事件)，我们可以通过事件监听来绑定事件，例如：box.onclick=function(){}，如果我们点击了这个盒子，就触发了盒子的click事件，同样会把事件绑定给这个方法，让其执行某一些特定的操作。(事件是浏览器默认给的，与生俱来的，绑定事件时不过是给某一特定元素绑定对应的事件名以及方法，让其执行特定的方法)</p>
+<h3 id="DOM事件："><a href="#DOM事件：" class="headerlink" title="DOM事件："></a>DOM事件：</h3><ul>
+<li>点击: click</li>
+<li>滚轮: scroll</li>
+<li>滑动: move</li>
+<li>进入:enter</li>
+<li><p>加载:load<br>事件绑定：就是给某一个元素的相关事件行为绑定方法</p>
+<ul>
+<li><p><b>DOM 0级事件：</b></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//当我们触发oDiv的click行为的时候，会把绑定的这个函数执行</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// -&gt;onclick 这个行为定义在当前元素的私有属性上</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><b>DOM 2级事件：</b></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">oDiv.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'ok'</span>)</div><div class="line">&#125;,<span class="literal">false</span>);</div><div class="line"><span class="comment">// -&gt; addEventListener这个属性是定义在当前元素所属EventTarget这个类的原型上的</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-事件机制："><a href="#二-事件机制：" class="headerlink" title="二.事件机制："></a>二.事件机制：</h2><p><b>事件的监听(事件的绑定)：</b></p>
+<ul>
+<li>通过on+事件名这种类型绑定事件叫做DOM 0级事件</li>
+<li>DOM０级事件，同一个元素的同一个事件监听，绑定的触发运行函数，不能重复绑定，有且只能绑定一回，下一次绑定的会将上一次的覆盖掉</li>
+<li>事件设为null，移除事件的监听</li>
+<li>监听事件不仅是浏览器的一种机制，也是浏览器赋予DOM文档元素的属性-事件的监听是时刻存在的，但是事件的触发时候运行的处理函数是我们自己定义的</li>
+</ul>
+<p><b>事件的触发：</b></p>
+<ul>
+<li>触发事件的时候运行绑定处理的函数</li>
+</ul>
+<h2 id="三-DOM-0级与DOM-2级事件的区别："><a href="#三-DOM-0级与DOM-2级事件的区别：" class="headerlink" title="三.DOM 0级与DOM 2级事件的区别："></a>三.DOM 0级与DOM 2级事件的区别：</h2><ul>
+<li><p>1.DOM 0级属于给当前元素的某一个私有的属性赋值：box.click=…</p>
+<ul>
+<li>1).我们通过事件的监听处理程序 onclick属性=function(){}这种形式绑定的事件，叫做DOM 0级事件</li>
+<li>2).所有的DOM 0级事件都是在冒泡，执行的事件处理函数</li>
+<li>3).只能给当前元素的某一个事件绑定一个方法，绑定多个的时候，后边绑定的会将前边的覆盖掉</li>
+<li>4).我们所说的事件是文档和浏览器的交互行为，而文档是DOM，DOM包含了html和document</li>
+<li>5).移除事件监听的处理程序就是直接访问DOM对象的事件监听属性，然后讲处理事件的函数设置为null，比如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">div.onclick = <span class="literal">null</span>;  <span class="comment">//直接就移除了监听事件的处理函数</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>2.DOM２级属于通过原型链的查找机制，找到EventTarget.prototype的addEventListen这个方法，执行这个方法，把需要绑定的函数放在当前元素的事件池中。</p>
+<ul>
+<li>1).可以给当前元素的某一事件类型绑定多个不同的方法，触发事件，这些绑定的方法会按照在事件池中的顺序(和绑定的的顺序相同)依次把方法执行(IE低版本有区别)</li>
+<li>2).DOM 2中有一些单独的事件，这些事件不是元素的私有属性，所以只有DOM2的绑定方式才会给这些事件绑定方法，例如：DOMContentLoaded…</li>
+<li>3).DOM 2级事件处理事件函数的执行时间是在捕获阶段执行还是在冒泡阶段执行</li>
+<li>4).DOM２级事件的事件监听，是通过DOM元素的原型链查找事件对象上的原型上的addEventListener实现的监听事件</li>
+<li>5).移除事件监听，是通过removeEventListener实现的移除事件监听(标准浏览器)</li>
+<li>6).如果第三个参数不传参的话，我们默认是false，也就是在冒泡阶段发生的</li>
+<li>7).事件处理程序中的this是当前触发事件的元素对象<blockquote>
+<p>注：1.在IE浏览器中是不同的，IE中的DOM 2级事件，是通过attachEvent()实现的事件监听和detachEvent()事件移除监听，只支持两个参数，将所有事件都定义在冒泡阶段执行，IE浏览器以及IE8以前，即使是DOM 2级事件，也只是支持事件的处理函数，在冒泡阶段执行。<br>   2.IE中的事件处理程序的this是window</p>
 </blockquote>
 </li>
 </ul>
-<p>创建hexo目录并初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate 或 hexo g</div><div class="line">hexo server 或 hexo s</div></pre></td></tr></table></figure></p>
-<p>然后就可以生成网站，启动服务了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
-<p>hexo文件夹<br><br>    先来看一下hexo文件夹下的内容：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    hexo/</div><div class="line">|- node_modules/  # hexo需要的模块，不需要上传GitHub</div><div class="line">|- themes/        # 主题文件，需要上传GitHub的dev分支</div><div class="line">|- sources/       # 博文md文件，需要上传GitHub的dev分支</div><div class="line">|- public/        # 生成的静态页面，由hexo deploy自动上传到gh-page分支</div><div class="line">|- package.json   # 记录hexo需要的包信息，不需要上传GitHub</div><div class="line">|- _config.yml    # 全局配置文件，需要上传GitHub的dev分支</div><div class="line">|- .gitignore     # hexo生成默认的.gitignore，它已经配置好了不需要上传的hexo文件</div></pre></td></tr></table></figure></p>
-<h2 id="关联到gitHub"><a href="#关联到gitHub" class="headerlink" title="关联到gitHub"></a>关联到gitHub</h2><p>在github上创建项目仓库,仓库名为yourBlogName/github.io【注意后边的github.io是固定写法，前边的用户名你可以随便起】</p>
+</li>
+</ul>
+<h2 id="四-事件流："><a href="#四-事件流：" class="headerlink" title="四.事件流："></a>四.事件流：</h2><p>事件的触发执行分为三个步骤：事件捕获阶段-&gt;捕获事件源-&gt;事件冒泡阶段<br>事件的默认传播机制:<br>　　-&gt;捕获阶段:从外向内依次查找元素<br>　　-&gt;目标阶段:当前事件源本身的操作<br>　　-&gt;冒泡阶段:从内到外依次触发相关的行为(我们最常用的就是冒泡阶段)<br>利用事件传播机制可以实现事件委托。</p>
+<h2 id="五-事件对象："><a href="#五-事件对象：" class="headerlink" title="五.事件对象："></a>五.事件对象：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="comment">//当我们触发oDiv的click行为的时候，会把绑定的这个函数执行</span></div><div class="line">    <span class="built_in">console</span>.dir(e)</div><div class="line">&#125;;</div><div class="line"><span class="comment">//onclick这个行为定义在当前元素的私有属性上</span></div></pre></td></tr></table></figure>
+<p>我们是把匿名函数定义的部分当做一个值赋值给oDiv的点击行为(函数表达式)<br>当我们触发#div的点击行为的时候，会执行对应绑定的方法。<br><b>重点：</b>不仅仅要把绑定的方法执行了，而且浏览器还默认的给这个方法传递了一个参数(e)，-&gt;mouseEvent:鼠标事件对象，</p>
 <ul>
-<li>在本地打开hexo文件，修改_config.yml配置文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">title: 高佳睿的博客   # 标题</div><div class="line">subtitle:</div><div class="line">description:</div><div class="line">author: 高佳睿</div><div class="line">language: zh-CN         # 语言设置</div><div class="line">url: http://palanceli.github.io/blog</div><div class="line">root: /blog/</div></pre></td></tr></table></figure>
-</li>
+<li>1.它是一个对象数据类型值，里边包含了很多的属性名和属性值，这些都是用来记录鼠标的相关信息的</li>
+<li>2.MouseEvent–&gt;UIEvent–&gt;Event–&gt;Object</li>
+<li>3.MouseEvent记录的是页面中唯一一个鼠标每一次触发时候的相关信息,和到底是在哪个元素上触发的没有关系<br>事件对象本身的获取存在兼容问题：标准浏览器中是浏览器给方法传递的参数，我们只需要定义形参e就可以获取到;在IE6~8中浏览器不会给方法传递参数，我们如果需要的话，需要到window.event中获取查找;<br>e = e || window.event;<br>e.type：存储的是当前鼠标触发的行为类型 “click”<br>e.clientX/ e.clientY :当前鼠标触发点距离当前屏幕左上角的x/y轴的坐标值<br>e.currentTarget 保存的是当前绑定事件的对象<br>e.target:事件源,当前鼠标触发的是哪个元素,那么它存储的就是哪个元素，但是在IE6~8中不存在这个属性(e.target的值是undefined),我们使用e.srcElement来获取事件源<br>e.pageX/e.pageY：当前鼠标触发点距离body左上角(页面第一屏幕最做上端)的x/y轴的坐标，但是在IE6~8中没有这个属性,我们通过使用clientY+滚动条卷去的高度来获取也可以<br>e.preventDefault:阻止浏览器的默认行为,在IE6~8中没有这个方法,我们需要使用e.returnValue=false;来代替<br>e.stopPropagation:阻止事件的冒泡传播,在IE6~8中不兼容,使用e.cancelBubble=true来代替</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">    type: git </div><div class="line">    repository: https://github.com/Scar007/Scar007.github.io.git</div><div class="line">    branch: master</div></pre></td></tr></table></figure>
-<pre><code>&gt;  1.你需要将repository后的Scar007换成你自己的用户名。hexo 3.1.1版本后type:值为git。
-    2.注意在配置所有的_config.yml文件时（包括theme中的），在所有冒号后都要加一个空格，否则执行hexo命令会报错
-</code></pre><ul>
-<li>在hexo文件目录下执行生成静态命令页面命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate 或者：hexo g</div></pre></td></tr></table></figure>
-</li>
+<p><b>总结兼容写法：</b>　　　<br>e = e || window.event;<br>eTarget = e.target || e.srcElement;<br>e.stopPropagation ? e.stopPropagation():e.cancelBubble = true;<br>e.preventDefault ? e.preventDefault() : e.returnValue = false;</p>
+<h2 id="六-mouseenter和mouseover的区别"><a href="#六-mouseenter和mouseover的区别" class="headerlink" title="六.mouseenter和mouseover的区别?"></a>六.mouseenter和mouseover的区别?</h2><p>mouseover默认有事件的默认传播机制，而mouseenter默认阻止了事件的冒泡传播。<br>=&gt;事件传播机制分为：捕获和冒泡<br>=&gt;冒泡机制可以让我们采用事件委托来处理程序<br>-&gt;mouseenter属于进入，mouseover属于滑过，进入到容器中的子元素中，会触发父元素的mouseout和子元素的mouseover(传播到父元素上，父元素的mouseover也被触发了)；<br>但是mouseenter则不会这样，进入到子元素，不会触发父元素的mouseleave，子元素的mouseenter触发，但是不传播到父级容器上。</p>
+<ul>
+<li>1.onmouseenter 当鼠标进入, 鼠标进入,是刹那间的行为,进入只可能有一次,只要在这个绑定事件的文档内容中,都算进入.无论是子集还是自己.浏览器默认切断了整个onmouseenter的冒泡传播</li>
+<li>2.onmouseleave 当鼠标离开, 鼠标离开,也00是刹那间的行为,只要在这个绑定事件的文档内容中,无论子集还是自己,都算处于进入状态,只有彻底离开了这个盒子.才会触发mouseleave事件.浏览器默认切断了整个onmouseleave的冒泡传播</li>
 </ul>
-<p>若此时出现如下报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ERROR Local hexo not found in ~/blog</div><div class="line">ERROR Try runing: &apos;npm install hexo --save&apos;</div><div class="line">则执行命令：npm install hexo --save</div><div class="line">若无报错，自行忽略此步骤。</div></pre></td></tr></table></figure></p>
-<p>再执行配置命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy 或者：hexo d</div></pre></td></tr></table></figure></p>
-<p>若执行命令hexo deploy<br>仍然报错：无法连接git或找不到git，则执行如下命令来安装hexo-deployer-git：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>再次执行hexo generate和hexo deploy命令。<br>若你未关联Github，则执行hexo deploy<br>命令时终端会提示你输入Github的用户名和密码，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Username for &apos;https://github.com&apos;:</div><div class="line">Password for &apos;https://github.com&apos;:</div></pre></td></tr></table></figure></p>
-<p>hexo deploy<br>命令执行成功后，浏览器中打开网址<a href="http://yourBlogName.github.io（将yourBlogName" target="_blank" rel="external">http://yourBlogName.github.io（将yourBlogName</a><br>换成你的用户名）能看到和打开<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a><br>时一样的页面。</p>
-<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>这里有大量的主题：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a> 或 <a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>找到自己喜欢的主题，然后将它下载到themes文件夹下，同时更改_config.yml配置文件中的theme属性为你所下载主题的文件名，ok，接下来重新生成静态文件，可以本地预览，你就会看到一个自己比较满意的博客了，大功告成，尽情的发表你的所言所想吧！</p>
-<h3 id="next"><a href="#next" class="headerlink" title="next"></a>next</h3><p>个人目前用的就是next主题，简洁大方，而且各终端的支持也不错。<br><br>下边是关于next的一些配置，具体的一些东西还请阅读【<a href="https://hexo.io/zh-cn/docs/index.html】文档" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html】文档</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd your-hexo-site</div><div class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure></p>
-<p>克隆最新版本的主题，将博客下的_config.yml得theme配置修改为（上边已经说过）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: next</div></pre></td></tr></table></figure></p>
-<h4 id="标签、分类"><a href="#标签、分类" class="headerlink" title="标签、分类"></a>标签、分类</h4><p>想要添加标签、分类等，可以直接命令新建文件。这里用标签举例，其他的标签同理。<br><br>进入到你的博客的根目录下，命令执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd yourHexoBlog</div><div class="line">hexo new page tags</div></pre></td></tr></table></figure></p>
-<p>它会自动生成标签页面，找到tags文件，将文件内容修改为(可以按照自己的要求来自行设定，我这里只是个小demo)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line">type: &quot;tags&quot;</div></pre></td></tr></table></figure></p>
-<p>然后在自己的文章中加上(同上，只是举例),一个可以直接写，多个就像这样用-分开就好：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tags:</div><div class="line">    - 测试</div><div class="line">    - blog</div></pre></td></tr></table></figure></p>
-<p>记得修改主题下的配置哦，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: / || home</div><div class="line">  tags: /tags/ || tags</div></pre></td></tr></table></figure></p>
-<p>还有像关于我这一类的文章，就更简答了，只需要新建文件后在文件中直接写自己想要表达的内容就好了！</p>
-<h4 id="网站链接"><a href="#网站链接" class="headerlink" title="网站链接"></a>网站链接</h4><p>找到主题下的social，设置你想要添加的网站链接，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">social:</div><div class="line">  GitHub: https://github.com/Scar007 || github</div><div class="line">  博客园: http://www.cnblogs.com/Scar007/ || cnblogs</div><div class="line">  微博: https://weibo.com/5604488894/profile?rightmod=1&amp;wvr=6&amp;mod=personnumber || weibo</div></pre></td></tr></table></figure></p>
-<p>ok,这篇文章就先写到这，后边有问题再继续补充，谢谢支持！</p>
+<h2 id="七-事件的相关兼容处理："><a href="#七-事件的相关兼容处理：" class="headerlink" title="七.事件的相关兼容处理："></a>七.事件的相关兼容处理：</h2><p>ele.addEventListener(type,fn,[bool]);  DOM 2级 绑定事件<br>ele.removeEventListener(type,fn,[bool]);   DOM 2级 移除事件<br>ele.attachEvent(‘on’+type,fn);   DOM 2级 IE中绑定事件<br>ele.detachEvent(‘on’+type,fn); DOM 2级 IE中移除事件</p>
+<p>e=e||window.event;  获取事件对象<br>e.target=e.target||e.srcElement;  获取事件源<br>e.stopPropagation?e.stopPropagation():e.cancelBubble=true;  阻止事件传播<br>e.preventDefault?e.preventDefault():e.returnValue=false;  阻止事件冒泡<br>e.pageX=e.pageX||(document.documentElement.scrollLeft||document.body.scrollLeft)+e.clientX;<br>e.pageY=e.pageY||(document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;</p>
+<p><b>IE6~8中DOM 2级事件绑定存在的问题：</b><br>1).this指向问题，默认的this指向window；<br>2).重复问题，绑定事件的时候，能够重复给同一元素的同一行为，绑定同一事件处理程序；<br>3).顺序混乱，给元素绑定事件处理程序后，执行的先后顺序与绑定的先后顺序不一致；</p>
 
       
     </div>
@@ -559,9 +591,7 @@ $(function() {
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-            <a href="/tags/next/" rel="tag"># next</a>
+            <a href="/tags/事件/" rel="tag"># 事件</a>
           
         </div>
       
@@ -574,15 +604,15 @@ $(function() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/06/27/递归的理解和应用/" rel="next" title="递归的理解和简单应用">
+                <i class="fa fa-chevron-left"></i> 递归的理解和简单应用
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/04/02/JS中this指向问题总结/" rel="prev" title="js中this指向问题总结">
-                js中this指向问题总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -639,8 +669,8 @@ var jiathis_config={
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2015/03/14/hexo+github搭建博客/"
-           data-title="Hexo + gitHub免费搭建一个属于自己的专属博客" data-url="http://yoursite.com/2015/03/14/hexo+github搭建博客/">
+      <div class="ds-thread" data-thread-key="2015/07/18/JS中事件问题的总结/"
+           data-title="JS中事件问题的总结" data-url="http://yoursite.com/2015/07/18/JS中事件问题的总结/">
       </div>
     </div>
 
@@ -798,7 +828,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装环境"><span class="nav-number">1.</span> <span class="nav-text">安装环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联到gitHub"><span class="nav-number">2.</span> <span class="nav-text">关联到gitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换主题"><span class="nav-number">3.</span> <span class="nav-text">更换主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next"><span class="nav-number">3.1.</span> <span class="nav-text">next</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签、分类"><span class="nav-number">3.1.1.</span> <span class="nav-text">标签、分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网站链接"><span class="nav-number">3.1.2.</span> <span class="nav-text">网站链接</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-什么是事件？"><span class="nav-number">1.</span> <span class="nav-text">一.什么是事件？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM事件："><span class="nav-number">1.1.</span> <span class="nav-text">DOM事件：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-事件机制："><span class="nav-number">2.</span> <span class="nav-text">二.事件机制：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-DOM-0级与DOM-2级事件的区别："><span class="nav-number">3.</span> <span class="nav-text">三.DOM 0级与DOM 2级事件的区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-事件流："><span class="nav-number">4.</span> <span class="nav-text">四.事件流：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-事件对象："><span class="nav-number">5.</span> <span class="nav-text">五.事件对象：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-mouseenter和mouseover的区别"><span class="nav-number">6.</span> <span class="nav-text">六.mouseenter和mouseover的区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七-事件的相关兼容处理："><span class="nav-number">7.</span> <span class="nav-text">七.事件的相关兼容处理：</span></a></li></ol></div>
             
 
           </div>
