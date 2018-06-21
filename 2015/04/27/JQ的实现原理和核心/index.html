@@ -81,16 +81,16 @@
 
 
 
-<meta name="description" content="1.jQuery的实现原理123var jQuery = function () &amp;#123;    return new jQuery.fn.init(selector,context); &amp;#125;  1）jQuery 采用的是构造函数模式进行开发，jQuery是一个类 2）上边说的常用的方法（CSS、属性、筛选、事件、动画、文档处理）都是定义在jQuery.prototype上的，只有jQ">
+<meta name="description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery的实现原理和核心">
 <meta property="og:url" content="http://yoursite.com/2015/04/27/JQ的实现原理和核心/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="1.jQuery的实现原理123var jQuery = function () &amp;#123;    return new jQuery.fn.init(selector,context); &amp;#125;  1）jQuery 采用的是构造函数模式进行开发，jQuery是一个类 2）上边说的常用的方法（CSS、属性、筛选、事件、动画、文档处理）都是定义在jQuery.prototype上的，只有jQ">
-<meta property="og:updated_time" content="2018-06-18T11:27:12.005Z">
+<meta property="og:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
+<meta property="og:updated_time" content="2018-06-21T08:52:20.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery的实现原理和核心">
-<meta name="twitter:description" content="1.jQuery的实现原理123var jQuery = function () &amp;#123;    return new jQuery.fn.init(selector,context); &amp;#125;  1）jQuery 采用的是构造函数模式进行开发，jQuery是一个类 2）上边说的常用的方法（CSS、属性、筛选、事件、动画、文档处理）都是定义在jQuery.prototype上的，只有jQ">
+<meta name="twitter:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
 
 
 
@@ -494,7 +494,16 @@ $(function() {
       
 
       
-        <h2 id="1-jQuery的实现原理"><a href="#1-jQuery的实现原理" class="headerlink" title="1.jQuery的实现原理"></a>1.jQuery的实现原理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector,context); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器<br>jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了<br>jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法<br><b>[JQ的API中文速查:]</b> <a href="http://jquery.cuishifeng.cn/" target="_blank" rel="external">http://jquery.cuishifeng.cn/</a></p>
+<h2 id="jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；"><a href="#jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；" class="headerlink" title="jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；"></a>jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window,undefined</span>) </span>&#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line">        selector:jQuery选择器内容</div><div class="line">        context：获取元素上下文</div><div class="line">       </div><div class="line">    */</div><div class="line">    <span class="keyword">var</span> version = <span class="string">"1.11.3"</span>,</div><div class="line">    jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector,context);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    jQuery.fn = jQuery.prototype = &#123;</div><div class="line">        ...</div><div class="line">        addClass:...,</div><div class="line">        <span class="attr">init</span>:<span class="function"><span class="keyword">function</span> (<span class="params">selector,context</span>) </span>&#123;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    jQuery.ajax = <span class="function"><span class="keyword">function</span>...</span></div><div class="line">    <span class="title">window</span>.<span class="title">jQuery</span> = <span class="title">window</span>.<span class="title">$</span> = <span class="title">jQuery</span>;</div><div class="line">&#125;)(<span class="params"></span>);</div><div class="line"></div><div class="line"><span class="title">jQuery</span>(<span class="params"></span>);  &lt;==&gt; <span class="title">$</span>(<span class="params"></span>)</div><div class="line"><span class="title">$</span>(<span class="params"></span>).<span class="title">addClass</span>(<span class="params"></span>)</div><div class="line"><span class="title">$</span>.<span class="title">ajax</span>(<span class="params"></span>)</div></pre></td></tr></table></figure>
+<h2 id="1-jQuery的实现原理"><a href="#1-jQuery的实现原理" class="headerlink" title="1.jQuery的实现原理"></a>1.jQuery的实现原理</h2><p>JQ本身就是一个类，在外面使用的$和jQuery是同一个东西，JQ中提供的方法分为两部分：</p>
+<ul>
+<li>写在jQuery原型上的方法，专门给JQ的实例使用</li>
+<li>写在jQuery私有属性上的，通过$.xxx可以获取进行操作等 jQuery() / $() =&gt;创建JQ的实例，需要传递两个参数，第一个参数一般是选择器内容；第二个参数是获取的上下文，如果不传递默认是document；==&gt;“此操作通俗的叫法：通过JQ选择器获取元素”</li>
+<li>返回结果是一个类数组(它也是JQ的实例)，这个类数组是JQ自己去创建的，里面有一些自己特定的属性：length/context/selector/prevObject…</li>
+<li>获取到的结果我们叫做JQ对象(JQ实例)，可以调取JQ原型上提供的方法，但是它不是原生的JS对象，不能调取浏览器提供的默认属性方法，当然原生JS也不能调用JQ上提供的属性方法；</li>
+</ul>
+<p>extend：在JQ的私有属性上和它的原型上都有这个方法，但是指向的都是同一个方法：jQuery.extend = jQuery.fn.extend = function(){}<br>$.extend()<br>$.fn.extend()<br>虽然执行的是同一个方法，但是方法中的this是不一样的，extend是向现有的方法库中扩展方法的意思，不同的执行方式扩展的位置不一样<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector,context); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
 <li>1）jQuery 采用的是构造函数模式进行开发，jQuery是一个类</li>
 <li>2）上边说的常用的方法（CSS、属性、筛选、事件、动画、文档处理）都是定义在jQuery.prototype上的，只有jQuery的实例才能使用这些方法</li>
@@ -523,6 +532,8 @@ jQuery.prototype
 </code></pre> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">each</div><div class="line">$(<span class="string">"selector"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)   <span class="comment">//遍历获取的元素 jQuery.prototype</span></div><div class="line">$.each(ary)  <span class="comment">//遍历数组中的每一项 jQuery.each</span></div></pre></td></tr></table></figure>
 <p>我们的jQuery不仅仅是一个类（在它的原型上定义了很多方法，每一个jQuery的实例都可以使用方法），它还是一个普通的对象，在jQuery/本身的属性中还增加了一系列方法：Ajax、each、工具<br>$.unique(ary)<br>$.ajax()</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$.extent() -&gt;把jQuery当做一个对象，给它扩展属性和方法 -&gt; 完善类库</div><div class="line">$.fn.extent() -&gt; 在jQuery的原型上扩展属性和方法 -&gt; 编写jQuery插件</div><div class="line">$.extent(&#123;</div><div class="line">    <span class="attr">a</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">$.a();</div><div class="line"></div><div class="line">$.fn.extent(&#123;</div><div class="line">    <span class="attr">b</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">$().b();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector,context);</div><div class="line">&#125;</div><div class="line"></div><div class="line">jQuery.fn = jQuery.prototype = &#123;</div><div class="line">    <span class="attr">jquery</span>:version,</div><div class="line">    <span class="attr">constructor</span>:jQuery</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">init = jQuery.fn.init = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>) </span>&#123;&#125;</div><div class="line">init.prototype = jQuery.fn;</div></pre></td></tr></table></figure>
+<p>定义原型扩展和工具包扩展的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">jQuery.extend = jQuery.fn.extend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -681,7 +692,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +714,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -783,7 +794,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-jQuery的实现原理"><span class="nav-number">1.</span> <span class="nav-text">1.jQuery的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-选择器-筛选"><span class="nav-number">2.</span> <span class="nav-text">2.选择器/筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心"><span class="nav-number">3.</span> <span class="nav-text">核心</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；"><span class="nav-number">1.</span> <span class="nav-text">jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-jQuery的实现原理"><span class="nav-number">2.</span> <span class="nav-text">1.jQuery的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-选择器-筛选"><span class="nav-number">3.</span> <span class="nav-text">2.选择器/筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心"><span class="nav-number">4.</span> <span class="nav-text">核心</span></a></li></ol></div>
             
 
           </div>
