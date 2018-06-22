@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/12/14/AJAX请求有关知识总结/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
 <meta property="og:description" content="什么是AJAX?AJAX作用是什么?async javascript and xml（异步的javascript和xml）  作用：实现局部刷新   async:我们真实项目中一般使用AJAX从服务器端获取数据都采用异步(当然也可以使用同步) xml:可扩展标记语言,我们一般都会在一个XML文件中,自己扩展一些有特殊含义的标签,通过标签的结构来存储一些数据;一般项目中服务器端返回给客户端的数据都是">
-<meta property="og:updated_time" content="2018-06-21T07:54:30.234Z">
+<meta property="og:updated_time" content="2018-06-22T10:58:55.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX请求有关知识总结">
 <meta name="twitter:description" content="什么是AJAX?AJAX作用是什么?async javascript and xml（异步的javascript和xml）  作用：实现局部刷新   async:我们真实项目中一般使用AJAX从服务器端获取数据都采用异步(当然也可以使用同步) xml:可扩展标记语言,我们一般都会在一个XML文件中,自己扩展一些有特殊含义的标签,通过标签的结构来存储一些数据;一般项目中服务器端返回给客户端的数据都是">
@@ -567,6 +567,162 @@ $(function() {
 <blockquote>
 <p>说到AJAX就会不可避免的面临两个问题，第一个是AJAX以何种格式来交换数据？第二个是跨域的需求如何解决？这两个问题目前都有不同的解决方案，比如数据可以用自定义字符串或者用XML来描述，跨域可以通过服务器端代理来解决。 但到目前为止最被推崇或者说首选的方案还是用JSON来传数据，靠JSONP来跨域。而这就是本文将要讲述的内容。</p>
 </blockquote>
+<h2 id="AJAX配置"><a href="#AJAX配置" class="headerlink" title="AJAX配置"></a>AJAX配置</h2><h3 id="打开一个URL请求地址-发送请求前的一些配置"><a href="#打开一个URL请求地址-发送请求前的一些配置" class="headerlink" title="打开一个URL请求地址(发送请求前的一些配置)"></a>打开一个URL请求地址(发送请求前的一些配置)</h3><ul>
+<li>[请求方式]:GET系列:GET/DELETE/HEAD,POST系列:POST/PUT</li>
+<li>[请求地址]:我们通过这个地址向服务器发送数据请求,请求的地址一般都是后台提供的(API接口文档)</li>
+<li>[设置同步异步]:默认是TRUE异步,设置为FALSE为同步</li>
+<li>[USER NAME]:用户名</li>
+<li>[USER PASS]:密码,某些时候服务器为了保证安全,只允许部分用户能够通过服务器的请求(我们现在一般都是匿名访问),此时需要我们提供安全的秘钥 xhr.open(“GET”,”/userInfo”,true); </li>
+</ul>
+<h3 id="监听AJAX状态的改变-实现不同的业务操作"><a href="#监听AJAX状态的改变-实现不同的业务操作" class="headerlink" title="监听AJAX状态的改变,实现不同的业务操作"></a>监听AJAX状态的改变,实现不同的业务操作</h3><ul>
+<li>xhr.readystate:AJAX状态<ul>
+<li>0:UNSEND:未发送,刚开始创建完成AJAX实例,初始状态就是0</li>
+<li>1:OPENED:已打开,就是已经执行完成第二步操作了</li>
+<li>2:HEADERS_RECEIVED:客户端已经接收到服务器返回的响应头信息</li>
+<li>3.LOADING:服务器返回的响应主体内容正在传输中</li>
+<li>4.DONE:响应主体内容已经被客户端接收</li>
+</ul>
+</li>
+<li><p>xhr.status:HTTP状态码(同上述ajax状态码)</p>
+</li>
+<li><p>操作</p>
+</li>
+<li>xhr.response:获取响应主体(一般不用)</li>
+<li>xhr.responseText:获取响应主体内容,而且获取的内容是文本格式(字符串)的:</li>
+<li>xhr.responseXML:获取响应主体内容,而且获取的内容是XML格式(XML文档)的</li>
+<li>xhr.getResponseHeader([key]):获取响应头信息,key为关键字,如Date可获取扶服务器的时间</li>
+<li>xhr.getAllResponseHeader:获取全部的响应头信息</li>
+<li>xhr.timeout:设置AJAX请求的超时时间,如果当前请求超过这个时间,代表超时,AJAX请求结束,并且会触发ontimeout事件</li>
+<li>xhr.abort():中断当前AJAX请求,可以触发onabort事件</li>
+<li>xhr.setRequsetHeader([key],[value]):设置请求头信息<ul>
+<li>设置请求头之前必须保证已经执行open了</li>
+<li>设置请求头的内容不能是中文(除非进行编码)</li>
+</ul>
+</li>
+</ul>
+<h2 id="AJAX请求发送"><a href="#AJAX请求发送" class="headerlink" title="AJAX请求发送"></a>AJAX请求发送</h2><p>AJAX请求这件事从执行send后才开始(之前都是在做准备),当readystate=4的时候这件事结束</p>
+<p>xhr.send(null):send方法中写的内容就是客户端通过请求主体传递给服务器的内容,不想通过请求主体传递内容我们写null</p>
+<h2 id="js编码和解码"><a href="#js编码和解码" class="headerlink" title="js编码和解码"></a>js编码和解码</h2><p>如果就是想通过请求头给服务器传递中文汉字,我们需要先把传递的内容进行编码,由服务器进行编码</p>
+<ul>
+<li>escape/unescape:这种方式经常应用于客户端对中文汉字和特殊字符进行编码的(一般不常用,因为服务器端语言,除了NODE其他的貌似不支持这个方法)</li>
+<li>encodeURI/decodeURI:按照UNICODE编码解码</li>
+<li>encodeURIComponent/decodeURIComponent:相对于上面的方法来说可以把特殊字符也进行编码,而encodeURI只能编码中文汉字<ul>
+<li>服务器端接受的时候再进行解码decodeURIComponent</li>
+</ul>
+</li>
+</ul>
+<h2 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h2><p>加密不是简单的编码解码,而是按照规则进行加密解密(项目中的重要信息我们一般都要进行加密的)</p>
+<ul>
+<li>[可逆转的加密]<ul>
+<li>重要的信息加密后还可以再解密回来,例如:电话号码或者银行卡号进行加密</li>
+<li>一般公司都是自己写加密和解密规则</li>
+</ul>
+</li>
+<li>[不可逆转的加密]<ul>
+<li>加密后就不可解密了,例如:所有密码都是不可逆转的加密</li>
+<li>最常用的是md5,sha1….</li>
+<li>真正项目中会把MD5加密后的结果进行二次或者多次处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="GET-POST系列请求"><a href="#GET-POST系列请求" class="headerlink" title="GET/POST系列请求"></a>GET/POST系列请求</h2><blockquote>
+<p>不管哪种HTTP请求方式,客户端都可以把信息传递给服务器,服务器也可以把内容返回给客户端</p>
+</blockquote>
+<ul>
+<li><p>GET系列</p>
+<ul>
+<li>GET:获取,给服务器的少,从服务器拿的多</li>
+<li>DELETE:删除,从服务器上删除一些资源文件</li>
+<li>HEAD:获取响应头,使用该请求只能获取服务器的响应头信息,获取不到响应主体内容</li>
+</ul>
+</li>
+<li><p>POST系列    </p>
+<ul>
+<li>POST:推送,给服务器的多,从服务器拿的少</li>
+<li>PUT:放,在服务器上放入一些资源文件</li>
+</ul>
+</li>
+<li><p>GET系列和POST系列存在一些主要的区别</p>
+<ul>
+<li>GET请求传递给服务器内容通过的是”问号传参”,POST系列传递给服务器内容通过的是”请求主体”</li>
+<li><p>每个浏览器对于URL的长度都是一个最大限制(谷歌8kb/火狐7kb/IE2kb),如果POST请求也用问号传参,很有可能导致URL的长度超出限制(POST传递的内容多),超出的部分会被浏览器自动截取掉,导致信息不完整,所以POST应该使用请求主体,GET可以使用问号传参(GET传递的少);请求主体传递的内容大小理论上没有限制,真实项目中为了保证上传的速度,我们一般自己会限制其大小(例如:上传文件要求限制在100KB以内)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[GET]</div><div class="line">xhr.open(<span class="string">"GET"</span>,<span class="string">"/userInfo?name=zxt&amp;age=27&amp;sex=1"</span>);</div><div class="line">xhr.send(<span class="literal">null</span>);</div><div class="line">[POST]</div><div class="line">xhr.open(<span class="string">"POST"</span>,<span class="string">"/userInfo"</span>);</div><div class="line">xhr.send(<span class="string">"name=zxt&amp;age=27&amp;sex=1"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>GET系列请求会出现不可控制的缓存,而POST请求不会</p>
+<ul>
+<li>原因是因为GET是通过问号传参的方式传递给服务器的,如果我发送两次请求,地址和传递的参数都一摸一样,会触发浏览器的记忆识别功能,它认为你第二次请求的数据和第一次一样,所以会把缓存中的数据返回;有些需求这样不好,例如随时获取股票信息等需求此时我们需要清除GET请求的缓存;</li>
+<li>[清除缓存只需要在每一次请求的地址后面加一个随机数,保证每一次请求的地址不完全一致即可;属性名使用_是为了不和其他有意义的属性名冲突(行业规范)]<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"GET"</span>,<span class="string">"/userInfo?_="</span>+<span class="built_in">Math</span>.random());</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>GET系列请求相对于POST请求来说不安全,在互联网面前没有绝对的安全,我们平时上网都是在裸奔</p>
+<ul>
+<li>原因:GET传递个服务器的内容都在URL上(问号传参),有一种比较简单的黑客技术”URL劫持”,别人可以通过劫持URL把我们传递给服务器的数据捕获到</li>
+<li>以后只要给服务器传递的是重要的信息,不管内容多少都应该使用POST</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="获取服务器时间"><a href="#获取服务器时间" class="headerlink" title="获取服务器时间"></a>获取服务器时间</h2><p>我们获取的服务器时间和当前真实的时间,出现一些差距”时间差”,我们获取的时候是服务器返回数据的时间,客户端接收到数据也需要一点时间,所以当客户端接收到这个值的时候,已经距离真实的时间差了一点</p>
+<ul>
+<li>减少时间差<ul>
+<li>在xhr.readyState==2这个阶段获取服务器时间(AJAX请求必须是异步的,同步的只能在状态为4的时候处理)</li>
+<li>xhr.open(“HEAD”…)请求方式是HEAD请求,我们只需要获取响应头即可</li>
+<li>head请求会产生缓存问题,使用Math.random();</li>
+<li>只是用一次AJAX请求,在获取的时间中进行递增,来同步服务器的时间,减少服务器的压力</li>
+</ul>
+</li>
+</ul>
+<h2 id="jQ中的AJAX"><a href="#jQ中的AJAX" class="headerlink" title="jQ中的AJAX"></a>jQ中的AJAX</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$.ajax(<span class="string">"note.txt"</span>,&#123;</div><div class="line">    <span class="attr">method</span>:<span class="string">"get"</span>,</div><div class="line">    <span class="attr">dataType</span>:<span class="string">"txt"</span>,</div><div class="line">    <span class="attr">async</span>:<span class="literal">true</span>,</div><div class="line">    <span class="attr">cache</span>:<span class="literal">false</span>,</div><div class="line">    <span class="attr">data</span>:&#123;</div><div class="line">        <span class="attr">name</span>:<span class="string">"zxt"</span>,</div><div class="line">        <span class="attr">age</span>:<span class="string">"[27,28]"</span></div><div class="line">    &#125;</div><div class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">    <span class="attr">error</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">    <span class="attr">complete</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>method:等同于type属性</li>
+<li>dataType:txt(默认),预先设定服务器返回数据的格式,不管我们设置什么值,服务器返回给我们的数据一般都是字符串或者XML格式的,组件库的目的就是根据我们设定的值把服务器返回的结果转换成我们所需要的-&gt;”dataType”的值并不能影响服务器的返回结果</li>
+<li>async:设置同步还是异步,默认是true,异步</li>
+<li>cache:如果当期的请求是GET系列,我们设置的还是false,此时需要我们去清除GET请求的缓存,默认值true</li>
+<li>data<ul>
+<li>所有需要传递给服务器的内容都放在DATA中,GET系列采用问号传参,POST系列采用请求主体;DATA中的字符串内容是什么我们传递的就是什么</li>
+<li>还可以是个对象,POST系列会把这个对象直接放在请求主体中处理,DATA中是什么放入的就是什么;GET系列会把它拆分XXX=XXX这种形式,放在URL的末尾以问号传参传递给服务器,值得注意的是,对于汉字和特殊字符,我们需要把内容进行编码</li>
+</ul>
+</li>
+<li>complete:不管成功还是失败,只要完成就会执行这个</li>
+</ul>
+<h2 id="模拟jQ中AJAX"><a href="#模拟jQ中AJAX" class="headerlink" title="模拟jQ中AJAX"></a>模拟jQ中AJAX</h2><ul>
+<li>思想<ul>
+<li>传入为一个对象,避免顺序问题导致参数混乱</li>
+<li>对传入的参数进行默认操作<ul>
+<li>使用method进行默认,不使用Type</li>
+</ul>
+</li>
+<li>将传入的对象将默认值进行覆盖,没传递的走默认值,传递的走自己需要的值<ul>
+<li>将Type和method进行统一,最后使用method</li>
+</ul>
+</li>
+<li>发送AJAX请求<ul>
+<li>对XMLHttpRequest进行兼容处理</li>
+<li>在onreadystatechange事件中,分情况进行讨论        <ul>
+<li>请求失败</li>
+<li>请求成功<ul>
+<li>对readystate的情况进行讨论</li>
+<li>获取响应主体内容(一般是字符串),根据dataType值来处理响应主体内容,处理失败,结果为空,避免报错</li>
+<li>讨论对应的回调函数并传入响应主体执行函数 <ul>
+<li>回调函数中的this为xhr对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>根据method对data参数进行处理,并传入send()中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>根据dataType和cache的值来进行缓存清除操作<ul>
+<li>验证url是否?是否存在,来对url进行随机数的添加                </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -731,7 +887,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -742,7 +898,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -753,7 +909,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -833,7 +989,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是AJAX-AJAX作用是什么"><span class="nav-number">1.</span> <span class="nav-text">什么是AJAX?AJAX作用是什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Request-Method-HTTP请求的方式-客户端发送请求的时候设置"><span class="nav-number">1.1.</span> <span class="nav-text">Request Method (HTTP请求的方式:客户端发送请求的时候设置)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-vs-POST"><span class="nav-number">1.2.</span> <span class="nav-text">GET vs POST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#大小限制"><span class="nav-number">1.2.1.</span> <span class="nav-text">[大小限制]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存问题"><span class="nav-number">1.2.2.</span> <span class="nav-text">[缓存问题]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全问题"><span class="nav-number">1.2.3.</span> <span class="nav-text">[安全问题]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASYNC"><span class="nav-number">1.3.</span> <span class="nav-text">ASYNC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个AJAX对象"><span class="nav-number">1.4.</span> <span class="nav-text">创建一个AJAX对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方式"><span class="nav-number">1.4.1.</span> <span class="nav-text">[请求方式]:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求地址-："><span class="nav-number">1.4.2.</span> <span class="nav-text">[请求地址]：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置同步异步-："><span class="nav-number">1.4.3.</span> <span class="nav-text">[设置同步异步]：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USER-NAME"><span class="nav-number">1.4.4.</span> <span class="nav-text">[USER NAME]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USER-PASS-："><span class="nav-number">1.4.5.</span> <span class="nav-text">[USER PASS]：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX的状态"><span class="nav-number">2.</span> <span class="nav-text">AJAX的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-unsent-请求还没有发送-AJAX对象刚刚创建完成"><span class="nav-number">2.0.1.</span> <span class="nav-text">0 　　unsent 请求还没有发送(AJAX对象刚刚创建完成)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-opened-已经把XHR-OPEN执行完成了，打开，已经完成第二步。"><span class="nav-number">2.0.2.</span> <span class="nav-text">1　　opened 已经把XHR.OPEN执行完成了，打开，已经完成第二步。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-headers-received-响应头信息已经接收-但是主体的内容还没有响应回来"><span class="nav-number">2.0.3.</span> <span class="nav-text">2　　headers_received 响应头信息已经接收,但是主体的内容还没有响应回来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-loading-服务器返回的响应主体的内容正在处理加载"><span class="nav-number">2.0.4.</span> <span class="nav-text">3　　loading 服务器返回的响应主体的内容正在处理加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-done-响应主体内容已经获取成功，被客户端接收到"><span class="nav-number">2.0.5.</span> <span class="nav-text">4　　done 响应主体内容已经获取成功，被客户端接收到</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2开头"><span class="nav-number">2.0.6.</span> <span class="nav-text">[2开头]:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3开头"><span class="nav-number">2.0.7.</span> <span class="nav-text">[3开头]:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Status-Code"><span class="nav-number">2.0.8.</span> <span class="nav-text">Status Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xhr-status"><span class="nav-number">2.0.9.</span> <span class="nav-text">xhr.status</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#200"><span class="nav-number">2.0.10.</span> <span class="nav-text">200</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#301"><span class="nav-number">2.0.11.</span> <span class="nav-text">301</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#302"><span class="nav-number">2.0.12.</span> <span class="nav-text">302</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#304"><span class="nav-number">2.0.13.</span> <span class="nav-text">304</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#400"><span class="nav-number">2.0.14.</span> <span class="nav-text">400</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#401"><span class="nav-number">2.0.15.</span> <span class="nav-text">401</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#403"><span class="nav-number">2.0.16.</span> <span class="nav-text">403</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#404"><span class="nav-number">2.0.17.</span> <span class="nav-text">404</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#413"><span class="nav-number">2.0.18.</span> <span class="nav-text">413</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#500"><span class="nav-number">2.0.19.</span> <span class="nav-text">500</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#503"><span class="nav-number">2.0.20.</span> <span class="nav-text">503</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是AJAX-AJAX作用是什么"><span class="nav-number">1.</span> <span class="nav-text">什么是AJAX?AJAX作用是什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Request-Method-HTTP请求的方式-客户端发送请求的时候设置"><span class="nav-number">1.1.</span> <span class="nav-text">Request Method (HTTP请求的方式:客户端发送请求的时候设置)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-vs-POST"><span class="nav-number">1.2.</span> <span class="nav-text">GET vs POST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#大小限制"><span class="nav-number">1.2.1.</span> <span class="nav-text">[大小限制]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存问题"><span class="nav-number">1.2.2.</span> <span class="nav-text">[缓存问题]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全问题"><span class="nav-number">1.2.3.</span> <span class="nav-text">[安全问题]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASYNC"><span class="nav-number">1.3.</span> <span class="nav-text">ASYNC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个AJAX对象"><span class="nav-number">1.4.</span> <span class="nav-text">创建一个AJAX对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方式"><span class="nav-number">1.4.1.</span> <span class="nav-text">[请求方式]:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求地址-："><span class="nav-number">1.4.2.</span> <span class="nav-text">[请求地址]：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置同步异步-："><span class="nav-number">1.4.3.</span> <span class="nav-text">[设置同步异步]：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USER-NAME"><span class="nav-number">1.4.4.</span> <span class="nav-text">[USER NAME]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USER-PASS-："><span class="nav-number">1.4.5.</span> <span class="nav-text">[USER PASS]：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX的状态"><span class="nav-number">2.</span> <span class="nav-text">AJAX的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-unsent-请求还没有发送-AJAX对象刚刚创建完成"><span class="nav-number">2.0.1.</span> <span class="nav-text">0 　　unsent 请求还没有发送(AJAX对象刚刚创建完成)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-opened-已经把XHR-OPEN执行完成了，打开，已经完成第二步。"><span class="nav-number">2.0.2.</span> <span class="nav-text">1　　opened 已经把XHR.OPEN执行完成了，打开，已经完成第二步。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-headers-received-响应头信息已经接收-但是主体的内容还没有响应回来"><span class="nav-number">2.0.3.</span> <span class="nav-text">2　　headers_received 响应头信息已经接收,但是主体的内容还没有响应回来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-loading-服务器返回的响应主体的内容正在处理加载"><span class="nav-number">2.0.4.</span> <span class="nav-text">3　　loading 服务器返回的响应主体的内容正在处理加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-done-响应主体内容已经获取成功，被客户端接收到"><span class="nav-number">2.0.5.</span> <span class="nav-text">4　　done 响应主体内容已经获取成功，被客户端接收到</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2开头"><span class="nav-number">2.0.6.</span> <span class="nav-text">[2开头]:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3开头"><span class="nav-number">2.0.7.</span> <span class="nav-text">[3开头]:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Status-Code"><span class="nav-number">2.0.8.</span> <span class="nav-text">Status Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xhr-status"><span class="nav-number">2.0.9.</span> <span class="nav-text">xhr.status</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#200"><span class="nav-number">2.0.10.</span> <span class="nav-text">200</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#301"><span class="nav-number">2.0.11.</span> <span class="nav-text">301</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#302"><span class="nav-number">2.0.12.</span> <span class="nav-text">302</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#304"><span class="nav-number">2.0.13.</span> <span class="nav-text">304</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#400"><span class="nav-number">2.0.14.</span> <span class="nav-text">400</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#401"><span class="nav-number">2.0.15.</span> <span class="nav-text">401</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#403"><span class="nav-number">2.0.16.</span> <span class="nav-text">403</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#404"><span class="nav-number">2.0.17.</span> <span class="nav-text">404</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#413"><span class="nav-number">2.0.18.</span> <span class="nav-text">413</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#500"><span class="nav-number">2.0.19.</span> <span class="nav-text">500</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#503"><span class="nav-number">2.0.20.</span> <span class="nav-text">503</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX配置"><span class="nav-number">3.</span> <span class="nav-text">AJAX配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开一个URL请求地址-发送请求前的一些配置"><span class="nav-number">3.1.</span> <span class="nav-text">打开一个URL请求地址(发送请求前的一些配置)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听AJAX状态的改变-实现不同的业务操作"><span class="nav-number">3.2.</span> <span class="nav-text">监听AJAX状态的改变,实现不同的业务操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX请求发送"><span class="nav-number">4.</span> <span class="nav-text">AJAX请求发送</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js编码和解码"><span class="nav-number">5.</span> <span class="nav-text">js编码和解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加密"><span class="nav-number">6.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GET-POST系列请求"><span class="nav-number">7.</span> <span class="nav-text">GET/POST系列请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取服务器时间"><span class="nav-number">8.</span> <span class="nav-text">获取服务器时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQ中的AJAX"><span class="nav-number">9.</span> <span class="nav-text">jQ中的AJAX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟jQ中AJAX"><span class="nav-number">10.</span> <span class="nav-text">模拟jQ中AJAX</span></a></li></ol></div>
             
 
           </div>
