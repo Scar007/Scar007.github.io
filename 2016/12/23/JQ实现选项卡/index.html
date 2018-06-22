@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="选项卡," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Scar's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="下边分为两个版本，一种是点击切换选项(index.js)，一种是滑过切换选项(index1.js)(jq使用jquery-1.11.3.js版本) HTML文件：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162&amp;lt;">
+<meta name="keywords" content="选项卡">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQ实现选项卡(jQuery原型插件扩展)">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/JQ实现选项卡/index.html">
+<meta property="og:site_name" content="Scar&#39;s Blog">
+<meta property="og:description" content="下边分为两个版本，一种是点击切换选项(index.js)，一种是滑过切换选项(index1.js)(jq使用jquery-1.11.3.js版本) HTML文件：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162&amp;lt;">
+<meta property="og:updated_time" content="2018-06-22T07:00:46.945Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JQ实现选项卡(jQuery原型插件扩展)">
+<meta name="twitter:description" content="下边分为两个版本，一种是点击切换选项(index.js)，一种是滑过切换选项(index1.js)(jq使用jquery-1.11.3.js版本) HTML文件：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162&amp;lt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'QY42P8FH24',
+      apiKey: '18587f00a222e53b82d7f7338a311fd4',
+      indexName: 'ScarBlog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/23/JQ实现选项卡/"/>
+
+
+
+
+
+  <title>JQ实现选项卡(jQuery原型插件扩展) | Scar's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+  	 <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("jNryztiIY10uuG2UVEGsfmCz-gzGzoHsz", "uS0dmW2aj2yf7spYwrhgFq12");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+});
+</script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Scar's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">生命不息，奋斗不止！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/JQ实现选项卡/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高佳睿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/gjr3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Scar's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JQ实现选项卡(jQuery原型插件扩展)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-23T00:00:00+08:00">
+                2016-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/案例/" itemprop="url" rel="index">
+                    <span itemprop="name">案例</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/23/JQ实现选项卡/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/23/JQ实现选项卡/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/23/JQ实现选项卡/" class="leancloud_visitors" data-flag-title="JQ实现选项卡(jQuery原型插件扩展)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="下边分为两个版本，一种是点击切换选项-index-js-，一种是滑过切换选项-index1-js"><a href="#下边分为两个版本，一种是点击切换选项-index-js-，一种是滑过切换选项-index1-js" class="headerlink" title="下边分为两个版本，一种是点击切换选项(index.js)，一种是滑过切换选项(index1.js)"></a>下边分为两个版本，一种是点击切换选项(index.js)，一种是滑过切换选项(index1.js)</h4><p>(jq使用jquery-1.11.3.js版本)</p>
+<p>HTML文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>jQuery选项卡<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/reset.min.css"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/index.css"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--&lt;span class="select"&gt;选项一&lt;/span&gt;&lt;span&gt;选项二&lt;/span&gt;&lt;span&gt;选项三&lt;/span&gt;--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"tip clear"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"cur"</span>&gt;</span>选项一<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>选项二<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>选项三<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"contain cur"</span>&gt;</span>页卡一<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"contain"</span>&gt;</span>页卡二<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"contain"</span>&gt;</span>页卡三<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--&lt;span class="select"&gt;选项一&lt;/span&gt;&lt;span&gt;选项二&lt;/span&gt;&lt;span&gt;选项三&lt;/span&gt;--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"tip clear"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"cur"</span>&gt;</span>选项一<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>选项二<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>选项三<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"contain cur"</span>&gt;</span>页卡一<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"contain"</span>&gt;</span>页卡二<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"contain"</span>&gt;</span>页卡三<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-1.11.3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--jQuery原型上扩展的插件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="comment">/*$('.container').on('click', '.tip&gt;li', function () &#123;</span></div><div class="line">        $(this).addClass('cur').siblings().removeClass('cur')</div><div class="line">                .parent().siblings('.con').removeClass('cur')</div><div class="line">                .eq($(this).index()).addClass('cur');</div><div class="line">    &#125;);*/</div><div class="line"> </div><div class="line"> </div><div class="line">    <span class="comment">//事件委托：利用事件冒泡传播机制</span></div><div class="line">    <span class="comment">// 模拟选项卡的ajax请求</span></div><div class="line"> </div><div class="line">    <span class="comment">/*$('.tab&gt;.tip&gt;li').mouseover(function () &#123;</span></div><div class="line">        var curIndex = $(this).index();</div><div class="line">        // $(this).addClass('cur').siblings().removeClass('cur')</div><div class="line">        //     .parent().siblings('.contain')</div><div class="line">        //     .eq(curIndex).addClass('cur')</div><div class="line">        //     .siblings().removeClass('cur');</div><div class="line"> </div><div class="line">        $(this).addClass('cur').siblings().removeClass('cur')</div><div class="line">                .parent().siblings('.contain')</div><div class="line">                .each(function (index, item) &#123;</div><div class="line">                    //-&gt;this:item</div><div class="line">                    curIndex === index ? $(this).addClass('cur') : $(this).removeClass('cur');</div><div class="line">                &#125;);</div><div class="line">    &#125;);*/</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>index.css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">charset</span> <span class="string">"utf-8"</span>;</div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">20px</span> auto;</div><div class="line">    <span class="attribute">-webkit-user-select</span>: none;</div><div class="line">    <span class="attribute">-moz-user-select</span>: none;</div><div class="line">    <span class="attribute">-ms-user-select</span>: none;</div><div class="line">    <span class="attribute">user-select</span>: none;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.container</span> <span class="selector-class">.tip</span> <span class="selector-tag">li</span> &#123;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">40px</span>;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</div><div class="line">    <span class="attribute">background-color</span>: lightblue;</div><div class="line">    <span class="attribute">cursor</span>: pointer;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.container</span> <span class="selector-class">.tip</span> <span class="selector-tag">li</span><span class="selector-class">.cur</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: lightsteelblue;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.container</span> <span class="selector-class">.contain</span> &#123;</div><div class="line">    <span class="attribute">display</span>: none;</div><div class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">300px</span>;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">    <span class="attribute">background-color</span>: lightsteelblue;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-class">.container</span> <span class="selector-class">.contain</span><span class="selector-class">.cur</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>reset.min.css文件<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">hr</span>,<span class="selector-tag">p</span>,<span class="selector-tag">blockquote</span>,<span class="selector-tag">dl</span>,<span class="selector-tag">dt</span>,<span class="selector-tag">dd</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">li</span>,<span class="selector-tag">button</span>,<span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>,<span class="selector-tag">th</span>,<span class="selector-tag">td</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>&#125;<span class="selector-tag">body</span>&#123;<span class="attribute">font-size</span>:<span class="number">12px</span>;<span class="attribute">font-style</span>:normal;<span class="attribute">font-family</span>:<span class="string">"\5FAE\8F6F\96C5\9ED1"</span>,Helvetica,sans-serif&#125;<span class="selector-tag">small</span>&#123;<span class="attribute">font-size</span>:<span class="number">12px</span>&#125;<span class="selector-tag">h1</span>&#123;<span class="attribute">font-size</span>:<span class="number">18px</span>&#125;<span class="selector-tag">h2</span>&#123;<span class="attribute">font-size</span>:<span class="number">16px</span>&#125;<span class="selector-tag">h3</span>&#123;<span class="attribute">font-size</span>:<span class="number">14px</span>&#125;<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>&#123;<span class="attribute">font-size</span>:<span class="number">100%</span>&#125;<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>&#123;<span class="attribute">list-style</span>:none&#125;<span class="selector-tag">a</span>&#123;<span class="attribute">text-decoration</span>:none;<span class="attribute">background-color</span>:transparent&#125;<span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>,<span class="selector-tag">a</span><span class="selector-pseudo">:active</span>&#123;<span class="attribute">outline-width</span>:<span class="number">0</span>;<span class="attribute">text-decoration</span>:none&#125;<span class="selector-tag">table</span>&#123;<span class="attribute">border-collapse</span>:collapse;<span class="attribute">border-spacing</span>:<span class="number">0</span>&#125;<span class="selector-tag">hr</span>&#123;<span class="attribute">border</span>:<span class="number">0</span>;<span class="attribute">height</span>:<span class="number">1px</span>&#125;<span class="selector-tag">img</span>&#123;<span class="attribute">border-style</span>:none&#125;<span class="selector-tag">img</span><span class="selector-pseudo">:not(</span><span class="selector-attr">[src]</span>)&#123;<span class="attribute">display</span>:none&#125;<span class="selector-tag">svg</span><span class="selector-pseudo">:not(</span><span class="selector-pseudo">:root)</span>&#123;<span class="attribute">overflow</span>:hidden&#125;<span class="selector-tag">html</span>&#123;<span class="attribute">-webkit-touch-callout</span>:none;<span class="attribute">-webkit-text-size-adjust</span>:<span class="number">100%</span>&#125;<span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>,<span class="selector-tag">button</span>,<span class="selector-tag">a</span>&#123;<span class="attribute">-webkit-tap-highlight-color</span>:<span class="built_in">rgba</span>(0,0,0,0)&#125;<span class="selector-tag">article</span>,<span class="selector-tag">aside</span>,<span class="selector-tag">details</span>,<span class="selector-tag">figcaption</span>,<span class="selector-tag">figure</span>,<span class="selector-tag">footer</span>,<span class="selector-tag">header</span>,<span class="selector-tag">main</span>,<span class="selector-tag">menu</span>,<span class="selector-tag">nav</span>,<span class="selector-tag">section</span>,<span class="selector-tag">summary</span>&#123;<span class="attribute">display</span>:block&#125;<span class="selector-tag">audio</span>,<span class="selector-tag">canvas</span>,<span class="selector-tag">progress</span>,<span class="selector-tag">video</span>&#123;<span class="attribute">display</span>:inline-block&#125;<span class="selector-tag">audio</span><span class="selector-pseudo">:not(</span><span class="selector-attr">[controls]</span>),<span class="selector-tag">video</span><span class="selector-pseudo">:not(</span><span class="selector-attr">[controls]</span>)&#123;<span class="attribute">display</span>:none;<span class="attribute">height</span>:<span class="number">0</span>&#125;<span class="selector-tag">progress</span>&#123;<span class="attribute">vertical-align</span>:baseline&#125;<span class="selector-tag">mark</span>&#123;<span class="attribute">background-color</span>:<span class="number">#ff0</span>;<span class="attribute">color</span>:<span class="number">#000</span>&#125;<span class="selector-tag">sub</span>,<span class="selector-tag">sup</span>&#123;<span class="attribute">position</span>:relative;<span class="attribute">font-size</span>:<span class="number">75%</span>;<span class="attribute">line-height</span>:<span class="number">0</span>;<span class="attribute">vertical-align</span>:baseline&#125;<span class="selector-tag">sub</span>&#123;<span class="attribute">bottom</span>:-<span class="number">0.25em</span>&#125;<span class="selector-tag">sup</span>&#123;<span class="attribute">top</span>:-<span class="number">0.5em</span>&#125;<span class="selector-tag">button</span>,<span class="selector-tag">input</span>,<span class="selector-tag">select</span>,<span class="selector-tag">textarea</span>&#123;<span class="attribute">font-size</span>:<span class="number">100%</span>;<span class="attribute">outline</span>:<span class="number">0</span>&#125;<span class="selector-tag">button</span>,<span class="selector-tag">input</span>&#123;<span class="attribute">overflow</span>:visible&#125;<span class="selector-tag">button</span>,<span class="selector-tag">select</span>&#123;<span class="attribute">text-transform</span>:none&#125;<span class="selector-tag">textarea</span>&#123;<span class="attribute">overflow</span>:auto&#125;<span class="selector-tag">button</span>,<span class="selector-tag">html</span> <span class="selector-attr">[type="button"]</span>,<span class="selector-attr">[type="reset"]</span>,<span class="selector-attr">[type="submit"]</span>&#123;<span class="attribute">-webkit-appearance</span>:button&#125;<span class="selector-tag">button</span><span class="selector-pseudo">::-moz-focus-inner</span>,<span class="selector-attr">[type="button"]</span><span class="selector-pseudo">::-moz-focus-inner</span>,<span class="selector-attr">[type="reset"]</span><span class="selector-pseudo">::-moz-focus-inner</span>,<span class="selector-attr">[type="submit"]</span><span class="selector-pseudo">::-moz-focus-inner</span>&#123;<span class="attribute">border-style</span>:none;<span class="attribute">padding</span>:<span class="number">0</span>&#125;<span class="selector-tag">button</span><span class="selector-pseudo">:-moz-focusring</span>,<span class="selector-attr">[type="button"]</span><span class="selector-pseudo">:-moz-focusring</span>,<span class="selector-attr">[type="reset"]</span><span class="selector-pseudo">:-moz-focusring</span>,<span class="selector-attr">[type="submit"]</span><span class="selector-pseudo">:-moz-focusring</span>&#123;<span class="attribute">outline</span>:<span class="number">1px</span> dotted ButtonText&#125;<span class="selector-attr">[type="checkbox"]</span>,<span class="selector-attr">[type="radio"]</span>&#123;<span class="attribute">box-sizing</span>:border-box;<span class="attribute">padding</span>:<span class="number">0</span>&#125;<span class="selector-attr">[type="number"]</span><span class="selector-pseudo">::-webkit-inner-spin-button</span>,<span class="selector-attr">[type="number"]</span><span class="selector-pseudo">::-webkit-outer-spin-button</span>&#123;<span class="attribute">height</span>:auto&#125;<span class="selector-attr">[type="search"]</span>&#123;<span class="attribute">-webkit-appearance</span>:textfield;<span class="attribute">outline-offset</span>:-<span class="number">2px</span>&#125;<span class="selector-attr">[type="search"]</span><span class="selector-pseudo">::-webkit-search-cancel-button</span>,<span class="selector-attr">[type="search"]</span><span class="selector-pseudo">::-webkit-search-decoration</span>&#123;<span class="attribute">-webkit-appearance</span>:none&#125;<span class="selector-pseudo">::-webkit-input-placeholder</span>&#123;<span class="attribute">color</span>:inherit;<span class="attribute">opacity</span>:.<span class="number">54</span>&#125;<span class="selector-pseudo">::-webkit-file-upload-button</span>&#123;<span class="attribute">-webkit-appearance</span>:button;<span class="attribute">font</span>:inherit&#125;<span class="selector-class">.clear</span><span class="selector-pseudo">:after</span>&#123;<span class="attribute">display</span>:block;<span class="attribute">height</span>:<span class="number">0</span>;<span class="attribute">content</span>:<span class="string">""</span>;<span class="attribute">clear</span>:both&#125;</div></pre></td></tr></table></figure></p>
+<p>index.js文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">$.fn.extend(&#123;</div><div class="line">    <span class="attr">changeTab</span>: <span class="function"><span class="keyword">function</span> (<span class="params">index, type</span>) </span>&#123;</div><div class="line">        <span class="comment">//-&gt;this:current tab</span></div><div class="line">        index = index || <span class="number">0</span>;</div><div class="line">        type = type || <span class="string">'click'</span>;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> $list = $(<span class="keyword">this</span>).find(<span class="string">'.tip&gt;li'</span>),</div><div class="line">            $contain = $(<span class="keyword">this</span>).find(<span class="string">'.contain'</span>);</div><div class="line"></div><div class="line">        <span class="comment">//-&gt;select default</span></div><div class="line">        $list.removeClass(<span class="string">'cur'</span>).eq(index).addClass(<span class="string">'cur'</span>);</div><div class="line">        $contain.removeClass(<span class="string">'cur'</span>).eq(index).addClass(<span class="string">'cur'</span>);</div><div class="line"></div><div class="line">        <span class="comment">//-&gt;click</span></div><div class="line">        <span class="keyword">var</span> preIndex = index;</div><div class="line">        $(<span class="keyword">this</span>).on(type, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> tar = e.target,</div><div class="line">                $tar = $(tar),</div><div class="line">                tarTag = tar.tagName.toUpperCase();</div><div class="line"></div><div class="line">            <span class="comment">//-&gt;TARGET IS TAB</span></div><div class="line">            <span class="keyword">if</span> (tarTag === <span class="string">'LI'</span> &amp;&amp; $tar.parent().hasClass(<span class="string">'tip'</span>)) &#123;</div><div class="line">                <span class="comment">//-&gt;REMOVE</span></div><div class="line">                $list.eq(preIndex).removeClass(<span class="string">'cur'</span>);</div><div class="line">                $contain.eq(preIndex).removeClass(<span class="string">'cur'</span>);</div><div class="line"></div><div class="line">                <span class="comment">//-&gt;ADD</span></div><div class="line">                <span class="keyword">var</span> curIndex = $tar.index();</div><div class="line">                $tar.addClass(<span class="string">'cur'</span>);</div><div class="line">                $contain.eq(curIndex).addClass(<span class="string">'cur'</span>);</div><div class="line">                preIndex = curIndex;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// $('#tab1').changeTab(0, 'mouseover');</span></div><div class="line"><span class="comment">// $('#tab2').changeTab(2);</span></div><div class="line">$(<span class="string">'.container'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="keyword">this</span>).changeTab();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>index1.js文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">$.fn.extend(&#123;</div><div class="line">    <span class="attr">changeTab</span>: <span class="function"><span class="keyword">function</span> (<span class="params">index, type</span>) </span>&#123;</div><div class="line">        $.each(<span class="keyword">this</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">//-&gt;this:current tab</span></div><div class="line">            index = index || <span class="number">0</span>;</div><div class="line">            type = type || <span class="string">'click'</span>;</div><div class="line"></div><div class="line">            <span class="keyword">var</span> $list = $(<span class="keyword">this</span>).find(<span class="string">'.tip&gt;li'</span>),</div><div class="line">                $contain = $(<span class="keyword">this</span>).find(<span class="string">'.contain'</span>);</div><div class="line"></div><div class="line">            <span class="comment">//-&gt;select default</span></div><div class="line">            $list.removeClass(<span class="string">'cur'</span>).eq(index).addClass(<span class="string">'cur'</span>);</div><div class="line">            $contain.removeClass(<span class="string">'cur'</span>).eq(index).addClass(<span class="string">'cur'</span>);</div><div class="line"></div><div class="line">            <span class="comment">//-&gt;click</span></div><div class="line">            <span class="keyword">var</span> preIndex = index;</div><div class="line">            $(<span class="keyword">this</span>).on(type, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> tar = e.target,</div><div class="line">                    $tar = $(tar),</div><div class="line">                    tarTag = tar.tagName.toUpperCase();</div><div class="line"></div><div class="line">                <span class="comment">//-&gt;TARGET IS TAB</span></div><div class="line">                <span class="keyword">if</span> (tarTag === <span class="string">'LI'</span> &amp;&amp; $tar.parent().hasClass(<span class="string">'tip'</span>)) &#123;</div><div class="line">                    <span class="comment">//-&gt;REMOVE</span></div><div class="line">                    $list.eq(preIndex).removeClass(<span class="string">'cur'</span>);</div><div class="line">                    $contain.eq(preIndex).removeClass(<span class="string">'cur'</span>);</div><div class="line"></div><div class="line">                    <span class="comment">//-&gt;ADD</span></div><div class="line">                    <span class="keyword">var</span> curIndex = $tar.index();</div><div class="line">                    $tar.addClass(<span class="string">'cur'</span>);</div><div class="line">                    $contain.eq(curIndex).addClass(<span class="string">'cur'</span>);</div><div class="line">                    preIndex = curIndex;</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// $('#tab1').changeTab(0, 'mouseover');</span></div><div class="line"><span class="comment">// $('#tab2').changeTab(2);</span></div><div class="line">$(<span class="string">'.container'</span>).changeTab(<span class="number">0</span>, <span class="string">'mouseover'</span>);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="" alt="高佳睿 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>生命不息，奋斗不止！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/选项卡/" rel="tag"># 选项卡</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/09/处理浏览器兼容的几种方式/" rel="next" title="处理浏览器兼容的几种方式">
+                <i class="fa fa-chevron-left"></i> 处理浏览器兼容的几种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2016/12/23/JQ实现选项卡/"
+           data-title="JQ实现选项卡(jQuery原型插件扩展)" data-url="http://yoursite.com/2016/12/23/JQ实现选项卡/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/gjr3.jpg"
+                alt="高佳睿" />
+            
+              <p class="site-author-name" itemprop="name">高佳睿</p>
+              <p class="site-description motion-element" itemprop="description">万人中央，我孤独的漂亮！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Scar007" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Scar007/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-cnblogs"></i>博客园</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ghx0802@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5604488894/profile?rightmod=1&wvr=6&mod=personnumber" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/discover" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/profile.php?id=100023145293344" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#下边分为两个版本，一种是点击切换选项-index-js-，一种是滑过切换选项-index1-js"><span class="nav-number">1.</span> <span class="nav-text">下边分为两个版本，一种是点击切换选项(index.js)，一种是滑过切换选项(index1.js)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高佳睿</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("jNryztiIY10uuG2UVEGsfmCz-gzGzoHsz", "uS0dmW2aj2yf7spYwrhgFq12");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

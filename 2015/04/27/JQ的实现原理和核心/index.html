@@ -87,7 +87,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/04/27/JQ的实现原理和核心/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
 <meta property="og:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
-<meta property="og:updated_time" content="2018-06-21T08:52:20.904Z">
+<meta property="og:updated_time" content="2018-06-22T02:18:29.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery的实现原理和核心">
 <meta name="twitter:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
@@ -514,24 +514,22 @@ $(function() {
 <pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select -&gt; 选择器的类型 一般都是“string”类型</div><div class="line">context -&gt; 获取的上下文 第二个参数一般不传，不传默认为<span class="built_in">document</span></div><div class="line">$(<span class="string">"#div1"</span>);</div><div class="line">$(<span class="string">".box"</span>);</div><div class="line">$(<span class="string">"div1 span"</span>) -&gt;$(<span class="string">"span"</span>,div1)</div><div class="line"><span class="built_in">console</span>.log($(<span class="string">"#div1 span;first"</span>));</div></pre></td></tr></table></figure>
 </code></pre></li>
 <li><p>3) 通过选择器获取的是一个jQuery类的实例 -&gt; jQuery 对象</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log($(<span class="string">"div1"</span>));</div></pre></td></tr></table></figure>
-
-[jQuery对象的私有属性]
-$(&quot;#div1&quot;)[0] -&gt; div1 这个元素对象
-$(&quot;div1&quot;).selector -&gt; &quot;#div1&quot;
-$(&quot;div1&quot;).context -&gt; document
-$(&quot;div1&quot;).length -&gt; 1 获取元素的个数
-
-[jQuery对象的公有属性]
-jQuery.prototype
-</code></pre></li>
-<li>4)我们获取的是jQuery对象(他是jQuery的实例)不是我们的原生js对象<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">            jQuery:$(<span class="string">"#div1"</span>)</div><div class="line">            JS:<span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>)原生JS的对象不能直接的使用jQuery的方法，同理，jQuery的对象也不能使用原生js的方法</div><div class="line">            $(<span class="string">"#div1"</span>).className = <span class="string">"box"</span>;no</div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).addClass();</div><div class="line">        <span class="string">``</span><span class="string">` </span></div><div class="line">+ 5)互相转化</div><div class="line">        `<span class="string">``</span>javascript   </div><div class="line">            <span class="keyword">var</span> $oDiv = $(<span class="string">"#div1"</span>);</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</div><div class="line">            JS -&gt; jQuery : $(oDiv).addClass()</div><div class="line">            jQuery -&gt; JS:$oDiv[<span class="number">0</span>] / $oDiv.get(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-</code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log($(<span class="string">"div1"</span>));</div></pre></td></tr></table></figure>
+<p>[jQuery对象的私有属性]<br>$(“#div1”)[0] -&gt; div1 这个元素对象<br>$(“div1”).selector -&gt; “#div1”<br>$(“div1”).context -&gt; document<br>$(“div1”).length -&gt; 1 获取元素的个数</p>
+<p>[jQuery对象的公有属性]<br>jQuery.prototype</p>
+</li>
+<li><p>4)我们获取的是jQuery对象(他是jQuery的实例)不是我们的原生js对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jQuery:$(<span class="string">"#div1"</span>)</div><div class="line">JS:<span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>)  <span class="comment">//原生JS的对象不能直接的使用jQuery的方法，同理，jQuery的对象也不能使用原生js的方法</span></div><div class="line">$(<span class="string">"#div1"</span>).className = <span class="string">"box"</span>;  <span class="comment">//no</span></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).addClass();</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//HTML结构加载完成就执行这里的代码</span></div><div class="line">&#125;);</div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</code></pre> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">each</div><div class="line">$(<span class="string">"selector"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)   <span class="comment">//遍历获取的元素 jQuery.prototype</span></div><div class="line">$.each(ary)  <span class="comment">//遍历数组中的每一项 jQuery.each</span></div></pre></td></tr></table></figure>
+<ul>
+<li>5)互相转化<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $oDiv = $(<span class="string">"#div1"</span>);</div><div class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</div><div class="line">JS -&gt; jQuery : $(oDiv).addClass()</div><div class="line"> jQuery -&gt; JS:$oDiv[<span class="number">0</span>] / $oDiv.get(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//HTML结构加载完成就执行这里的代码</span></div><div class="line">&#125;);</div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">each</div><div class="line">$(<span class="string">"selector"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)   <span class="comment">//遍历获取的元素 jQuery.prototype</span></div><div class="line">$.each(ary)  <span class="comment">//遍历数组中的每一项 jQuery.each</span></div></pre></td></tr></table></figure>
 <p>我们的jQuery不仅仅是一个类（在它的原型上定义了很多方法，每一个jQuery的实例都可以使用方法），它还是一个普通的对象，在jQuery/本身的属性中还增加了一系列方法：Ajax、each、工具<br>$.unique(ary)<br>$.ajax()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$.extent() -&gt;把jQuery当做一个对象，给它扩展属性和方法 -&gt; 完善类库</div><div class="line">$.fn.extent() -&gt; 在jQuery的原型上扩展属性和方法 -&gt; 编写jQuery插件</div><div class="line">$.extent(&#123;</div><div class="line">    <span class="attr">a</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">$.a();</div><div class="line"></div><div class="line">$.fn.extent(&#123;</div><div class="line">    <span class="attr">b</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">$().b();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$.extend() <span class="comment">//-&gt;把jQuery当做一个对象，给它扩展属性和方法 -&gt; 完善类库</span></div><div class="line">$.fn.extend() <span class="comment">//-&gt; 在jQuery的原型上扩展属性和方法 -&gt; 编写jQuery插件</span></div><div class="line">$.extend(&#123;</div><div class="line">    <span class="attr">a</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">$.a();</div><div class="line"></div><div class="line">$.fn.extend(&#123;</div><div class="line">    <span class="attr">b</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">$().b();</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector,context);</div><div class="line">&#125;</div><div class="line"></div><div class="line">jQuery.fn = jQuery.prototype = &#123;</div><div class="line">    <span class="attr">jquery</span>:version,</div><div class="line">    <span class="attr">constructor</span>:jQuery</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">init = jQuery.fn.init = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>) </span>&#123;&#125;</div><div class="line">init.prototype = jQuery.fn;</div></pre></td></tr></table></figure>
 <p>定义原型扩展和工具包扩展的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">jQuery.extend = jQuery.fn.extend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery;</div></pre></td></tr></table></figure></p>
 
@@ -566,8 +564,8 @@ jQuery.prototype
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/02/JS中this指向问题总结/" rel="next" title="js中this指向问题总结">
-                <i class="fa fa-chevron-left"></i> js中this指向问题总结
+              <a href="/2015/04/02/JS中this指向问题总结/" rel="next" title="JS中this指向问题总结">
+                <i class="fa fa-chevron-left"></i> JS中this指向问题总结
               </a>
             
           </div>
@@ -692,7 +690,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -714,7 +712,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
