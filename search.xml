@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[前端开发概述+JS基础细节知识点]]></title>
+    <url>%2F2017%2F07%2F21%2F%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%A6%82%E8%BF%B0%2BJS%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[一 前端开发概述 html页面:html css javascript 拿到UI设计图纸:切图–&gt;html+css静态布局–&gt;用JS写一写动态效果–&gt;ajax和后台进行交互,把数据动态绑定到页面上–&gt;用node.js服务平台做源代码管理–&gt;用node.js做后台 二 js引入到页面的方式和细节知识点巩固:css引入方式 行内式 内嵌式(将css样式写在style标签快里面,放在head里面) 外链式(只是将内嵌式中css样式放到外面一个单独的样式文件中了) 导入式:@import”css/index.css”; 将JS引入到页面中的几种方式: 行内式(不推荐,安全性能非常低) 内嵌式(将js代码写在script 脚本块中间) 外链式(将js代码写在外边的文件中,通过src找到引入) 细节点: 在外链式中script脚本块中,不可以写js代码,写了也不执行 我们通常将js放在body最后面,原因:html页面是从上到下依次加载的,js通常是获取html标签给与动态操作效果的,所以需要先加载html标签再加载我们的js. 三 JS的四种输出方法 alert(‘内容’) 在浏览器中弹出框显示我们的内容 document.write(‘内容’) 在页面中输出显示我们的内容 console.log(‘内容’) 最常用的一种方式,在控制台输出我们的内容 console.error();向控制台抛出异常 console.dir();输出一个对象的全部属性(详细内容) console.clear();清空控制台 清空控制台的方法: ctrl+l 右击clear 直接点击小图标 innerHTML/innerText向指定元素中动态添加内容 四 JS的组成和命名规范层级关系:浏览器(window浏览器对象)-&gt;文档(document文档对象)-&gt;html-&gt;head/body-&gt;…js:javascript,是一门轻量级的脚本编程语言js组成(三部分 ECMAScript:定义了js里边的命名规范,变量,数据类型,基本语法,操作语句等最核心的东西 DOM:document object model 文档对象模型 BOM:browers object model 浏览器对象模型命名规范: js中严格区分大小写 使用驼峰命名法 首字母小写,其余的每个有意义的单词的首字母大写 可以使用数字,字母,下划线,$, (数字不能作为首字母) 不能使用关键字和保留字 关键字:在js中有特殊意义的字 保留字:未来可能成为关键字的 五 JS中的变量和数据类型js变量 变量:可变的量 js中的变量是一个抽象的概念,变量是用来存储值和代表值的 在js中定义一个变量非常的简单: var 变量名=变量值;例:var name=’lucy’;//定义一个变量,把字符串lucy赋值给这个变量 console.log(name);//把name代表的值输出在控制台 = 是赋值操作,左边是变量名,右边是存储的值 js中的变量是松散类型的:通过一个var变量名就可以存储任何的数据类型 js中的数据类型: 1.基本数据类型 2.引用数据类型 基本数据类型:由简单的结构组成 数字(number) 字符串(string):双引号或者单引号包起来的都是字符串 布尔(boolean) null undefined number(数字)：强制类型转换number:正数,负数,0,小数,NaN NaN:not a number 不是一个有效数字,但他是属于number数据类型的 NaN==NaN 是不想等的Number():强制将其他的数据类型转换为number类型,要求如果是字符串,字符串一定都需要是数字才可以转换; number的返回值:不是数字就是NaN 机制:属性名,从左向右依次查找,只有有一个不是数字,就会返回NaNisNaN();是一个方法:检测一个值是否为有效数字,是有效数字返回false,不是有效数字是true; 如果检测的值不是number类型的,浏览器会默认的把它转化成number类型的,然后判断是否为有效的数字非强制类型转换 parseInt/parseFloat parseInt 机制:从左向依次查找,只要碰到有一个字符不是数字就停止查找,将查找到的字符返回,但是它的数值为整数,自动忽略小数点 返回值:为整数,不是数字就是NaN 作用:可以解析字符串,返回一个整数 parseFloat 机制:从左向右依次查找,只要碰到有一个字符不是数字就停止查找,将查找到的字符返回,返回的值是浮点数,带小数点 作用:可以解析字符串,返回一个浮点数 ]返回值不是数字就是NaN 一个=号:表示赋值 二个=号:是判断左右两边的值是否相等 boolean(布尔值)：boolean:true/false!:一个叹号是取反,首先将值转化为布尔类型的,然后再取反!!:两个叹号,将其他的数据类型转换为boolean类型,相当于Boolean();-&gt;取反再取反12console.log(Boolean("gaojiarui"));console.log(!!"gaojiarui"); //以上两种表达的意思是一样的 引用数据类型:结构相对复杂一些的对象数据类型(object)对象类(Object),数组类[Array],正则类|^$|,时间类Date,字符串类(String),布尔类(Boolean)…等对应类的实例:对象,数组,正则,时间…函数数据类型(function)js数据类型中的对象数据类型特点:由多组[属性名和属性值]组成,多组键值对组成,由多个key:value属性名和属性值是用来描述这个对特征的创建方式 字面量创建方式:var obj={name:’lucy’}; 实例创建方式:var obj=new Object();给一个对象增加一组属性名和属性值方法 obj.name=”lucy”; obj[“name”]=”lucy”修改原有属性名的属性值 规定:一个对象中的属性名不能重复,如果之前有就是修改,没有就是增加 obj.name=”lucyjie” obj[“name”]=”lucyjie”获取属性名和属性值 如果属性名不存在,默认返回的结果是undefined console.log(obj.zz);-&gt;undefined console.log(obj[“name”]); console.log(obj.name);删除属性名和属性值 假删除:obj.age=null; 真删除:delete.obj.age; console.log(obj); 六 数据类型区分和数据类型检测基本数据类型和引用数据类型的区别12345678910111213141516171819202122232425var num1 = 12;var num2 = num1; //把num1代表的值赋值给了num2变量num2++; //相当于num2=num1+1 在给自己原有的值的基础上加1，也可以写成num2+=1;console.log(num1) //12/*基本数据类型：把值直接给变量接下来在操作的过程中，直接拿这个值来操作；可能两个变量存贮一样的值，但是你的事你的，我的是我的，之间没有关系其中一个改变，另外一个没有任何影响*/var obj1 = &#123;name:"gjr"&#125;;var obj2 = obj1;obj2.name = "gaojiarui";console.log(obj1.name) //gaojiarui/*引用数据类型：1.定义一个变量2.开辟一个新的空间，然后把属性名和属性值保存在这个空间上，并且有个空间地址3.把空间的地址给这个变量，变量并没有存贮这个值，而是存贮的是这个空间的引用地址4.接下来我们把这个地址又告诉了另外一个变量，另外一个变量存贮的也是这个地址，此时如果发生改变的话，两个变量其实操作的是同一个空间5.其中一个改变了空间的内容，另外一个其实也改变了*/ 本质区别: 基本数据类型操作的是值 引用数据类型操作的是内存地址 js中检测数据类型的方法参考文章：https://scar007.github.io/2016/11/25/JS%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/ typeof 运算符 用来检测数据类型的:typeof 要检测的值 返回值:是一个字符串; 包含了数据类型字符”number”,”string”,”boolean”,”undefined”,”object”,”function” //特殊记忆:typeof null;-&gt;”object” 局限性:不能具体的检测object下细分的类型,检测这些返回的都是”object”123456789101112var num1 = 12;console.log(typeof num1); //把num1代表的值进行检验，检测是什么数据类型的//面试题console.log(typeof (typeof (typeof []))) //"string"/* 分析： typeof [] -&gt; "object" typeof "object" -&gt; "string" typeof "string" -&gt; "string" //规律：出现两个或者两个以上的typeof的时候，最终的结果都是字符串*/ instanceof 运算符constructorObject.prototype.toString.call()七 js中三个判断的语法三个判断:if else,三元运算符,switch case if ,else if ,else 是最常用的判断,可以解决js中所有的判断需求三元运算符应用于简单的if else情况switch case应用于不同值情况下的不同操作123456789101112131415161718// if else//语法if (条件1)&#123; 执行条件1成立后js代码&#125;else if(条件2)&#123; 执行条件2成立后js代码&#125;else if(条件3)&#123; 执行条件3成立后js代码&#125;...else&#123; 执行以上所有条件都不成立的js代码&#125;/* if 中的条件可以是 大于 小于 等于 还可以是一个值（判断当前值代表的是真还是假） if中的条件可以是多个小的条件的组合，中间用||（只要有一个为真，整体就为真）和&amp;&amp;（所有小条件全都为真后，整体才为真）隔开*/ 1234567// 三元运算符//语法//条件?条件成立执行的代码:条件不成立执行的代码num=&gt;0?console.log("整数或零"):console.log("负数");// 可以用void来补位，例如：num=&gt;0?console.log("整数或0"):void 0; 123456789101112131415161718192021// switch case/*每一种case情况下都要加break如果不加break，不管后边的代码是否成立都被执行了每一个case情况都相当于===比较，一定要注意数据类型是否一致；*///语法：var num = 10;switch (num) &#123; case 0: console.log("0"); break; case 5: console.log("5"); break; case 10: console.log("10"); break; default: console.log("NaN");&#125; 八 js中三个循环for 循环: 四部曲 第一步:设置初始值 var i=0; 第二步:设置循环执行的条件 i&lt;5; 第三步:执行循环体中的内容{[循环体]}包起来的部分 第四步:执行每一轮循环完成后都执行我们的i++累加操作 break/continue:(关键字) 在循环体中,只要遇到break和continue,循环体中后面的代码就不在执行了; break:在循环题中,出现break,整个循环就直接的结束了,i++最后的这个累加的操作也不再执行了 continue:在循环体中,出现continue,当前这一轮的循环就结束了,继续下一轮的循环,后面的累加操作继续执行123456for (var i=0;i&lt;5;i++) &#123; console.log(i); // 0,1,2,3,4,5&#125;//例for(var i=0;i&lt;5;i++)&#123;&#125;console.log(i); //10 循环体执行完后才输出最后的 for in循环 用来循环一个对象中的属性名和属性值的 对象中有多少组键值对,我们就循环多少次 顺序问题:首先循环数字的属性名(按照从小到大),再把剩下的属性名按照我们写的顺序循环 12345//语法：对象中有多少组键值对，我们就循环多少次for (var key in obj) &#123; console.log(key) //每一次循环获取的属性名 console.log(obj[key]) //获取属性值，在for in中只能通过 对象名[key]来获取，不能写obj.key&#125;]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[数组的基本知识点]]></title>
+    <url>%2F2017%2F06%2F23%2F%E6%95%B0%E7%BB%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[一维数组：[12,23,’珠峰’,true…] 二维数组：[12,{name:”珠峰”},[23,34]] 多维数组：[12,{friend:[34,45]}] 数组排序:ary.sort() ary.sort(function(a,b){return b-a;}); 删除数组最后一项: ary.pop() ary.length–; ary.splice(ary.length-1,1); 找出第n项到第m项 ary.slice(n-1,m) 当前页面一屏幕的宽度 document.documentElement.clientWidth||document.body.clientWidth 获取当前元素的上一个哥哥元素节点(兼容所有浏览器) 12345678910111213141516171819202122function getPerEleSibling(ele)&#123; if ('previousElementSibling' in curEle) &#123; return curEle.previousElementSibling; &#125; var pre = ele.previousSibling; while (pre&amp;&amp;pre.nodeType!==1) &#123; pre=pre.previousSibling; &#125; return pre;&#125;//递归写法function pre(curELe) &#123; if ('previousElementSibling' in curEle) &#123; return curEle.previousElementSibling; &#125; var pre = curEle.previousSibling; if (pre&amp;&amp;pre.nodeType!==1) &#123; return prev(pre) &#125; return pre;&#125;]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[函数执行的预解释]]></title>
+    <url>%2F2017%2F06%2F02%2F%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A2%84%E8%A7%A3%E9%87%8A%2F</url>
+    <content type="text"><![CDATA[在新版浏览器中,条件中的函数在预解释的时候只能先声明不能定义,当然如果函数不在判断中，预解释的时候是会被声明+定义 函数形参：形参本身就是变量,而且是当前作用域的私有变量函数实参：函数执行传递进来的值,实参本身就是出具值函数执行的五个步骤： 1.开辟一个新的私有作用域 2.形参赋值 3.预解释 4.代码从上到下执行 5.验证作用域是否销毁 函数的私有变量：形参是私有变量 在私有作用域中声明过的变量或者函数也是私有的]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>预解释</tag>
+        <tag>函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[引用数据类型的基本步骤]]></title>
+    <url>%2F2017%2F05%2F13%2F%E9%80%BB%E8%BE%91%E4%B8%8E%E5%92%8C%E9%80%BB%E8%BE%91%E6%88%96%2F</url>
+    <content type="text"><![CDATA[逻辑或：首先看左边是真还是假(除了那5个都是真),如果为真,返回左边值,如果为假,返回右边的值 逻辑与：和逻辑或相同,先看左边的值是真是假,如果左边为真返回右边的值,左边为假返回左边的值 在两者同时出现的时候逻辑与的优先级高于逻辑或 10||1&amp;&amp;2||3 -&gt; 0||(1&amp;&amp;2)||3 -&gt; 0||2||3 =&gt;2 第一个应用：判断的时候用1234567if (A||B) &#123;&#125; //只要有一个为真，整体就为真if (A&amp;&amp;B) &#123;&#125; //必须两个都为真，整体才为真``` #### 第二个应用：赋值的时候使用```javascriptvar num = 3||10; -&gt;num = 3var num = 3&amp;&amp;0; -&gt;num = 0]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>逻辑优先级</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[引用数据类型的基本步骤]]></title>
+    <url>%2F2017%2F04%2F28%2F%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%2F</url>
+    <content type="text"><![CDATA[引用数据类型赋值遵循三步操作：(一定是按照以下步骤进行的) 1.首先开辟一个堆内存空间，浏览器会为其分配一个16进制的地址 2.把属性名和属性值分别存储在这个内存空间中(函数数据类型存储的是函数体中的”代码字符串”) 3.把堆内存的空间地址赋值给对应的变量 123456789101112var obj = &#123; num:10, fn:(function(n)&#123; n++; return function()&#123; console.log(n); &#125; &#125;)(obj.num) // Uncaught TypeError:Cannot read property "num" of undefined, // 这里还在给存属性值属性名，还没有给obj赋值这个空间地址，所以obj还是undefined，也就没有num的属性，所以浏览器会报错&#125;obj.fn();]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>数据类型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[javaScript的组成结构]]></title>
+    <url>%2F2017%2F04%2F11%2Fjavascript%E7%9A%84%E7%BB%84%E6%88%90%2F</url>
+    <content type="text"><![CDATA[JavaScript简称JS，由三大部分构成1.ECMAScript：(3/5/6/7) 它是JS语言的标准,规定了JS的编程语法和基础核心知识。2.DOM：document object model 文档对象模型,提供给JS很多的操作页面中元素的属性和方法3.BOM：browser object model 浏览器对象模型,提供了很多操作浏览器的属性方法,而这些方法都存放在window浏览器对象上]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[null和undefined的区别]]></title>
+    <url>%2F2017%2F03%2F29%2Fnull%E5%92%8Cundefined%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[null和undefined都代表没有,但是null是属性存在但是值不存在,undefined是连这个属性都不存在例如： document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) -&gt;null(因为一个页面中的document已经是最顶级元素了,它没有父亲)document.parentnode -&gt;undefined(因为没有parentnode属性) null:空对象指针-&gt;没有具体的值 -&gt;一般都是我们手动设置初始的值为null,后期的话会给其赋值undefined:未定义-&gt;连东西都没有 -&gt;一般都是浏览器默认的值null: 1、我们设定一个变量,后期需要使用,那么前期我们设置默认值为null 1234567var timer = null;function move() &#123; window.clearTimeout(timer); //js code timer = window.setTimeout(move,1000)&#125;move(); 2、在JS内存释放中，我们想释放一个堆内存，就让其值变为null即可var obj={name:”高佳睿”};obj=null;-&gt;刚开始开辟的这个堆内存没有被占用,浏览器会在空闲的时候把它销毁掉 3、我们通过DOM中提供的属性和方法获取页面中的某一个元素标签，如果当前这个标签不存在，获取的结果是null，而不是undefineddocument.getElementById(“div1”) -&gt;如果页面中没有#div1,获取的结果就是null 4、在正则的exec/字符串的match捕获中,如果当前要捕获的字符串和正则不匹配的话，捕获到的结果为null1234var reg = /\d+?/g;var str = "gjr";reg.exec(str); //nullreg.match(reg); //null undefined: 1、在JS预解释的时候，只声明未定义，默认的值是undefined 12console.log(num); //undefinedvar num = 13; 2、在一个函数中，如果没有写return,或者return后啥都没返回，默认的返回值是undefined 12345function fn()&#123; //content&#125;var res = fn();console.log(res); //undefined 3、函数中设置了形参，但是执行的时候如果没有传递参数值，那么形参默认值是undefined 1234567function fn(a,b,c)&#123; a-&gt;10 b-&gt;20 c-&gt;undefined // arguments[2] = 30:让形参c的值变为30，因为在非严格模式下我们的arguments和形参存在映射关系，但是在严格模式下("use strict")中是不存在映射关系的，改变的话互不影响&#125;fn(10,20) 4、获取一个对象的属性名对应的属性值，如果当前的这个属性名不存在的话，属性值默认是undefined 12var obj = &#123;&#125;;console.log(obj.name); //undefined 我们也应用这个道理来检测当前的浏览器是否兼容某一个方法 window.getComputedStyle -&gt;获取当前元素经过浏览器计算过的样式在谷歌中：我们获取的结果是 function getComputedStyle() { [native code] }在IE6~8中：我们获取的结果是undefined,因为在这个浏览器中不兼容getComputedStyle123456789101112131415161718function getCss(curEle,attr) &#123; var val = null,reg = null; if (window.getComputedStyle) &#123; //兼容 val = window.getComputedStyle(curEle,null)[attr]; &#125; else &#123; //不兼容 if (attr === "opacity") &#123; val = curELe.currentStyle["filter"]; //"alpha(opacity=12.345)" reg = /^alpha\(opacity=(\d(?:\.\d+)?)\)$/; val = reg.test(val)?reg.exec(val)[1]/100:1; &#125; else &#123; val = curEle.currentStyle[attr]; &#125; &#125; reg = /^-?\d+(\.\d+)?(px|pt|em|rem)$/; return reg.test(val)?parseFloat(val):val;&#125;]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>undefined</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[前端面试基础]]></title>
+    <url>%2F2017%2F03%2F12%2F%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[1.js中有几种数据类型 2.var a=b=c=d=5是什么意思,如果接下来再写一句d=9,a,b,c值会有变化吗?]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Less相关知识点]]></title>
     <url>%2F2017%2F02%2F26%2FLess%2F</url>
     <content type="text"><![CDATA[less是一门css预处理语言,文件后缀名为.less,能减少css文件编写的代码量 官网:http://lesscss.cn/#using-less 安装 使用npm install -g less 全局安装less 在node.js and NPM中激活 在file watchers中打开less监听 webstorm建立的less文件将会被自动的预编译 使用方法 注释 “//“表示的注释是不会被预编译成css的 “/**/“表示的注释是会被预编译的 变量 通过关键词@+变量名来创建变量,变量只能在less文件中使用,而不会被编译 变量能在不同的地方调用相同的css值 在给属性赋值时,变量可以进行基本的数学计算 函数 创建:”.”+方法样式名+(@变量名:添加默认值){}; 调用:”.”+样式名+(值),没有值的情况下添加的是默认值 不同样式之间,变量互不影响 less函数不会被预编译,只能在less文件中被调用 混合嵌套(函数写法) 类名可以当成函数使用,也就是即能被预编译成,也能在less文件中当成函数被其他的样式调用 子代选择器 在父类元素对应的less样式中,可以直接写子类的样式,支持多重子类的样式编写,最后编译成子代选择器的css样式]]></content>
@@ -53,9 +133,6 @@
       <categories>
         <category>案例</category>
       </categories>
-      <tags>
-        <tag>选项卡</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[处理浏览器兼容的几种方式]]></title>
@@ -97,9 +174,6 @@
       <categories>
         <category>案例</category>
       </categories>
-      <tags>
-        <tag>跑马灯</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[J实现时间格式的转换(附加对象的转换)]]></title>
@@ -108,9 +182,6 @@
       <categories>
         <category>案例</category>
       </categories>
-      <tags>
-        <tag>时间格式转换</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[JS实现动画方向切换效果(包括:撞墙反弹，暂停继续左右运动等)]]></title>
@@ -119,10 +190,6 @@
       <categories>
         <category>案例</category>
       </categories>
-      <tags>
-        <tag>动画</tag>
-        <tag>反弹效果</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[表格内部某一列排序(包含数组、汉字排序)]]></title>
@@ -198,9 +265,6 @@
       <categories>
         <category>案例</category>
       </categories>
-      <tags>
-        <tag>JS回到顶部</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[放大镜效果的实现]]></title>
@@ -209,9 +273,6 @@
       <categories>
         <category>案例</category>
       </categories>
-      <tags>
-        <tag>JS放大镜</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[拖拽的实现]]></title>
@@ -225,17 +286,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[JS中的发布订阅模式]]></title>
-    <url>%2F2016%2F04%2F06%2FJS%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%2F</url>
-    <content type="text"><![CDATA[一. 你是如何理解发布订阅模式的 JS中的设计模式: 单例模式:处理业务逻辑 构造原型模式:封装类库,组件,框架,插件等 类库:jQuery 只是提供了一些常用的方法,可以应用到任何的项目中,不具备业务性 组件:bootstrap 提供了很多通用的组件(HTML/CSS/JS都是别人规定好的),我们只需要按照要求使用,就可以直接的达到效果 插件: swiper/iscroll 针对于一个具体业务的封装,例如选项卡插件或者轮播图插件 框架:React/Vue 具备一定编程思想的(MVC/MVVM)叫做框架 发布订阅模式:处理一些具体需求的 promise模式:处理一些具体需求的 发布订阅模式 发布一个计划表(发布) 往计划表中追加一些需要处理的事情(订阅)二. 发布订阅模式发布订阅模式不是一个死的机制,他是一种思想,一种写代码的形式;主要为了处理一对多的场景,应用于不同情况下的不同函数的调用,this很重要 手动进行模拟浏览器事件机制 订阅 12345678 function on(ele,type,fn) &#123; // 一个动作可以绑定多个处理程序，我们要把多个处理程序放在一个盒子里边 ele.boxAry = []; if (!ele["boxAry"+type]) &#123; ele["boxAry"+type] &#125; ele["boxAry"+type].push(fn);&#125; 发布 执行 改变this指向 创建一个小工具盒 把我们的方法放到了小工具盒里边 当我们在想用这个方法的时候,直接就到这个小工具盒变量就可以 处理顺序问题的,其实根本就是处理IE事件池乱序问题,那么我们就不能用ie的事件池进行,我们模拟一个事件池(利用发布订阅的思想来模拟我们的事件池) 监听的时候添加处理程序 在发布的时候将监听的事件的处理程序都执行 这里结合ES6的语法，简单写一个发布订阅模式的小案例：12345678910111213141516171819202122232425262728293031323334// 发布 emit 订阅 on &#123;&#125;function Girl() &#123; this._events = &#123;&#125;&#125;Girl.prototype.on = function (eventName,callback) &#123; //这里判断他是不是第一次添加(订阅) if(this._events[eventName])&#123; this._events[eventName].push(callback); &#125;else&#123; this._events[eventName] = [callback] &#125;&#125;;Girl.prototype.emit = function (eventName,...args) &#123; if(this._events[eventName])&#123; this._events[eventName].forEach(cb=&gt;cb(...args)); &#125;&#125;;let cry = (who) =&gt;&#123;console.log(who+'哭');&#125;;let shopping = (who) =&gt;&#123;console.log(who+'购物');&#125;;let eat = (who) =&gt;&#123;console.log(who+'吃');&#125;;let smile=(who)=&gt;&#123;console.log(who+'笑')&#125;;let girl1 = new Girl();girl1.on('失恋',cry); girl1.on('失恋',eat);girl1.on('失恋',shopping);girl1.emit('失恋','小明'); let girl2 = new Girl();girl2.on('恋爱',shopping);girl2.on('恋爱',smile);girl2.emit('恋爱','小华');]]></content>
-      <categories>
-        <category>JS</category>
-      </categories>
-      <tags>
-        <tag>发布订阅</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[选项卡的实现]]></title>
     <url>%2F2016%2F04%2F06%2F%E9%80%89%E9%A1%B9%E5%8D%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%2F</url>
     <content type="text"><![CDATA[实现选项卡的原理我们每一个页卡中的详细内容不一定是写死的,大部分都是从服务器端动获取绑定的 第一种:发送一次请求,服务器端会把所有页卡的内容返回给客户端,客户端根据内容分类,把不同的内容放在不同的页卡中(一次性把页卡内容都绑定了) 第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时候不要重新的获取 案例12 JQ实现选项卡(jQuery原型插件扩展)[链接如下]:https://scar007.github.io/2016/12/23/JQ%E5%AE%9E%E7%8E%B0%E9%80%89%E9%A1%B9%E5%8D%A1/]]></content>
@@ -244,6 +294,17 @@
       </categories>
       <tags>
         <tag>选项卡</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JS中的发布订阅模式]]></title>
+    <url>%2F2016%2F04%2F06%2FJS%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%2F</url>
+    <content type="text"><![CDATA[一. 你是如何理解发布订阅模式的 JS中的设计模式: 单例模式:处理业务逻辑 构造原型模式:封装类库,组件,框架,插件等 类库:jQuery 只是提供了一些常用的方法,可以应用到任何的项目中,不具备业务性 组件:bootstrap 提供了很多通用的组件(HTML/CSS/JS都是别人规定好的),我们只需要按照要求使用,就可以直接的达到效果 插件: swiper/iscroll 针对于一个具体业务的封装,例如选项卡插件或者轮播图插件 框架:React/Vue 具备一定编程思想的(MVC/MVVM)叫做框架 发布订阅模式:处理一些具体需求的 promise模式:处理一些具体需求的 发布订阅模式 发布一个计划表(发布) 往计划表中追加一些需要处理的事情(订阅)二. 发布订阅模式发布订阅模式不是一个死的机制,他是一种思想,一种写代码的形式;主要为了处理一对多的场景,应用于不同情况下的不同函数的调用,this很重要 手动进行模拟浏览器事件机制 订阅 12345678 function on(ele,type,fn) &#123; // 一个动作可以绑定多个处理程序，我们要把多个处理程序放在一个盒子里边 ele.boxAry = []; if (!ele["boxAry"+type]) &#123; ele["boxAry"+type] &#125; ele["boxAry"+type].push(fn);&#125; 发布 执行 改变this指向 创建一个小工具盒 把我们的方法放到了小工具盒里边 当我们在想用这个方法的时候,直接就到这个小工具盒变量就可以 处理顺序问题的,其实根本就是处理IE事件池乱序问题,那么我们就不能用ie的事件池进行,我们模拟一个事件池(利用发布订阅的思想来模拟我们的事件池) 监听的时候添加处理程序 在发布的时候将监听的事件的处理程序都执行 这里结合ES6的语法，简单写一个发布订阅模式的小案例：12345678910111213141516171819202122232425262728293031323334// 发布 emit 订阅 on &#123;&#125;function Girl() &#123; this._events = &#123;&#125;&#125;Girl.prototype.on = function (eventName,callback) &#123; //这里判断他是不是第一次添加(订阅) if(this._events[eventName])&#123; this._events[eventName].push(callback); &#125;else&#123; this._events[eventName] = [callback] &#125;&#125;;Girl.prototype.emit = function (eventName,...args) &#123; if(this._events[eventName])&#123; this._events[eventName].forEach(cb=&gt;cb(...args)); &#125;&#125;;let cry = (who) =&gt;&#123;console.log(who+'哭');&#125;;let shopping = (who) =&gt;&#123;console.log(who+'购物');&#125;;let eat = (who) =&gt;&#123;console.log(who+'吃');&#125;;let smile=(who)=&gt;&#123;console.log(who+'笑')&#125;;let girl1 = new Girl();girl1.on('失恋',cry); girl1.on('失恋',eat);girl1.on('失恋',shopping);girl1.emit('失恋','小明'); let girl2 = new Girl();girl2.on('恋爱',shopping);girl2.on('恋爱',smile);girl2.emit('恋爱','小华');]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>发布订阅</tag>
       </tags>
   </entry>
   <entry>
