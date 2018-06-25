@@ -38,8 +38,8 @@
         <category>JS</category>
       </categories>
       <tags>
-        <tag>预解释</tag>
         <tag>函数</tag>
+        <tag>预解释</tag>
       </tags>
   </entry>
   <entry>
@@ -229,8 +229,8 @@
         <category>JS</category>
       </categories>
       <tags>
-        <tag>作用域</tag>
         <tag>函数</tag>
+        <tag>作用域</tag>
       </tags>
   </entry>
   <entry>
@@ -392,17 +392,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[关于前端性能优化]]></title>
-    <url>%2F2015%2F10%2F19%2F%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%2F</url>
-    <content type="text"><![CDATA[常用的优化有两部分第一：面向内容的优化 减少 HTTP 请求 减少 DNS 查找 避免重定向 使用 Ajax 缓存 延迟载入组件 预先载入组件 减少 DOM 元素数量 切分组件到多个域 最小化 iframe 的数量 不要出现http 404 错误第二：面向 Server 缩小 Cookie 针对 Web 组件使用域名无关性的]]></content>
-      <categories>
-        <category>性能优化</category>
-      </categories>
-      <tags>
-        <tag>优化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[关于jsonp跨域的问题以及解决方法(跨域、同源与非同源)]]></title>
     <url>%2F2015%2F10%2F19%2Fjsonp%E8%B7%A8%E5%9F%9F%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[什么是跨域？想要了解跨域，首先需要了解下浏览器的同源机制： JSONP和AJAX相同，都是客户端向服务器端发送请求：给服务器端传递数据 或者 从服务器端获取数据 的方式JSONP属于非同源策略(跨域请求) -&gt;实现跨域请求的方式有很多种,只不过JSONP是最常用的 区分同源和非同源：用当前页面的地址 &amp;&amp; 数据请求的接口地址 1)协议 2)域名或者IP 3)端口号 以上三部分完全相同属于同源策略,我们使用AJAX技术获取数据;只要有一个不一样的,就属于非同源,我们一般使用JSONP获取数据;跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。所谓同源是指，域名，协议，端口均相同，不明白没关系，举个栗子：12345http://www.123.com/index.html 调用 http://www.123.com/server.PHP （非跨域）http://www.123.com/index.html 调用 http://www.456.com/server.php （主域名不同:123/456，跨域）http://abc.123.com/index.html 调用 http://def.123.com/server.php （子域名不同:abc/def，跨域）http://www.123.com:8080/index.html 调用 http://www.123.com:8081/server.php （端口不同:8080/8081，跨域）http://www.123.com/index.html 调用 https://www.123.com/server.php （协议不同:http/https，跨域） 请注意：localhost和127.0.0.1虽然都指向本机，但也属于跨域。浏览器执行javascript脚本时，会检查这个脚本属于哪个页面，如果不是同源页面，就不会被执行。 解决办法：1、JSONP：使用方式就不赘述了，但是要注意JSONP只支持GET请求，不支持POST请求。 2、代理：例如www.123.com/index.html需要调用www.456.com/server.php，可以写一个接口www.123.com/server.php，由这个接口在后端去调用www.456.com/server.php并拿到返回值，然后再返回给index.html，这就是一个代理的模式。相当于绕过了浏览器端，自然就不存在跨域问题。 3、PHP端修改header（XHR2方式）在php接口脚本中加入以下两句即可： header(‘Access-Control-Allow-Origin:*’);//允许所有来源访问 header(‘Access-Control-Allow-Method:POST,GET’);//允许访问的方式]]></content>
@@ -412,6 +401,17 @@
       <tags>
         <tag>跨域</tag>
         <tag>jsonp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于前端性能优化]]></title>
+    <url>%2F2015%2F10%2F19%2F%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[常用的优化有两部分第一：面向内容的优化 减少 HTTP 请求 减少 DNS 查找 避免重定向 使用 Ajax 缓存 延迟载入组件 预先载入组件 减少 DOM 元素数量 切分组件到多个域 最小化 iframe 的数量 不要出现http 404 错误第二：面向 Server 缩小 Cookie 针对 Web 组件使用域名无关性的]]></content>
+      <categories>
+        <category>性能优化</category>
+      </categories>
+      <tags>
+        <tag>优化</tag>
       </tags>
   </entry>
   <entry>
@@ -530,8 +530,8 @@
         <category>JS</category>
       </categories>
       <tags>
-        <tag>预解释</tag>
         <tag>作用域</tag>
+        <tag>预解释</tag>
       </tags>
   </entry>
   <entry>

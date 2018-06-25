@@ -116,9 +116,9 @@
       <category term="JS" scheme="http://yoursite.com/categories/JS/"/>
     
     
-      <category term="预解释" scheme="http://yoursite.com/tags/%E9%A2%84%E8%A7%A3%E9%87%8A/"/>
-    
       <category term="函数" scheme="http://yoursite.com/tags/%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="预解释" scheme="http://yoursite.com/tags/%E9%A2%84%E8%A7%A3%E9%87%8A/"/>
     
   </entry>
   
