@@ -108,9 +108,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: 'QY42P8FH24',
-      apiKey: '18587f00a222e53b82d7f7338a311fd4',
-      indexName: 'ScarBlog',
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -332,26 +332,22 @@ $(function() {
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -457,7 +453,7 @@ $(function() {
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/02/11/Swiper+ejs+iScroll综合使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/11/Swiper+ejs+iScroll综合使用/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/02/11/Swiper+ejs+iScroll综合使用/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -630,7 +626,7 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/01/22/Node的知识总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/22/Node的知识总结/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/22/Node的知识总结/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -803,7 +799,7 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/01/05/异步编程思想/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/异步编程思想/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/05/异步编程思想/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -972,7 +968,7 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/12/23/JQ实现选项卡/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/23/JQ实现选项卡/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/23/JQ实现选项卡/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -1142,7 +1138,7 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/12/09/处理浏览器兼容的几种方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/处理浏览器兼容的几种方式/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/09/处理浏览器兼容的几种方式/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -1312,7 +1308,7 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/25/JS检测数据类型的几种方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/25/JS检测数据类型的几种方式/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/11/25/JS检测数据类型的几种方式/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -1481,7 +1477,7 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/16/作用域知识总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/作用域知识总结/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/11/16/作用域知识总结/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -1654,7 +1650,7 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/10/23/JS实现跑马灯效果/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/23/JS实现跑马灯效果/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/10/23/JS实现跑马灯效果/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -1823,7 +1819,7 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/10/07/实现时间格式的转换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/07/实现时间格式的转换/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/10/07/实现时间格式的转换/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -1992,7 +1988,7 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/09/28/JS实现动画方向切换效果/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/JS实现动画方向切换效果/" itemprop="commentCount"></span>
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/09/28/JS实现动画方向切换效果/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -2384,40 +2380,48 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
 
   
 
+
   
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
     
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
     
+<!-- END LOCAL -->
+
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
 
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -2745,19 +2749,6 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 
