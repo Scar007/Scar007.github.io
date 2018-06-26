@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="发布订阅," />
+  <meta name="keywords" content="动画,优化," />
 
 
 
@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="一. 你是如何理解发布订阅模式的 JS中的设计模式:  单例模式:处理业务逻辑    构造原型模式:封装类库,组件,框架,插件等 类库:jQuery  只是提供了一些常用的方法,可以应用到任何的项目中,不具备业务性 组件:bootstrap  提供了很多通用的组件(HTML/CSS/JS都是别人规定好的),我们只需要按照要求使用,就可以直接的达到效果 插件: swiper/iscroll  针对于">
-<meta name="keywords" content="发布订阅">
+<meta name="description" content="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉1234567var timer=null;function move()&amp;#123;    window.clearTimeout(timer);      //&amp;lt;js code&amp;gt;    timer=window.setTimeout(move,15);&amp;#125;move(); 2">
+<meta name="keywords" content="动画,优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS中的发布订阅模式">
-<meta property="og:url" content="http://yoursite.com/2016/04/06/pub_sub/index.html">
+<meta property="og:title" content="JS实现动画的四条优化方法">
+<meta property="og:url" content="http://yoursite.com/2016/02/08/animadesign/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="一. 你是如何理解发布订阅模式的 JS中的设计模式:  单例模式:处理业务逻辑    构造原型模式:封装类库,组件,框架,插件等 类库:jQuery  只是提供了一些常用的方法,可以应用到任何的项目中,不具备业务性 组件:bootstrap  提供了很多通用的组件(HTML/CSS/JS都是别人规定好的),我们只需要按照要求使用,就可以直接的达到效果 插件: swiper/iscroll  针对于">
-<meta property="og:updated_time" content="2018-06-26T03:12:58.859Z">
+<meta property="og:description" content="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉1234567var timer=null;function move()&amp;#123;    window.clearTimeout(timer);      //&amp;lt;js code&amp;gt;    timer=window.setTimeout(move,15);&amp;#125;move(); 2">
+<meta property="og:updated_time" content="2018-06-26T03:42:15.944Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS中的发布订阅模式">
-<meta name="twitter:description" content="一. 你是如何理解发布订阅模式的 JS中的设计模式:  单例模式:处理业务逻辑    构造原型模式:封装类库,组件,框架,插件等 类库:jQuery  只是提供了一些常用的方法,可以应用到任何的项目中,不具备业务性 组件:bootstrap  提供了很多通用的组件(HTML/CSS/JS都是别人规定好的),我们只需要按照要求使用,就可以直接的达到效果 插件: swiper/iscroll  针对于">
+<meta name="twitter:title" content="JS实现动画的四条优化方法">
+<meta name="twitter:description" content="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉1234567var timer=null;function move()&amp;#123;    window.clearTimeout(timer);      //&amp;lt;js code&amp;gt;    timer=window.setTimeout(move,15);&amp;#125;move(); 2">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/04/06/pub_sub/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/02/08/animadesign/"/>
 
 
 
 
 
-  <title>JS中的发布订阅模式 | Scar's Blog</title>
+  <title>JS实现动画的四条优化方法 | Scar's Blog</title>
   
 
 
@@ -381,7 +381,7 @@ $(function() {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/06/pub_sub/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/08/animadesign/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="高佳睿">
@@ -398,7 +398,7 @@ $(function() {
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS中的发布订阅模式</h1>
+          <h1 class="post-title" itemprop="name headline">JS实现动画的四条优化方法</h1>
         
 
         <div class="post-meta">
@@ -410,8 +410,8 @@ $(function() {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-06T00:00:00+08:00">
-                2016-04-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-08T00:00:00+08:00">
+                2016-02-08
               </time>
             
 
@@ -451,8 +451,8 @@ $(function() {
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/04/06/pub_sub/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/04/06/pub_sub/" itemprop="commentCount">0</span> comments
+                <a href="/2016/02/08/animadesign/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/02/08/animadesign/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -460,7 +460,7 @@ $(function() {
 
           
           
-             <span id="/2016/04/06/pub_sub/" class="leancloud_visitors" data-flag-title="JS中的发布订阅模式">
+             <span id="/2016/02/08/animadesign/" class="leancloud_visitors" data-flag-title="JS实现动画的四条优化方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -491,52 +491,10 @@ $(function() {
       
 
       
-        <h2 id="一-你是如何理解发布订阅模式的"><a href="#一-你是如何理解发布订阅模式的" class="headerlink" title="一. 你是如何理解发布订阅模式的"></a>一. 你是如何理解发布订阅模式的</h2><ul>
-<li><p>JS中的设计模式:</p>
-<ul>
-<li>单例模式:处理业务逻辑   </li>
-<li>构造原型模式:封装类库,组件,框架,插件等<ul>
-<li>类库:jQuery<br>  只是提供了一些常用的方法,可以应用到任何的项目中,不具备业务性</li>
-<li>组件:bootstrap<br>  提供了很多通用的组件(HTML/CSS/JS都是别人规定好的),我们只需要按照要求使用,就可以直接的达到效果</li>
-<li>插件: swiper/iscroll<br>  针对于一个具体业务的封装,例如选项卡插件或者轮播图插件</li>
-<li>框架:React/Vue<br>  具备一定编程思想的(MVC/MVVM)叫做框架</li>
-</ul>
-</li>
-<li>发布订阅模式:处理一些具体需求的</li>
-<li>promise模式:处理一些具体需求的</li>
-</ul>
-</li>
-<li><p>发布订阅模式</p>
-<ul>
-<li>发布一个计划表(发布)</li>
-<li>往计划表中追加一些需要处理的事情(订阅)<h2 id="二-发布订阅模式"><a href="#二-发布订阅模式" class="headerlink" title="二. 发布订阅模式"></a>二. 发布订阅模式</h2>发布订阅模式不是一个死的机制,他是一种思想,一种写代码的形式;主要为了处理一对多的场景,应用于不同情况下的不同函数的调用,this很重要</li>
-</ul>
-</li>
-<li><p>手动进行模拟浏览器事件机制</p>
-<ul>
-<li><p>订阅</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">on</span>(<span class="params">ele,type,fn</span>) </span>&#123;</div><div class="line">    <span class="comment">//  一个动作可以绑定多个处理程序，我们要把多个处理程序放在一个盒子里边</span></div><div class="line">  ele.boxAry = [];</div><div class="line">  <span class="keyword">if</span> (!ele[<span class="string">"boxAry"</span>+type]) &#123;</div><div class="line">      ele[<span class="string">"boxAry"</span>+type]</div><div class="line">  &#125;</div><div class="line">   ele[<span class="string">"boxAry"</span>+type].push(fn);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>发布</p>
-<ul>
-<li>执行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>改变this指向<ul>
-<li>创建一个小工具盒</li>
-<li>把我们的方法放到了小工具盒里边</li>
-<li>当我们在想用这个方法的时候,直接就到这个小工具盒变量就可以</li>
-</ul>
-</li>
-<li>处理顺序问题的,其实根本就是处理IE事件池乱序问题,那么我们就不能用ie的事件池进行,我们模拟一个事件池(利用发布订阅的思想来模拟我们的事件池)<ul>
-<li>监听的时候添加处理程序</li>
-<li>在发布的时候将监听的事件的处理程序都执行    </li>
-</ul>
-</li>
-</ul>
-<p><i>这里结合ES6的语法，简单写一个发布订阅模式的小案例：</i><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 发布 emit 订阅 on &#123;&#125;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Girl</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._events = &#123;&#125;</div><div class="line">&#125;</div><div class="line">Girl.prototype.on = <span class="function"><span class="keyword">function</span> (<span class="params">eventName,callback</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">//这里判断他是不是第一次添加(订阅)</span></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._events[eventName])&#123; </div><div class="line">        <span class="keyword">this</span>._events[eventName].push(callback); </div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">this</span>._events[eventName] = [callback]</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">Girl.prototype.emit = <span class="function"><span class="keyword">function</span> (<span class="params">eventName,...args</span>) </span>&#123; </div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._events[eventName])&#123;</div><div class="line">        <span class="keyword">this</span>._events[eventName].forEach(<span class="function"><span class="params">cb</span>=&gt;</span>cb(...args));</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cry = <span class="function">(<span class="params">who</span>) =&gt;</span>&#123;<span class="built_in">console</span>.log(who+<span class="string">'哭'</span>);&#125;;</div><div class="line"><span class="keyword">let</span> shopping = <span class="function">(<span class="params">who</span>) =&gt;</span>&#123;<span class="built_in">console</span>.log(who+<span class="string">'购物'</span>);&#125;;</div><div class="line"><span class="keyword">let</span> eat = <span class="function">(<span class="params">who</span>) =&gt;</span>&#123;<span class="built_in">console</span>.log(who+<span class="string">'吃'</span>);&#125;;</div><div class="line"><span class="keyword">let</span> smile=<span class="function">(<span class="params">who</span>)=&gt;</span>&#123;<span class="built_in">console</span>.log(who+<span class="string">'笑'</span>)&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> girl1 = <span class="keyword">new</span> Girl();</div><div class="line">girl1.on(<span class="string">'失恋'</span>,cry); </div><div class="line">girl1.on(<span class="string">'失恋'</span>,eat);</div><div class="line">girl1.on(<span class="string">'失恋'</span>,shopping);</div><div class="line">girl1.emit(<span class="string">'失恋'</span>,<span class="string">'小明'</span>);  </div><div class="line"></div><div class="line"><span class="keyword">let</span> girl2 = <span class="keyword">new</span> Girl();</div><div class="line">girl2.on(<span class="string">'恋爱'</span>,shopping);</div><div class="line">girl2.on(<span class="string">'恋爱'</span>,smile);</div><div class="line">girl2.emit(<span class="string">'恋爱'</span>,<span class="string">'小华'</span>);</div></pre></td></tr></table></figure></p>
+        <h4 id="1-如果使用的是setTimeout实现的轮询动画-在每一次执行方法之前需要把前面的设置的定时器清除掉"><a href="#1-如果使用的是setTimeout实现的轮询动画-在每一次执行方法之前需要把前面的设置的定时器清除掉" class="headerlink" title="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉"></a>1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> timer=<span class="literal">null</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">window</span>.clearTimeout(timer);</div><div class="line">      <span class="comment">//&lt;js code&gt;</span></div><div class="line">    timer=<span class="built_in">window</span>.setTimeout(move,<span class="number">15</span>);</div><div class="line">&#125;</div><div class="line">move();</div></pre></td></tr></table></figure>
+<h4 id="2-为了防止全局变量的污染-我们把定时器的返回值赋值给当前操作元素的自定义属性-这样做还有一个好处-就是如果当前动画没有完成-执行了下一个动画-由于我们每一次都是给自己的自定义属性-那么下一个动画开始的时候默认的把当前的动画的结束了"><a href="#2-为了防止全局变量的污染-我们把定时器的返回值赋值给当前操作元素的自定义属性-这样做还有一个好处-就是如果当前动画没有完成-执行了下一个动画-由于我们每一次都是给自己的自定义属性-那么下一个动画开始的时候默认的把当前的动画的结束了" class="headerlink" title="2)为了防止全局变量的污染,我们把定时器的返回值赋值给当前操作元素的自定义属性;这样做还有一个好处,就是如果当前动画没有完成,执行了下一个动画,由于我们每一次都是给自己的自定义属性,那么下一个动画开始的时候默认的把当前的动画的结束了;"></a>2)为了防止全局变量的污染,我们把定时器的返回值赋值给当前操作元素的自定义属性;这样做还有一个好处,就是如果当前动画没有完成,执行了下一个动画,由于我们每一次都是给自己的自定义属性,那么下一个动画开始的时候默认的把当前的动画的结束了;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">window</span>.clearTimeout(curEle.timer);</div><div class="line">    <span class="comment">//&lt;js code&gt;</span></div><div class="line">    curEle.timer=<span class="built_in">window</span>.setTimeout(move,<span class="number">15</span>);</div><div class="line">&#125;</div><div class="line">move();</div></pre></td></tr></table></figure>
+<h4 id="3-关于作用域累积的问题-gt-在move中编写一个-move来执行我们的动画操作-move里面不需要传递参数-每一次都用move中存储下来的值即可"><a href="#3-关于作用域累积的问题-gt-在move中编写一个-move来执行我们的动画操作-move里面不需要传递参数-每一次都用move中存储下来的值即可" class="headerlink" title="3)关于作用域累积的问题-&gt;在move中编写一个_move来执行我们的动画操作,_move里面不需要传递参数,每一次都用move中存储下来的值即可"></a>3)关于作用域累积的问题-&gt;在move中编写一个_move来执行我们的动画操作,_move里面不需要传递参数,每一次都用move中存储下来的值即可</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">target</span>)</span>&#123;</div><div class="line">        ~<span class="function"><span class="keyword">function</span> <span class="title">_move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">           <span class="built_in">window</span>.clearTimeout(curEle.timer);</div><div class="line">           <span class="comment">// &lt;js code&gt;</span></div><div class="line">           curEle.timer=<span class="built_in">window</span>.setTimeout(_move,<span class="number">15</span>);</div><div class="line">           <span class="comment">//_move这里不建议使用arguments.callee因为在严格模式下不兼容这个属性,而写在项目中一般都是需要使用严格模式编写代码的</span></div><div class="line">        &#125;();</div><div class="line">    &#125;</div><div class="line">    move();</div></pre></td></tr></table></figure>
+<h4 id="4-为了防止走一步超了-不走还到不了边界-我们在做边界判断的时候需要加上步长来做"><a href="#4-为了防止走一步超了-不走还到不了边界-我们在做边界判断的时候需要加上步长来做" class="headerlink" title="4)为了防止走一步超了,不走还到不了边界,我们在做边界判断的时候需要加上步长来做"></a>4)为了防止走一步超了,不走还到不了边界,我们在做边界判断的时候需要加上步长来做</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">target</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> step=<span class="number">10</span>;</div><div class="line"></div><div class="line">        ~<span class="function"><span class="keyword">function</span> <span class="title">_move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">           <span class="built_in">window</span>.clearTimeout(curEle.timer);</div><div class="line"></div><div class="line">           <span class="keyword">var</span> curL=utils.getCss(curEle,<span class="string">"left"</span>);</div><div class="line">           <span class="keyword">if</span>(curL+step&gt;=target)&#123;</div><div class="line">              utils.setCss(curEle,<span class="string">"left"</span>,target);</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">           &#125;</div><div class="line">           utils.setCss(curEle,<span class="string">"left"</span>,curL+step);</div><div class="line"></div><div class="line">           curEle.timer=<span class="built_in">window</span>.setTimeout(_move,<span class="number">15</span>);</div><div class="line">        &#125;();</div><div class="line">    &#125;</div><div class="line">    move();</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -565,7 +523,7 @@ $(function() {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2016/04/06/pub_sub/" title="JS中的发布订阅模式">http://yoursite.com/2016/04/06/pub_sub/</a>
+    <a href="http://yoursite.com/2016/02/08/animadesign/" title="JS实现动画的四条优化方法">http://yoursite.com/2016/02/08/animadesign/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -580,7 +538,9 @@ $(function() {
       
         <div class="post-tags">
           
-            <a href="/tags/发布订阅/" rel="tag"># 发布订阅</a>
+            <a href="/tags/动画/" rel="tag"># 动画</a>
+          
+            <a href="/tags/优化/" rel="tag"># 优化</a>
           
         </div>
       
@@ -593,8 +553,8 @@ $(function() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/15/faceObj/" rel="next" title="关于JS的面向对象总结">
-                <i class="fa fa-chevron-left"></i> 关于JS的面向对象总结
+              <a href="/2016/01/16/jsonjsonp/" rel="next" title="区分json与jsonp">
+                <i class="fa fa-chevron-left"></i> 区分json与jsonp
               </a>
             
           </div>
@@ -603,8 +563,8 @@ $(function() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/06/tab/" rel="prev" title="选项卡的实现">
-                选项卡的实现 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/21/math/" rel="prev" title="Math">
+                Math <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -833,7 +793,7 @@ $(function() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-你是如何理解发布订阅模式的"><span class="nav-number">1.</span> <span class="nav-text">一. 你是如何理解发布订阅模式的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-发布订阅模式"><span class="nav-number">2.</span> <span class="nav-text">二. 发布订阅模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-如果使用的是setTimeout实现的轮询动画-在每一次执行方法之前需要把前面的设置的定时器清除掉"><span class="nav-number">1.</span> <span class="nav-text">1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-为了防止全局变量的污染-我们把定时器的返回值赋值给当前操作元素的自定义属性-这样做还有一个好处-就是如果当前动画没有完成-执行了下一个动画-由于我们每一次都是给自己的自定义属性-那么下一个动画开始的时候默认的把当前的动画的结束了"><span class="nav-number">2.</span> <span class="nav-text">2)为了防止全局变量的污染,我们把定时器的返回值赋值给当前操作元素的自定义属性;这样做还有一个好处,就是如果当前动画没有完成,执行了下一个动画,由于我们每一次都是给自己的自定义属性,那么下一个动画开始的时候默认的把当前的动画的结束了;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-关于作用域累积的问题-gt-在move中编写一个-move来执行我们的动画操作-move里面不需要传递参数-每一次都用move中存储下来的值即可"><span class="nav-number">3.</span> <span class="nav-text">3)关于作用域累积的问题->在move中编写一个_move来执行我们的动画操作,_move里面不需要传递参数,每一次都用move中存储下来的值即可</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-为了防止走一步超了-不走还到不了边界-我们在做边界判断的时候需要加上步长来做"><span class="nav-number">4.</span> <span class="nav-text">4)为了防止走一步超了,不走还到不了边界,我们在做边界判断的时候需要加上步长来做</span></a></li></ol></div>
             
 
           </div>

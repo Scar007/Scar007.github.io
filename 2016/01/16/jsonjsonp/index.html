@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="this," />
+  <meta name="keywords" content="jsonp,json," />
 
 
 
@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="ES5中this指向问题this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象  1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window 1234567function()&amp;#123;    console.log(this)&amp;#125;var obj=&amp;">
-<meta name="keywords" content="this">
+<meta name="description" content="JSON(JavaScript Object Notation)和JSONP(JSON with Padding)虽然只有一个字母的差别，但其实他们根本不是一回事儿,下边简单区分概括一下：JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。我们拿最近比较火的谍战片来打个比方，JSON是地下党们用来书写和交换情报的“暗号”，而JSONP则是把用暗号">
+<meta name="keywords" content="jsonp,json">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS中this指向问题总结">
-<meta property="og:url" content="http://yoursite.com/2015/04/02/js_this/index.html">
+<meta property="og:title" content="区分json与jsonp">
+<meta property="og:url" content="http://yoursite.com/2016/01/16/jsonjsonp/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="ES5中this指向问题this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象  1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window 1234567function()&amp;#123;    console.log(this)&amp;#125;var obj=&amp;">
-<meta property="og:updated_time" content="2018-06-26T03:08:35.910Z">
+<meta property="og:description" content="JSON(JavaScript Object Notation)和JSONP(JSON with Padding)虽然只有一个字母的差别，但其实他们根本不是一回事儿,下边简单区分概括一下：JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。我们拿最近比较火的谍战片来打个比方，JSON是地下党们用来书写和交换情报的“暗号”，而JSONP则是把用暗号">
+<meta property="og:updated_time" content="2018-06-26T03:43:22.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS中this指向问题总结">
-<meta name="twitter:description" content="ES5中this指向问题this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象  1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window 1234567function()&amp;#123;    console.log(this)&amp;#125;var obj=&amp;">
+<meta name="twitter:title" content="区分json与jsonp">
+<meta name="twitter:description" content="JSON(JavaScript Object Notation)和JSONP(JSON with Padding)虽然只有一个字母的差别，但其实他们根本不是一回事儿,下边简单区分概括一下：JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。我们拿最近比较火的谍战片来打个比方，JSON是地下党们用来书写和交换情报的“暗号”，而JSONP则是把用暗号">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/04/02/js_this/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/01/16/jsonjsonp/"/>
 
 
 
 
 
-  <title>JS中this指向问题总结 | Scar's Blog</title>
+  <title>区分json与jsonp | Scar's Blog</title>
   
 
 
@@ -381,7 +381,7 @@ $(function() {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/02/js_this/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/16/jsonjsonp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="高佳睿">
@@ -398,7 +398,7 @@ $(function() {
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS中this指向问题总结</h1>
+          <h1 class="post-title" itemprop="name headline">区分json与jsonp</h1>
         
 
         <div class="post-meta">
@@ -410,8 +410,8 @@ $(function() {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-02T00:00:00+08:00">
-                2015-04-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-16T00:00:00+08:00">
+                2016-01-16
               </time>
             
 
@@ -433,8 +433,8 @@ $(function() {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
+                  <a href="/categories/跨域/" itemprop="url" rel="index">
+                    <span itemprop="name">跨域</span>
                   </a>
                 </span>
 
@@ -451,8 +451,8 @@ $(function() {
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/04/02/js_this/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2015/04/02/js_this/" itemprop="commentCount">0</span> comments
+                <a href="/2016/01/16/jsonjsonp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/01/16/jsonjsonp/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -460,7 +460,7 @@ $(function() {
 
           
           
-             <span id="/2015/04/02/js_this/" class="leancloud_visitors" data-flag-title="JS中this指向问题总结">
+             <span id="/2016/01/16/jsonjsonp/" class="leancloud_visitors" data-flag-title="区分json与jsonp">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -491,39 +491,38 @@ $(function() {
       
 
       
-        <h2 id="ES5中this指向问题"><a href="#ES5中this指向问题" class="headerlink" title="ES5中this指向问题"></a>ES5中this指向问题</h2><p>this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象</p>
+        <h4 id="JSON-JavaScript-Object-Notation-和JSONP-JSON-with-Padding-虽然只有一个字母的差别，但其实他们根本不是一回事儿-下边简单区分概括一下："><a href="#JSON-JavaScript-Object-Notation-和JSONP-JSON-with-Padding-虽然只有一个字母的差别，但其实他们根本不是一回事儿-下边简单区分概括一下：" class="headerlink" title="JSON(JavaScript Object Notation)和JSONP(JSON with Padding)虽然只有一个字母的差别，但其实他们根本不是一回事儿,下边简单区分概括一下："></a>JSON(JavaScript Object Notation)和JSONP(JSON with Padding)虽然只有一个字母的差别，但其实他们根本不是一回事儿,下边简单区分概括一下：</h4><h4 id="JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。"><a href="#JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。" class="headerlink" title="JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。"></a>JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。</h4><p>我们拿最近比较火的谍战片来打个比方，JSON是地下党们用来书写和交换情报的“暗号”，而JSONP则是把用暗号书写的情报传递给自己同志时使用的接头方式。看到没？一个是描述信息的格式，一个是信息传递双方约定的方法。<br>　　既然随便聊聊，那我们就不再采用教条的方式来讲述，而是把关注重心放在帮助开发人员理解是否应当选择使用以及如何使用上。</p>
+<h2 id="什么是JSON"><a href="#什么是JSON" class="headerlink" title="什么是JSON"></a>什么是JSON</h2><p>前面简单说了一下，JSON是一种基于文本的数据交换方式，或者叫做数据描述格式，你是否该选用他首先肯定要关注它所拥有的优点。</p>
+<h3 id="JSON的优点："><a href="#JSON的优点：" class="headerlink" title="JSON的优点："></a>JSON的优点：</h3><ul>
+<li>1、基于纯文本，跨平台传递极其简单；</li>
+<li>2、Javascript原生支持，后台语言几乎全部支持；</li>
+<li>3、轻量级数据格式，占用字符数量极少，特别适合互联网传递；</li>
+<li>4、可读性较强，虽然比不上XML那么一目了然，但在合理的依次缩进之后还是很容易识别的；</li>
+<li>5、容易编写和解析，当然前提是你要知道数据结构； 　　JSON的缺点当然也有，但在作者看来实在是无关紧要的东西，所以不再单独说明。<h4 id="JSON的格式或者叫规则："><a href="#JSON的格式或者叫规则：" class="headerlink" title="JSON的格式或者叫规则："></a>JSON的格式或者叫规则：</h4>JSON能够以非常简单的方式来描述数据结构，XML能做的它都能做，因此在跨平台方面两者完全不分伯仲。 </li>
+<li>1、JSON只有两种数据类型描述符，大括号{}和方括号[]，其余英文冒号:是映射符，英文逗号,是分隔符，英文双引号””是定义符。</li>
+<li>2、大括号{}用来描述一组“不同类型的无序键值对集合”（每个键值对可以理解为OOP的属性描述），方括号[]用来描述一组“相同类型的有序数据集合”（可对应OOP的数组）。</li>
+<li>3、上述两种集合中若有多个子项，则通过英文逗号,进行分隔。</li>
+<li>4、键值对以英文冒号:进行分隔，并且建议键名都加上英文双引号””，以便于不同语言的解析。</li>
+<li>5、JSON内部常用数据类型无非就是字符串、数字、布尔、日期、null 这么几个，字符串必须用双引号引起来，其余的都不用，日期类型比较特殊，这里就不展开讲述了，只是建议如果客户端没    有按日期排序功能需求的话，那么把日期时间直接作为字符串传递就好，可以省去很多麻烦。</li>
+</ul>
+<h2 id="什么是JSONP"><a href="#什么是JSONP" class="headerlink" title="什么是JSONP"></a>什么是JSONP</h2><p>先说说JSONP是怎么产生的： 其实网上关于JSONP的讲解有很多，但却千篇一律，而且云里雾里，对于很多刚接触的人来讲理解起来有些困难，小可不才，试着用自己的方式来阐释一下这个问题，看看是否有帮助。</p>
 <ul>
-<li><p>1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">fn</span>:fn&#125;;</div><div class="line">fn(); <span class="comment">//this指的是window</span></div><div class="line">obj.fn(); <span class="comment">//this指的是obj</span></div><div class="line">sum(); <span class="comment">//this指的是window</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>2.自执行函数中this永远指的是window，严格模式下是undefined</p>
-</li>
-<li><p>3.给元素的某一个事件绑定方法，当事件触发的时候执行对应的方法，方法中的this是当前的DOM对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById.onclick=fn; <span class="comment">//fn中的this指的是box</span></div><div class="line"><span class="built_in">document</span>.getElementById.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    fn();  <span class="comment">//fn()中的this是window</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>4.在构造函数模式中、类中(函数体中)出现的this.xxx=xxx中的this是当前类的实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">perso</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">    <span class="keyword">this</span>.age=age;</div><div class="line">    <span class="keyword">this</span>.write=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'my name is'</span> + <span class="keyword">this</span>.name +<span class="string">',我'</span>+ <span class="keyword">this</span>.age +<span class="string">'岁了！'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1=<span class="keyword">new</span> person(<span class="string">'高佳睿'</span>,<span class="string">'18'</span>) <span class="comment">//这里的person是一个类</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>5.在原型模式中，this常用2种方法：</p>
+<li>1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；</li>
+<li>2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如<script>、、<iframe>）；</li>
+<li>3、于是可以判断，当前阶段如果想通过纯web端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理；</li>
+<li>4、恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据；</li>
+<li>5、这样子解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。</li>
+<li>6、客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。</li>
+<li>7、为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。 如果对于callback参数如何使用还有些模糊的话，我们后面会有具体的实例来讲解。</li>
+</ul>
+<h3 id="JSONP的客户端具体实现："><a href="#JSONP的客户端具体实现：" class="headerlink" title="JSONP的客户端具体实现："></a>JSONP的客户端具体实现：</h3><p>不管jQuery也好，ExtJs也罢，又或者是其他支持jsonp的框架，他们幕后所做的工作都是一样的，下面我来循序渐进的说明一下jsonp在客户端的实现：</p>
 <ul>
-<li>在类中this.xxx=xxx;this是当前类的实例</li>
-<li>某一方法中的this,看点’.’前边是谁this就是谁<ul>
-<li>先确定this指向</li>
-<li>把this替换成对应的代码  </li>
-<li>按照原型链查找机制，一步一步查找</li>
+<li>1、我们知道，哪怕跨域js文件中的代码（当然指符合web脚本安全策略的），web页面也是可以无条件执行的。</li>
+<li>2、现在我们在jsonp.html页面定义一个函数，然后在远程remote.js中传入数据进行调用。</li>
+<li>3、聪明的开发者很容易想到，只要服务端提供的js脚本是动态生成的就行了呗，这样调用者可以传一个参数过去告诉服务端“我想要一段调用XXX函数的js代码，请你返回给我”，于是服务器就可以按照客户端的需求来生成js脚本并响应了。</li>
+<li>4.到这里为止的话，相信你已经能够理解jsonp的客户端实现原理了吧？剩下的就是如何把代码封装一下，以便于与用户界面交互，从而实现多次和重复调用。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>6.call和apply强制改变this的指向-&gt;以上所有的this情况在遇到call/apply的时候都不好使,都已强制改变的为主obj.fn.call(1);//this-&gt;1</p>
-</li>
-</ul>
-<p>一般情况下,我们执行call方法第一个传递的参数值是谁,那么fn中的this就是谁<br>[在非严格模式下]<br>第一个参数没有传递值、传递的是null、传递的是undefined fn中的this都是window<br>[严格模式下]<br>第一个参数传递的是谁this就是谁,传递null/undefined,fn中的this都是对应的null/undefined,不传递值默认也是undefined</p>
-<blockquote>
-<p>一定要切记的一句话：你以为 你以为的 就是你以为的</p>
-</blockquote>
-<h2 id="ES6中this："><a href="#ES6中this：" class="headerlink" title="ES6中this："></a>ES6中this：</h2><p>箭头函数中的this因为绑定了词法作用域，所以始终指向自身外的第一个this（由于自身没有声明this，所以会去作用域链上找this），也就是始终等于调用它的函数的this（以为这个this离它最近）。</p>
-
+</script></li></ul>
       
     </div>
     
@@ -551,7 +550,7 @@ $(function() {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2015/04/02/js_this/" title="JS中this指向问题总结">http://yoursite.com/2015/04/02/js_this/</a>
+    <a href="http://yoursite.com/2016/01/16/jsonjsonp/" title="区分json与jsonp">http://yoursite.com/2016/01/16/jsonjsonp/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -566,7 +565,9 @@ $(function() {
       
         <div class="post-tags">
           
-            <a href="/tags/this/" rel="tag"># this</a>
+            <a href="/tags/jsonp/" rel="tag"># jsonp</a>
+          
+            <a href="/tags/json/" rel="tag"># json</a>
           
         </div>
       
@@ -579,8 +580,8 @@ $(function() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/14/hexo/" rel="next" title="Hexo + gitHub免费搭建一个属于自己的专属博客">
-                <i class="fa fa-chevron-left"></i> Hexo + gitHub免费搭建一个属于自己的专属博客
+              <a href="/2015/12/14/ajax/" rel="next" title="AJAX请求有关知识总结">
+                <i class="fa fa-chevron-left"></i> AJAX请求有关知识总结
               </a>
             
           </div>
@@ -589,8 +590,8 @@ $(function() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/04/27/jQ_Axiom/" rel="prev" title="jQuery的实现原理和核心">
-                jQuery的实现原理和核心 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/08/animadesign/" rel="prev" title="JS实现动画的四条优化方法">
+                JS实现动画的四条优化方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -819,7 +820,7 @@ $(function() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5中this指向问题"><span class="nav-number">1.</span> <span class="nav-text">ES5中this指向问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6中this："><span class="nav-number">2.</span> <span class="nav-text">ES6中this：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-JavaScript-Object-Notation-和JSONP-JSON-with-Padding-虽然只有一个字母的差别，但其实他们根本不是一回事儿-下边简单区分概括一下："><span class="nav-number">1.</span> <span class="nav-text">JSON(JavaScript Object Notation)和JSONP(JSON with Padding)虽然只有一个字母的差别，但其实他们根本不是一回事儿,下边简单区分概括一下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。"><span class="nav-number">2.</span> <span class="nav-text">JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是JSON"><span class="nav-number"></span> <span class="nav-text">什么是JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON的优点："><span class="nav-number"></span> <span class="nav-text">JSON的优点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON的格式或者叫规则："><span class="nav-number">1.</span> <span class="nav-text">JSON的格式或者叫规则：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是JSONP"><span class="nav-number"></span> <span class="nav-text">什么是JSONP</span></a></div>
             
 
           </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="动画,优化," />
+  <meta name="keywords" content="this," />
 
 
 
@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉1234567var timer=null;function move()&amp;#123;    window.clearTimeout(timer);      //&amp;lt;js code&amp;gt;    timer=window.setTimeout(move,15);&amp;#125;move(); 2">
-<meta name="keywords" content="动画,优化">
+<meta name="description" content="ES5中this指向问题this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象  1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window 1234567function()&amp;#123;    console.log(this)&amp;#125;var obj=&amp;">
+<meta name="keywords" content="this">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS实现动画的四条优化方法">
-<meta property="og:url" content="http://yoursite.com/2016/02/08/anima_design/index.html">
+<meta property="og:title" content="JS中this指向问题总结">
+<meta property="og:url" content="http://yoursite.com/2015/04/02/this/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉1234567var timer=null;function move()&amp;#123;    window.clearTimeout(timer);      //&amp;lt;js code&amp;gt;    timer=window.setTimeout(move,15);&amp;#125;move(); 2">
-<meta property="og:updated_time" content="2018-06-26T03:25:47.786Z">
+<meta property="og:description" content="ES5中this指向问题this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象  1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window 1234567function()&amp;#123;    console.log(this)&amp;#125;var obj=&amp;">
+<meta property="og:updated_time" content="2018-06-26T03:41:32.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS实现动画的四条优化方法">
-<meta name="twitter:description" content="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉1234567var timer=null;function move()&amp;#123;    window.clearTimeout(timer);      //&amp;lt;js code&amp;gt;    timer=window.setTimeout(move,15);&amp;#125;move(); 2">
+<meta name="twitter:title" content="JS中this指向问题总结">
+<meta name="twitter:description" content="ES5中this指向问题this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象  1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window 1234567function()&amp;#123;    console.log(this)&amp;#125;var obj=&amp;">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/02/08/anima_design/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/04/02/this/"/>
 
 
 
 
 
-  <title>JS实现动画的四条优化方法 | Scar's Blog</title>
+  <title>JS中this指向问题总结 | Scar's Blog</title>
   
 
 
@@ -381,7 +381,7 @@ $(function() {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/08/anima_design/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/02/this/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="高佳睿">
@@ -398,7 +398,7 @@ $(function() {
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS实现动画的四条优化方法</h1>
+          <h1 class="post-title" itemprop="name headline">JS中this指向问题总结</h1>
         
 
         <div class="post-meta">
@@ -410,8 +410,8 @@ $(function() {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-08T00:00:00+08:00">
-                2016-02-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-02T00:00:00+08:00">
+                2015-04-02
               </time>
             
 
@@ -451,8 +451,8 @@ $(function() {
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/02/08/anima_design/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/02/08/anima_design/" itemprop="commentCount">0</span> comments
+                <a href="/2015/04/02/this/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2015/04/02/this/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -460,7 +460,7 @@ $(function() {
 
           
           
-             <span id="/2016/02/08/anima_design/" class="leancloud_visitors" data-flag-title="JS实现动画的四条优化方法">
+             <span id="/2015/04/02/this/" class="leancloud_visitors" data-flag-title="JS中this指向问题总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -491,10 +491,38 @@ $(function() {
       
 
       
-        <h4 id="1-如果使用的是setTimeout实现的轮询动画-在每一次执行方法之前需要把前面的设置的定时器清除掉"><a href="#1-如果使用的是setTimeout实现的轮询动画-在每一次执行方法之前需要把前面的设置的定时器清除掉" class="headerlink" title="1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉"></a>1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> timer=<span class="literal">null</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">window</span>.clearTimeout(timer);</div><div class="line">      <span class="comment">//&lt;js code&gt;</span></div><div class="line">    timer=<span class="built_in">window</span>.setTimeout(move,<span class="number">15</span>);</div><div class="line">&#125;</div><div class="line">move();</div></pre></td></tr></table></figure>
-<h4 id="2-为了防止全局变量的污染-我们把定时器的返回值赋值给当前操作元素的自定义属性-这样做还有一个好处-就是如果当前动画没有完成-执行了下一个动画-由于我们每一次都是给自己的自定义属性-那么下一个动画开始的时候默认的把当前的动画的结束了"><a href="#2-为了防止全局变量的污染-我们把定时器的返回值赋值给当前操作元素的自定义属性-这样做还有一个好处-就是如果当前动画没有完成-执行了下一个动画-由于我们每一次都是给自己的自定义属性-那么下一个动画开始的时候默认的把当前的动画的结束了" class="headerlink" title="2)为了防止全局变量的污染,我们把定时器的返回值赋值给当前操作元素的自定义属性;这样做还有一个好处,就是如果当前动画没有完成,执行了下一个动画,由于我们每一次都是给自己的自定义属性,那么下一个动画开始的时候默认的把当前的动画的结束了;"></a>2)为了防止全局变量的污染,我们把定时器的返回值赋值给当前操作元素的自定义属性;这样做还有一个好处,就是如果当前动画没有完成,执行了下一个动画,由于我们每一次都是给自己的自定义属性,那么下一个动画开始的时候默认的把当前的动画的结束了;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">window</span>.clearTimeout(curEle.timer);</div><div class="line">    <span class="comment">//&lt;js code&gt;</span></div><div class="line">    curEle.timer=<span class="built_in">window</span>.setTimeout(move,<span class="number">15</span>);</div><div class="line">&#125;</div><div class="line">move();</div></pre></td></tr></table></figure>
-<h4 id="3-关于作用域累积的问题-gt-在move中编写一个-move来执行我们的动画操作-move里面不需要传递参数-每一次都用move中存储下来的值即可"><a href="#3-关于作用域累积的问题-gt-在move中编写一个-move来执行我们的动画操作-move里面不需要传递参数-每一次都用move中存储下来的值即可" class="headerlink" title="3)关于作用域累积的问题-&gt;在move中编写一个_move来执行我们的动画操作,_move里面不需要传递参数,每一次都用move中存储下来的值即可"></a>3)关于作用域累积的问题-&gt;在move中编写一个_move来执行我们的动画操作,_move里面不需要传递参数,每一次都用move中存储下来的值即可</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">target</span>)</span>&#123;</div><div class="line">        ~<span class="function"><span class="keyword">function</span> <span class="title">_move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">           <span class="built_in">window</span>.clearTimeout(curEle.timer);</div><div class="line">           <span class="comment">// &lt;js code&gt;</span></div><div class="line">           curEle.timer=<span class="built_in">window</span>.setTimeout(_move,<span class="number">15</span>);</div><div class="line">           <span class="comment">//_move这里不建议使用arguments.callee因为在严格模式下不兼容这个属性,而写在项目中一般都是需要使用严格模式编写代码的</span></div><div class="line">        &#125;();</div><div class="line">    &#125;</div><div class="line">    move();</div></pre></td></tr></table></figure>
-<h4 id="4-为了防止走一步超了-不走还到不了边界-我们在做边界判断的时候需要加上步长来做"><a href="#4-为了防止走一步超了-不走还到不了边界-我们在做边界判断的时候需要加上步长来做" class="headerlink" title="4)为了防止走一步超了,不走还到不了边界,我们在做边界判断的时候需要加上步长来做"></a>4)为了防止走一步超了,不走还到不了边界,我们在做边界判断的时候需要加上步长来做</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params">target</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> step=<span class="number">10</span>;</div><div class="line"></div><div class="line">        ~<span class="function"><span class="keyword">function</span> <span class="title">_move</span>(<span class="params"></span>)</span>&#123;</div><div class="line">           <span class="built_in">window</span>.clearTimeout(curEle.timer);</div><div class="line"></div><div class="line">           <span class="keyword">var</span> curL=utils.getCss(curEle,<span class="string">"left"</span>);</div><div class="line">           <span class="keyword">if</span>(curL+step&gt;=target)&#123;</div><div class="line">              utils.setCss(curEle,<span class="string">"left"</span>,target);</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">           &#125;</div><div class="line">           utils.setCss(curEle,<span class="string">"left"</span>,curL+step);</div><div class="line"></div><div class="line">           curEle.timer=<span class="built_in">window</span>.setTimeout(_move,<span class="number">15</span>);</div><div class="line">        &#125;();</div><div class="line">    &#125;</div><div class="line">    move();</div></pre></td></tr></table></figure>
+        <h2 id="ES5中this指向问题"><a href="#ES5中this指向问题" class="headerlink" title="ES5中this指向问题"></a>ES5中this指向问题</h2><p>this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象</p>
+<ul>
+<li><p>1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">fn</span>:fn&#125;;</div><div class="line">fn(); <span class="comment">//this指的是window</span></div><div class="line">obj.fn(); <span class="comment">//this指的是obj</span></div><div class="line">sum(); <span class="comment">//this指的是window</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>2.自执行函数中this永远指的是window，严格模式下是undefined</p>
+</li>
+<li><p>3.给元素的某一个事件绑定方法，当事件触发的时候执行对应的方法，方法中的this是当前的DOM对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById.onclick=fn; <span class="comment">//fn中的this指的是box</span></div><div class="line"><span class="built_in">document</span>.getElementById.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    fn();  <span class="comment">//fn()中的this是window</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>4.在构造函数模式中、类中(函数体中)出现的this.xxx=xxx中的this是当前类的实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">perso</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">    <span class="keyword">this</span>.age=age;</div><div class="line">    <span class="keyword">this</span>.write=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'my name is'</span> + <span class="keyword">this</span>.name +<span class="string">',我'</span>+ <span class="keyword">this</span>.age +<span class="string">'岁了！'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1=<span class="keyword">new</span> person(<span class="string">'高佳睿'</span>,<span class="string">'18'</span>) <span class="comment">//这里的person是一个类</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>5.在原型模式中，this常用2种方法：</p>
+<ul>
+<li>在类中this.xxx=xxx;this是当前类的实例</li>
+<li>某一方法中的this,看点’.’前边是谁this就是谁<ul>
+<li>先确定this指向</li>
+<li>把this替换成对应的代码  </li>
+<li>按照原型链查找机制，一步一步查找</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>6.call和apply强制改变this的指向-&gt;以上所有的this情况在遇到call/apply的时候都不好使,都已强制改变的为主obj.fn.call(1);//this-&gt;1</p>
+</li>
+</ul>
+<p>一般情况下,我们执行call方法第一个传递的参数值是谁,那么fn中的this就是谁<br>[在非严格模式下]<br>第一个参数没有传递值、传递的是null、传递的是undefined fn中的this都是window<br>[严格模式下]<br>第一个参数传递的是谁this就是谁,传递null/undefined,fn中的this都是对应的null/undefined,不传递值默认也是undefined</p>
+<blockquote>
+<p>一定要切记的一句话：你以为 你以为的 就是你以为的</p>
+</blockquote>
+<h2 id="ES6中this："><a href="#ES6中this：" class="headerlink" title="ES6中this："></a>ES6中this：</h2><p>箭头函数中的this因为绑定了词法作用域，所以始终指向自身外的第一个this（由于自身没有声明this，所以会去作用域链上找this），也就是始终等于调用它的函数的this（以为这个this离它最近）。</p>
 
       
     </div>
@@ -523,7 +551,7 @@ $(function() {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2016/02/08/anima_design/" title="JS实现动画的四条优化方法">http://yoursite.com/2016/02/08/anima_design/</a>
+    <a href="http://yoursite.com/2015/04/02/this/" title="JS中this指向问题总结">http://yoursite.com/2015/04/02/this/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -538,9 +566,7 @@ $(function() {
       
         <div class="post-tags">
           
-            <a href="/tags/动画/" rel="tag"># 动画</a>
-          
-            <a href="/tags/优化/" rel="tag"># 优化</a>
+            <a href="/tags/this/" rel="tag"># this</a>
           
         </div>
       
@@ -553,8 +579,8 @@ $(function() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/16/json_jsonp/" rel="next" title="区分json与jsonp">
-                <i class="fa fa-chevron-left"></i> 区分json与jsonp
+              <a href="/2015/03/14/hexo/" rel="next" title="Hexo + gitHub免费搭建一个属于自己的专属博客">
+                <i class="fa fa-chevron-left"></i> Hexo + gitHub免费搭建一个属于自己的专属博客
               </a>
             
           </div>
@@ -563,8 +589,8 @@ $(function() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/21/math/" rel="prev" title="Math">
-                Math <i class="fa fa-chevron-right"></i>
+              <a href="/2015/04/27/axiom/" rel="prev" title="jQuery的实现原理和核心">
+                jQuery的实现原理和核心 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -793,7 +819,7 @@ $(function() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-如果使用的是setTimeout实现的轮询动画-在每一次执行方法之前需要把前面的设置的定时器清除掉"><span class="nav-number">1.</span> <span class="nav-text">1)如果使用的是setTimeout实现的轮询动画,在每一次执行方法之前需要把前面的设置的定时器清除掉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-为了防止全局变量的污染-我们把定时器的返回值赋值给当前操作元素的自定义属性-这样做还有一个好处-就是如果当前动画没有完成-执行了下一个动画-由于我们每一次都是给自己的自定义属性-那么下一个动画开始的时候默认的把当前的动画的结束了"><span class="nav-number">2.</span> <span class="nav-text">2)为了防止全局变量的污染,我们把定时器的返回值赋值给当前操作元素的自定义属性;这样做还有一个好处,就是如果当前动画没有完成,执行了下一个动画,由于我们每一次都是给自己的自定义属性,那么下一个动画开始的时候默认的把当前的动画的结束了;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-关于作用域累积的问题-gt-在move中编写一个-move来执行我们的动画操作-move里面不需要传递参数-每一次都用move中存储下来的值即可"><span class="nav-number">3.</span> <span class="nav-text">3)关于作用域累积的问题->在move中编写一个_move来执行我们的动画操作,_move里面不需要传递参数,每一次都用move中存储下来的值即可</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-为了防止走一步超了-不走还到不了边界-我们在做边界判断的时候需要加上步长来做"><span class="nav-number">4.</span> <span class="nav-text">4)为了防止走一步超了,不走还到不了边界,我们在做边界判断的时候需要加上步长来做</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5中this指向问题"><span class="nav-number">1.</span> <span class="nav-text">ES5中this指向问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6中this："><span class="nav-number">2.</span> <span class="nav-text">ES6中this：</span></a></li></ol></div>
             
 
           </div>
