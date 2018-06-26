@@ -81,16 +81,16 @@
 
 
 
-<meta name="description" content="实现拖拽的原理 鼠标按下 记录当前位置信息   鼠标拖动 记录鼠标的移动距离,来计算设置当前元素的位置偏移   鼠标抬起 删除鼠标up时候的事件处理程序   鼠标丢失 IE和火狐下,可以使用setCapture()和releaseCapture() chrome下使用document监听事件    案例1">
+<meta name="description" content="实现拖拽的原理 鼠标按下 记录当前位置信息   鼠标拖动 记录鼠标的移动距离,来计算设置当前元素的位置偏移   鼠标抬起 删除鼠标up时候的事件处理程序   鼠标丢失 IE和火狐下,可以使用setCapture()和releaseCapture() chrome下使用document监听事件    案例123456789101112131415161718192021222324252627282">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拖拽的实现">
 <meta property="og:url" content="http://yoursite.com/2016/04/26/drag/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="实现拖拽的原理 鼠标按下 记录当前位置信息   鼠标拖动 记录鼠标的移动距离,来计算设置当前元素的位置偏移   鼠标抬起 删除鼠标up时候的事件处理程序   鼠标丢失 IE和火狐下,可以使用setCapture()和releaseCapture() chrome下使用document监听事件    案例1">
-<meta property="og:updated_time" content="2018-06-26T03:33:39.689Z">
+<meta property="og:description" content="实现拖拽的原理 鼠标按下 记录当前位置信息   鼠标拖动 记录鼠标的移动距离,来计算设置当前元素的位置偏移   鼠标抬起 删除鼠标up时候的事件处理程序   鼠标丢失 IE和火狐下,可以使用setCapture()和releaseCapture() chrome下使用document监听事件    案例123456789101112131415161718192021222324252627282">
+<meta property="og:updated_time" content="2018-06-26T09:02:57.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拖拽的实现">
-<meta name="twitter:description" content="实现拖拽的原理 鼠标按下 记录当前位置信息   鼠标拖动 记录鼠标的移动距离,来计算设置当前元素的位置偏移   鼠标抬起 删除鼠标up时候的事件处理程序   鼠标丢失 IE和火狐下,可以使用setCapture()和releaseCapture() chrome下使用document监听事件    案例1">
+<meta name="twitter:description" content="实现拖拽的原理 鼠标按下 记录当前位置信息   鼠标拖动 记录鼠标的移动距离,来计算设置当前元素的位置偏移   鼠标抬起 删除鼠标up时候的事件处理程序   鼠标丢失 IE和火狐下,可以使用setCapture()和releaseCapture() chrome下使用document监听事件    案例123456789101112131415161718192021222324252627282">
 
 
 
@@ -499,7 +499,7 @@ $(function() {
 </ul>
 </li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>简单的拖拽<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"../toolkit/reset.min.css"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#box</span>&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#e277ff</span>;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">cursor</span>: move;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> box=<span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        e=e||<span class="built_in">window</span>.event;</div><div class="line">        <span class="keyword">var</span> _this=<span class="keyword">this</span>;</div><div class="line">        <span class="keyword">var</span> mouseX=e.clientX,</div><div class="line">                mouseY=e.clientY,</div><div class="line">                boxL=<span class="keyword">this</span>.offsetLeft,</div><div class="line">                boxT=<span class="keyword">this</span>.offsetTop;</div><div class="line">        <span class="built_in">document</span>.onmousemove=<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">            e=e||<span class="built_in">window</span>.event;</div><div class="line">            <span class="keyword">var</span> curMouseX=e.clientX,</div><div class="line">                    curMouseY=e.clientY,</div><div class="line">                    curBoxL=curMouseX-mouseX+boxL,</div><div class="line">                    curBoxT=curMouseY-mouseY+boxT;</div><div class="line"></div><div class="line">            <span class="keyword">var</span> minW=<span class="number">0</span>,maxW=((<span class="built_in">document</span>.documentElement.clientWidth||<span class="built_in">document</span>.body.clientWidth)-_this.offsetWidth);</div><div class="line">            <span class="keyword">var</span> minH=<span class="number">0</span>,maxH=((<span class="built_in">document</span>.documentElement.clientHeight||<span class="built_in">document</span>.body.clientHeight)-_this.offsetHeight);</div><div class="line">            <span class="keyword">if</span>(curBoxL&lt;=minW)&#123;</div><div class="line">                curBoxL=minW;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(curBoxL&gt;=maxW)&#123;</div><div class="line">                curBoxL=maxW</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(curBoxT&lt;=minH)&#123;</div><div class="line">                curBoxT=minH;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(curBoxT&gt;=maxH)&#123;</div><div class="line">                curBoxT=maxH;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            _this.style.left=curBoxL+<span class="string">"px"</span>;</div><div class="line">            _this.style.top=curBoxT+<span class="string">"px"</span>;</div><div class="line">        &#125;;</div><div class="line">        <span class="built_in">document</span>.onmouseup=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">document</span>.onmousemove=<span class="literal">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    box.onmousedown=drag;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -507,14 +507,6 @@ $(function() {
     
     
 
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="" alt="高佳睿 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>生命不息，奋斗不止！</div>
-</div>
-
-      </div>
     
 
     
@@ -550,7 +542,7 @@ $(function() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/06/tab/" rel="next" title="选项卡的实现">
+              <a href="/2016/04/16/tab/" rel="next" title="选项卡的实现">
                 <i class="fa fa-chevron-left"></i> 选项卡的实现
               </a>
             
@@ -678,7 +670,7 @@ $(function() {
                 alt="高佳睿" />
             
               <p class="site-author-name" itemprop="name">高佳睿</p>
-              <p class="site-description motion-element" itemprop="description">万人中央，我孤独的漂亮！</p>
+              <p class="site-description motion-element" itemprop="description">你当温柔，亦有力量,Step by step!</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -688,7 +680,7 @@ $(function() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -699,7 +691,7 @@ $(function() {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -710,7 +702,7 @@ $(function() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

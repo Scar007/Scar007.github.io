@@ -81,16 +81,15 @@
 
 
 
-<meta name="description" content="实现选项卡的原理我们每一个页卡中的详细内容不一定是写死的,大部分都是从服务器端动获取绑定的  第一种:发送一次请求,服务器端会把所有页卡的内容返回给客户端,客户端根据内容分类,把不同的内容放在不同的页卡中(一次性把页卡内容都绑定了) 第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时">
-<meta property="og:type" content="article">
-<meta property="og:title" content="选项卡的实现">
-<meta property="og:url" content="http://yoursite.com/2016/04/06/tab/index.html">
+<meta name="description" content="你当温柔，亦有力量！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Scar&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="实现选项卡的原理我们每一个页卡中的详细内容不一定是写死的,大部分都是从服务器端动获取绑定的  第一种:发送一次请求,服务器端会把所有页卡的内容返回给客户端,客户端根据内容分类,把不同的内容放在不同的页卡中(一次性把页卡内容都绑定了) 第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时">
-<meta property="og:updated_time" content="2018-06-26T03:58:05.204Z">
+<meta property="og:description" content="你当温柔，亦有力量！">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="选项卡的实现">
-<meta name="twitter:description" content="实现选项卡的原理我们每一个页卡中的详细内容不一定是写死的,大部分都是从服务器端动获取绑定的  第一种:发送一次请求,服务器端会把所有页卡的内容返回给客户端,客户端根据内容分类,把不同的内容放在不同的页卡中(一次性把页卡内容都绑定了) 第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时">
+<meta name="twitter:title" content="Scar&#39;s Blog">
+<meta name="twitter:description" content="你当温柔，亦有力量！">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/04/06/tab/"/>
+  <link rel="canonical" href="http://yoursite.com/archives/2018/"/>
 
 
 
 
 
-  <title>选项卡的实现 | Scar's Blog</title>
+  <title>归档 | Scar's Blog</title>
   
 
 
@@ -228,7 +227,7 @@ $(function() {
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-right page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -356,258 +355,221 @@ $(function() {
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        
+        
+         
+          
+        好! 目前共计 70 篇日志。 继续努力。
+      </span>
 
-  
-  
-  
+      
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2018">2018</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/06/tab/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="高佳睿">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/gjr3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Scar's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/03/07/vue/" itemprop="url">
+              
+                <span itemprop="name">关于VUE的安装和一些简单属性</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">选项卡的实现</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-06T00:00:00+08:00">
-                2016-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/案例/" itemprop="url" rel="index">
-                    <span itemprop="name">案例</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/04/06/tab/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/04/06/tab/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/04/06/tab/" class="leancloud_visitors" data-flag-title="选项卡的实现">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="实现选项卡的原理"><a href="#实现选项卡的原理" class="headerlink" title="实现选项卡的原理"></a>实现选项卡的原理</h2><p>我们每一个页卡中的详细内容不一定是写死的,大部分都是从服务器端动获取绑定的</p>
-<ul>
-<li>第一种:发送一次请求,服务器端会把所有页卡的内容返回给客户端,客户端根据内容分类,把不同的内容放在不同的页卡中(一次性把页卡内容都绑定了)</li>
-<li>第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时候不要重新的获取</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<p>JQ实现选项卡(jQuery原型插件扩展)[链接如下]:<br><a href="https://scar007.github.io/2016/12/23/tab/" target="_blank" rel="external">https://scar007.github.io/2016/12/23/tab/</a></p>
-
-      
-    </div>
-    
-    
-    
-
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="" alt="高佳睿 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>生命不息，奋斗不止！</div>
-</div>
-
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-03-07T00:00:00+08:00"
+              content="2018-03-07" >
+          03-07
+        </time>
       </div>
-    
 
-    
-
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    高佳睿
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2016/04/06/tab/" title="选项卡的实现">http://yoursite.com/2016/04/06/tab/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/06/pubsub/" rel="next" title="JS中的发布订阅模式">
-                <i class="fa fa-chevron-left"></i> JS中的发布订阅模式
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/26/drag/" rel="prev" title="拖拽的实现">
-                拖拽的实现 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
         
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
+        
+        
 
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/02/22/pseudo/" itemprop="url">
+              
+                <span itemprop="name">伪类和伪元素介绍</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-22T00:00:00+08:00"
+              content="2018-02-22" >
+          02-22
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
 
       
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/02/12/svn/" itemprop="url">
+              
+                <span itemprop="name">GIT，SVN，CVS的区别比较</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-12T00:00:00+08:00"
+              content="2018-02-12" >
+          02-12
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/01/17/OOP/" itemprop="url">
+              
+                <span itemprop="name">构造函数模式与工厂模式的区别</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-01-17T00:00:00+08:00"
+              content="2018-01-17" >
+          01-17
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/01/03/OOP/" itemprop="url">
+              
+                <span itemprop="name">JS面向对象程序设计模式</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-01-03T00:00:00+08:00"
+              content="2018-01-03" >
+          01-03
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
     </div>
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -615,17 +577,6 @@ $(function() {
 
 
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -646,17 +597,8 @@ $(function() {
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -665,7 +607,7 @@ $(function() {
                 alt="高佳睿" />
             
               <p class="site-author-name" itemprop="name">高佳睿</p>
-              <p class="site-description motion-element" itemprop="description">万人中央，我孤独的漂亮！</p>
+              <p class="site-description motion-element" itemprop="description">你当温柔，亦有力量,Step by step!</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -675,7 +617,7 @@ $(function() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -686,7 +628,7 @@ $(function() {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -697,7 +639,7 @@ $(function() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -767,22 +709,6 @@ $(function() {
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现选项卡的原理"><span class="nav-number">1.</span> <span class="nav-text">实现选项卡的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例"><span class="nav-number">2.</span> <span class="nav-text">案例</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -936,10 +862,6 @@ $(function() {
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -991,30 +913,6 @@ $(function() {
       </style>
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'scar007',
-            repo: 'scar007.github.io',
-            
-            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '6ade390bdb8e7d660d3f52d0014d0f8ff8d00722',
-            
-                client_id: 'b747840350a17858e199'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
     
 
 
