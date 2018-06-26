@@ -87,7 +87,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/06/tab/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
 <meta property="og:description" content="实现选项卡的原理我们每一个页卡中的详细内容不一定是写死的,大部分都是从服务器端动获取绑定的  第一种:发送一次请求,服务器端会把所有页卡的内容返回给客户端,客户端根据内容分类,把不同的内容放在不同的页卡中(一次性把页卡内容都绑定了) 第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时">
-<meta property="og:updated_time" content="2018-06-26T03:35:04.390Z">
+<meta property="og:updated_time" content="2018-06-26T03:58:05.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="选项卡的实现">
 <meta name="twitter:description" content="实现选项卡的原理我们每一个页卡中的详细内容不一定是写死的,大部分都是从服务器端动获取绑定的  第一种:发送一次请求,服务器端会把所有页卡的内容返回给客户端,客户端根据内容分类,把不同的内容放在不同的页卡中(一次性把页卡内容都绑定了) 第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时">
@@ -303,16 +303,6 @@ $(function() {
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
 
       
         <li class="menu-item menu-item-search">
@@ -496,7 +486,7 @@ $(function() {
 <li>第二种:加载页面的时候,只把第一个页卡中的内容获取到,当我们操作页卡的时候,在重新向服务器发送请求,把对应的页卡内容获取到:如果当期页卡信息已经获取过了,再次操作的时候不要重新的获取</li>
 </ul>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<p>JQ实现选项卡(jQuery原型插件扩展)[链接如下]:<br><a href="https://scar007.github.io/2016/12/23/JQ%E5%AE%9E%E7%8E%B0%E9%80%89%E9%A1%B9%E5%8D%A1/" target="_blank" rel="external">https://scar007.github.io/2016/12/23/JQ%E5%AE%9E%E7%8E%B0%E9%80%89%E9%A1%B9%E5%8D%A1/</a></p>
+<p>JQ实现选项卡(jQuery原型插件扩展)[链接如下]:<br><a href="https://scar007.github.io/2016/12/23/tab/" target="_blank" rel="external">https://scar007.github.io/2016/12/23/tab/</a></p>
 
       
     </div>
