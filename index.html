@@ -466,6 +466,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -484,7 +502,30 @@ $(function() {
       
         
           
-          1. webpack基本概念Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。Chunk：代码块，一个 Chunk 
+          1. webpack基本概念Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。Loader：模块转换器，用于把模块原内容按照需求转换成新内容。Plugin：扩展插件，在 Webpack 构建流程中的特定时机会广播出对应的事件，插件可以监听这些事件的发生，在特定时机做对应的事情。
+2. 流程概括
+初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；
+开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译；
+确定入口：根据配置中的 entry 找出所有的入口文件；
+编译模块：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理；
+完成模块编译：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系；
+输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会；
+输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统。
+在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。
+
+
+
+3.详细流程WebPack的构建流程可以分为以下三大阶段：
+
+初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler。
+编译：从 Entry 发出，针对每个 Module 串行调用对应的 Loader 去翻译文件内容，再找到该 Module 依赖的 Module，递归地进行编译处理。
+输出：对编译后的 Module 组合成 Chunk，把 Chunk 转换成文件，输出到文件系统。
+
+3.1 初始化阶段
+
+
+事件名
+
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -635,6 +676,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -664,7 +723,30 @@ DelegatedModule
 DllModule
 ExternalModule
 
-2.
+2. 依赖
+Module类继承自DependenciesBlock，它有一个dependencies数组，表示此模块依赖的其他模块。
+webpack使用Dependency的各种子类来表示不同的模块加载规范，每个规范都有自己的DependencyParserPlugin来加载
+AMDRequireDependency
+AMDDefineDependency
+AMDRequireArrayDependency
+CommonJsRequireDependency
+SystemImportDependency
+
+
+每个Dependency都有自己的Template方法，用来生成加载该依赖模块定的JS代码
+不同的模块工厂可以生产不同的模块
+
+3.执行流程
+
+compile 开始编译
+make 从入口点分析模块及其依赖的模块，创建这些模块对象
+build-module 构建模块
+after-compile 完成构建
+seal 封装构建结果
+emit 把各个chunk输出到结果文件
+after-emit 完成输出
+
+3.1 编译核心对象 Compilation123456789101112131415this.compiler = compiler;       //Compiler对象this.resolvers = compiler.resolvers;   //模块解析器this.mainTemplate = new MainTemplate(this.outputOptions);   //生成主模块JSthis.chunkTemplate = new ChunkTemplate(this.outputOptions, this.mainTemplate);//异步加载的模块JSthis.hotUpdateChunkTemplate = new HotUpdateChunkTemplate(this.outputOptions);//热更新是的代码块模版JSthis.module
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -815,6 +897,24 @@ ExternalModule
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -833,7 +933,20 @@ ExternalModule
       
         
           
-          1.缩小文件搜索范围1.1.1 include &amp; exclude12345678910module:&#123;        rules:[            &#123;                 test:/\.js$/,                 use:['bab
+          1.缩小文件搜索范围1.1.1 include &amp; exclude12345678910module:&#123;        rules:[            &#123;                 test:/\.js$/,                 use:['babel-loader?cacheDirectory'],                include:path.resolve(__dirname,'src'),                exclude:/node_modules/            &#125;        ]    &#125;
+1.1.2 resolve.modules123resolve: &#123;        modules: [path.resolve(__dirname, 'node_modules')]&#125;,
+1.1.3 resolve.mainFields
+mainFields用于配置第三方模块使用那个入口文件 isomorphic-fetch
+当target为web或webworker时，值是[“browswer”,”module”,”main”]
+当target为其他情况时，值是[“module”,”main”] resolve: &#123;12345678    + mainFields:['main'] &#125;, `　　　#### 1.1.4 resolve.alias+ resolve.alias配置项通过别名来把原导入路径映射成一个新的导入路径 此优化方法会影响使用Tree-Shaking去除无效代码```javascriptalias: &#123;            'react': path.resolve(__dirname, './node_modules/react/cjs/eact.production.min.js')        &#125;
+
+
+
+1.1.5 resolve.extensions
+在导入语句没带文件后缀时，Webpack会自动带上后缀后去尝试询问文件是否存在 默认后缀是 extensions: [‘.js’, ‘.json’]
+后缀列表尽可能小
+频率最高的往前方
+导出语句里尽可能带上后缀123reso
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -984,6 +1097,24 @@ ExternalModule
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1003,7 +1134,26 @@ ExternalModule
         
           
            WebPack官网地址:https://webpack-china.org/
-1. 什么是WebPackWebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的
+1. 什么是WebPackWebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的格式以供浏览器使用。
+构建就是把源代码转换成发布到线上的可执行 JavaScrip、CSS、HTML 代码，包括如下内容。
+
+代码转换：TypeScript 编译成 JavaScript、SCSS 编译成 CSS 等。
+文件优化：压缩 JavaScript、CSS、HTML 代码，压缩合并图片等。
+代码分割：提取多个页面的公共代码、提取首屏不需要执行部分的代码让其异步加载。
+模块合并：在采用模块化的项目里会有很多个模块和文件，需要构建功能把模块分类合并成一个文件。
+自动刷新：监听本地源代码的变化，自动重新构建、刷新浏览器。
+代码校验：在代码被提交到仓库前需要校验代码是否符合规范，以及单元测试是否通过。
+自动发布：更新完代码后，自动构建出线上发布代码并传输给发布系统。
+
+构建其实是工程化、自动化思想在前端开发中的体现，把一系列流程用代码去实现，让代码自动化地执行这一系列复杂的流程。 构建给前端开发注入了更大的活力，解放了我们的生产力。
+2. 初始化项目123mkdir webpack-startcd webpack-startnpm init
+3. 快速上手3.1 webpack核心概念
+Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。
+Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。
+Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。
+Loader：模块转换器，用于把模块原内容按照需求转换成新内容。
+Plugin：扩展插件，在 Webpack 构建流程中的特定时机注入扩展逻辑来改变构建结果或做你想要的事情。
+Output：输出结果，在 Webpack 经过一系列处理并得出最终想要的代码后输出结果。==&gt;  Webpack 启动后会从Entry里配置的Module开始递归解析 Entry 依赖的所有 Mo
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1154,6 +1304,24 @@ ExternalModule
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1175,7 +1343,13 @@ ExternalModule
           注：在搭建项目之前，请先安装一些全局的工具（如：node，vue-cli等）
 node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安装node以后就可以正常使用npm命令
 全局安装vue-cli工具：1npm install vue-cli -g
-开始创
+开始创建项目：找一个合适的位置，打开命令窗口，使用vue初始化基于webpack的新项目1vue init webpack vue-demo  //注意名称太长的话它会有错误提示，就像VueDemo 我们可以写成vue-demo就可以了
+ 如上图，它会又各种提示，还有需要安装的东西，可以自行按照自己的需求去安装东西。
+ 生成以后它会在你刚开始选择的位置生成一个现成的vue的一个项目架子，就像这样：
+启动项目：1npm run dev
+根据上边的地址在浏览器菜单栏里边打开项目即可&gt;
+项目启动成功了，我们可以继续我们项目中所需要的工具，如：123npm install vue-router --save （路由管理模块）npm install vuex --save （状态管理模块）npm install vue-resource --save （网路请求模块）
+以下是脚手架生成的项目结构：1234567891011121314151617181920212223242526|-- build                            // 项目构建(webpack)相关代码|   |-- build.js                     // 生产环境构建代码|   |-- check-version.js             // 检查node、npm等版本|   |-- dev-client.js                // 热重载相关|   |-- dev-server.js                // 构建本地服务器|   |-- utils.js                     // 构建工具相关|   |-- webpack.base.conf.js         // webpack基础配置|   |-- webpack.dev.conf.js          // webpack开发环境配置|   |-- 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1326,6 +1500,24 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1344,7 +1536,7 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
       
         
           
-          自己在写这个组件的时候主要遇到的问题就是在动态传入背景图片或者背景色的时候没能立马顺利写出来，不过现在实现了这个简单组件就和大家分享一下1234567891011121314151617181920212223242526272829303132333435363738394041424344454
+          自己在写这个组件的时候主要遇到的问题就是在动态传入背景图片或者背景色的时候没能立马顺利写出来，不过现在实现了这个简单组件就和大家分享一下123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110&lt;template&gt;    &lt;div class="card" :style="bg != undefined ? setBg() : &#123;backgroundColor: '#fff'&#125;"&gt;        &lt;div class="cardTop"&gt;            &lt;span class="left"&gt;                &lt;span&gt;                    &lt;avatar class="leftImg" :src="cardImg" alt=""&gt;&lt;/avatar&gt;                &lt;/span&gt;                &lt;span class="content"&gt;                    &lt;span class="cardName"&gt;&#123;&#123;cardName != undefined ? cardName : defaultCardName&#125;&#125;&lt;/span&gt;                    &lt;span class="cardType"&gt;&#123;&#123;cardType != undefined ? cardType : defaultCardType&#125;&#125;&lt;/span&gt;                &lt;/span&gt;            &lt;/span&gt;       
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1495,6 +1687,24 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1513,7 +1723,7 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
       
         
           
-          本案例在上一篇的案例(React组件之间通过Props传值的技巧(小案例，帮助体会理解props、state、受控组件和非受控组件等))的基础上加强功能和用户体验，但是当然还有很多需要改进的地方，后期一步步慢慢增强：123456789101112131415161718192021222324252
+          本案例在上一篇的案例(React组件之间通过Props传值的技巧(小案例，帮助体会理解props、state、受控组件和非受控组件等))的基础上加强功能和用户体验，但是当然还有很多需要改进的地方，后期一步步慢慢增强：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194import React,&#123;Component&#125; from 'react';import &#123;render&#125; from 'react-dom';import './index.css';class CommentInput extends Component&#123;    constructor()&#123;        super();        this.state=&#123;            username:'',            content:''        &#125;    &#125;    handleUsernameChange=(event)=&gt;&#123;        this.setState(&#123;            username:event.target.value        &#125;)    &
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1664,6 +1874,24 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1682,7 +1910,7 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
       
         
           
-          本文重要是根据react小书上的一个很简单的例子改编的，加上自己的学习理解，希望可以通过实际案例让大家对概念有更清晰的理解，当然也希望能一块学习。12345678910111213141516171819202122232425262728293031323334353637383940414243
+          本文重要是根据react小书上的一个很简单的例子改编的，加上自己的学习理解，希望可以通过实际案例让大家对概念有更清晰的理解，当然也希望能一块学习。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160import React,&#123;Component&#125; from 'react';import &#123;render&#125; from 'react-dom';import './comprehensive.css'/* * 一个重要问题知识点： *可以看到这个CommentInput组件和CommentList组件都是两个子组件，但是开始是两个毫不相干的子组件，我们想让他们建立连接，但是同为两个子级组件之间是没法直接传值的，这时候他们的父级组件CommentApp就起到了一个桥梁的作用 * -&gt;当用户点击发布按钮的时候我们将CommentInput中的state当中最新的评论数据传递给父级组件CommentApp，然后从父级组件CommentApp传给子组件CommentList进行渲染 * * 问题来了：那么子级CommentInput怎么向父级CommentApp传值呢？ *   父组件CommentApp只需要通过props给子组件CommentInput传入一个回调函数，当用户点击发布按钮的时候CommentInput调用props中的回调函数并将state传入该函数即可 *///这个是commentInput子组件，负责用户输入的区域class Comm
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1833,6 +2061,24 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1856,7 +2102,65 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
 安装vue
 
 –save(-S)代表项目依赖
-–save-dev(-D)代表开发依赖123npm info vuenpm install vue --savenpm inst
+–save-dev(-D)代表开发依赖123npm info vuenpm install vue --savenpm install //跑环境,将package中的依赖全部安装
+
+
+
+安装后默认会生产\node_modules文件夹
+
+上传到git上\node_modules是忽略掉的,拉下代码后,需要重新\npm install安装依赖
+
+
+
+Vue属性el
+指定的元素不能是html和body
+使用querySelector
+
+data
+可以使用vm来代理data属性,vm是Vue的实例
+在html中使用的属性必须先声明,不能新增不存在的属性,使用Object.defineProperty,vue不兼容IE8以及下包IE8
+
+小胡子语法（双层大括号）
+这是v-text的缩写,直接再标签上使用v-text可以避免出现大括号闪烁
+括号内可以使用三元表达式
+最终的结果需要有返回值,可以赋值,运算
+等待数据加载好后,将内容插入到div中
+
+v-model
+只能绑定定变量,先将对应的数据放到输入框的value值上
+会监听输入框的输入事件 oninput,将值放回到数据中
+
+v-once
+在标签中使用,变量在内容中调取
+被这个属性包住的属性,就不会再发生变化,只绑定一次
+
+v-html
+包住的内容会被解析成htlm结果
+
+method
+定义函数的一个对象,放所有函数
+函数中的this为vm,必须使用普通函数,箭头函数存在this指向问题
+
+v-on
+事件绑定函数传参会丢失event事件源,可以手动传递属性$event
+v-on可以简写成@
+修饰符,可以连续嵌套
+“.stop”,可以阻止默认事件的冒泡
+“.capture”,捕获阶段
+“.self”,自己,只在自己身上触发
+“.once”,只触发一次
+“.prevent”,阻止默认行为
+“.13”,”.enter”,点击回车时触发      
+可以使用键盘修饰符,支持keyCode和名称,只能用于@keyup和@keydown
+
+
+
+
+
+v-for
+写在要循环的子标签中
+数组中a in xxx,那么a的值是数组里的value
+对象中f in xxx,那么f
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2007,6 +2311,24 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -2025,8 +2347,40 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
       
         
           
-          伪类伪类：伪类选择元素基于的是当前元素处于的状态，或者说元素当前所具有的特性，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；当状态改变时，它又会失去这个样式。由此可以看出，它的功能和class有些类似，但它是基于文档之
-          ...
+          伪类伪类：伪类选择元素基于的是当前元素处于的状态，或者说元素当前所具有的特性，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；当状态改变时，它又会失去这个样式。由此可以看出，它的功能和class有些类似，但它是基于文档之外的抽象，所以叫伪类。
+
+:first-child
+:link:
+:visitive
+:hover
+:active
+:focus
+:lang
+
+伪元素伪元素：与伪类针对特殊状态的元素不同的是，伪元素是对元素中的特定内容进行操作，它所操作的层次比伪类更深了一层，也因此它的动态性比伪类要低得多。实际上，设计伪元素的目的就是去选取诸如元素内容第一个字（母）、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫伪元素。
+
+:first-line
+first-letter
+:before
+:after
+
+
+
+
+:link 伪类将应用于未被访问过的链接，与:visited互斥。
+:hover 伪类将应用于有鼠标指针悬停于其上的元素。
+:active 伪类将应用于被激活的元素，如被点击的链接、被按下的按钮等。
+:visited 伪类将应用于已经被访问过的链接，与:link互斥。 
+:focus 伪类将应用于拥有键盘输入焦点的元素。
+:first-child 伪类将应用于元素在页面中第一次出现的时候。
+:lang 伪类将应用于元素带有指定lang的情况。
+:first-letter伪元素的样式将应用于元素文本的第一个字（母）。
+:first-line 伪元素的样式将应用于元素文本的第一行。
+:before 在元素内容的最前面添加新内容。
+:after 在元素内容的最后面添加新内容。
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/22/pseudo/#more" rel="contents">
@@ -2233,6 +2587,15 @@ node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安
   </span>
   <span class="author" itemprop="copyrightHolder">高佳睿</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">76.8k</span>
   
 </div>
 

@@ -229,11 +229,11 @@
       
         <tags>
             
-            <tag> GIT </tag>
-            
             <tag> SVN </tag>
             
             <tag> CVS </tag>
+            
+            <tag> GIT </tag>
             
         </tags>
       

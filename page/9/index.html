@@ -466,6 +466,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -487,7 +505,28 @@ $(function() {
           ES5中this指向问题this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象
 
 1.函数执行的时候，首先看函数名前边是否有点 ‘·’，有的话点’·‘前边是谁是this就是谁，没有的话就是window
-1234567fu
+1234567function()&#123;    console.log(this)&#125;var obj=&#123;fn:fn&#125;;fn(); //this指的是windowobj.fn(); //this指的是objsum(); //this指的是window
+
+2.自执行函数中this永远指的是window，严格模式下是undefined
+
+3.给元素的某一个事件绑定方法，当事件触发的时候执行对应的方法，方法中的this是当前的DOM对象
+1234document.getElementById.onclick=fn; //fn中的this指的是boxdocument.getElementById.onclick=function()&#123;    fn();  //fn()中的this是window&#125;
+
+4.在构造函数模式中、类中(函数体中)出现的this.xxx=xxx中的this是当前类的实例
+12345678function perso(name,age)&#123;    this.name=name;    this.age=age;    this.write=function()&#123;        console.log('my name is' + this.name +',我'+ this.age +'岁了！')    &#125;&#125;var p1=new person('高佳睿','18') //这里的person是一个类
+
+5.在原型模式中，this常用2种方法：
+
+在类中this.xxx=xxx;this是当前类的实例
+某一方法中的this,看点’.’前边是谁this就是谁
+先确定this指向
+把this替换成对应的代码  
+按照原型链查找机制，一步一步查找
+
+
+
+
+6.call和apply强制改变this的指向-&gt;以上所有的this情况在遇到call/apply的时候都不好使,都已强制改变的为主obj.f
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -638,6 +677,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -657,7 +714,20 @@ $(function() {
         
           
           之前有在博客园【http://www.cnblogs.com/Scar007/ 】写自己的博客，但是作为一名程序员，一直都想在gitHub上开博的，毕竟这里是程序员的圣城。研究了一下午，其实还蛮简单的，这里分享一下自己的研究经验就当是这里的处女作了。
-hexo是一款基于Node.js的静态博客框架,
+hexo是一款基于Node.js的静态博客框架,官网地址:https://hexo.io/zh-cn/.
+安装环境
+安装node.js，去官网下载安装即可，官网地址：https://nodejs.org/zh-cn/
+安装Hexo  全局安装hexo
+npm install hexo-cli -g
+
+
+
+创建hexo目录并初始化123hexo cleanhexo generate 或 hexo ghexo server 或 hexo s
+然后就可以生成网站，启动服务了：123hexo cleanhexo generatehexo server
+hexo文件夹    先来看一下hexo文件夹下的内容：    12345678    hexo/|- node_modules/  # hexo需要的模块，不需要上传GitHub|- themes/        # 主题文件，需要上传GitHub的dev分支|- sources/       # 博文md文件，需要上传GitHub的dev分支|- public/        # 生成的静态页面，由hexo deploy自动上传到gh-page分支|- package.json   # 记录hexo需要的包信息，不需要上传GitHub|- _config.yml    # 全局配置文件，需要上传GitHub的dev分支|- .gitignore     # hexo生成默认的.gitignore，它已经配置好了不需要上传的hexo文件
+关联到gitHub在github上创建项目仓库,仓库名为yourBlogName/github.io【注意后边的github.io是固定写法，前边的用户名你可以随便起】
+
+在本地打开hexo文件，修改_config.yml配置文件1234567title: 高佳睿的博客   # 标题subtitle:description:author: 高佳睿language: zh-CN         # 语言设置url: http://palancel
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -865,6 +935,15 @@ hexo是一款基于Node.js的静态博客框架,
   </span>
   <span class="author" itemprop="copyrightHolder">高佳睿</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">76.8k</span>
   
 </div>
 

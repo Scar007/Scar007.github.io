@@ -466,6 +466,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -484,7 +502,7 @@ $(function() {
       
         
           
-          123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798
+          123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139&lt;!doctype html&gt;&lt;html lang="en"&gt;&lt;head&gt;    &lt;meta charset="UTF-8"&gt;    &lt;meta name="viewport"          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"&gt;    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;    &lt;title&gt;图片切换&lt;/title&gt;    &lt;style&gt;        .content&#123;            height: 500px;            width: 500px;            text-align: center;            margin:0 auto;        &#125;        .playBtn button,.showPages span,.upDownBtn button&#123;            margin: 20px;        &#125;        .img&#123;            position: relative;            border:1px solid #430d06;            
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -635,6 +653,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -653,7 +689,41 @@ $(function() {
       
         
           
-          一.什么是事件？事件就是DOM和浏览器之间的交互行为(只要触发了这个行为，也就相当于触发了事件)，我们可以通过事件监听来绑定事件，例如：box.onclick=function(){}，如果我们点击了这个盒子，就触发了盒子的click事件，同样会把事件绑定给这个方法，让其执行某一些特定的操作。(事件
+          一.什么是事件？事件就是DOM和浏览器之间的交互行为(只要触发了这个行为，也就相当于触发了事件)，我们可以通过事件监听来绑定事件，例如：box.onclick=function(){}，如果我们点击了这个盒子，就触发了盒子的click事件，同样会把事件绑定给这个方法，让其执行某一些特定的操作。(事件是浏览器默认给的，与生俱来的，绑定事件时不过是给某一特定元素绑定对应的事件名以及方法，让其执行特定的方法)
+DOM事件：
+点击: click
+滚轮: scroll
+滑动: move
+进入:enter
+加载:load事件绑定：就是给某一个元素的相关事件行为绑定方法
+
+DOM 0级事件：
+1234oDiv.onclick = function()&#123;    //当我们触发oDiv的click行为的时候，会把绑定的这个函数执行&#125;;// -&gt;onclick 这个行为定义在当前元素的私有属性上
+
+DOM 2级事件：
+1234oDiv.addEventListener('click',function()&#123;    console.log('ok')&#125;,false);// -&gt; addEventListener这个属性是定义在当前元素所属EventTarget这个类的原型上的
+
+
+
+
+二.事件机制：事件的监听(事件的绑定)：
+
+通过on+事件名这种类型绑定事件叫做DOM 0级事件
+DOM０级事件，同一个元素的同一个事件监听，绑定的触发运行函数，不能重复绑定，有且只能绑定一回，下一次绑定的会将上一次的覆盖掉
+事件设为null，移除事件的监听
+监听事件不仅是浏览器的一种机制，也是浏览器赋予DOM文档元素的属性-事件的监听是时刻存在的，但是事件的触发时候运行的处理函数是我们自己定义的
+
+事件的触发：
+
+触发事件的时候运行绑定处理的函数
+
+三.DOM 0级与DOM 2级事件的区别：
+1.DOM 0级属于给当前元素的某一个私有的属性赋值：box.click=…
+
+1).我们通过事件的监听处理程序 onclick属性=function(){}这种形式绑定的事件，叫做DOM 0级事件
+2).所有的DOM 0级事件都是在冒泡，执行的事件处理函数
+3).只能给当前元素的某一个事件绑定一个方法，绑定多个的时候，后边绑定的会将前边的覆盖掉
+4).我们所说的事
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -804,6 +874,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -822,8 +910,15 @@ $(function() {
       
         
           
-          什么是递归？就是函数自己调用自己执行12345678function sum(num)&#123;    if(num&gt;0)&#123;        return num + sum(num - 1);    &#125;else&#123;        return 0    &#125
-          ...
+          什么是递归？就是函数自己调用自己执行12345678function sum(num)&#123;    if(num&gt;0)&#123;        return num + sum(num - 1);    &#125;else&#123;        return 0    &#125;&#125;console.log(sum(4))  // 10
+这个函数内部是发生了什么改变呢？我们来分析一下：123451、 4+sum(4-1)2、 4+3+sum(3-1)3、 4+3+2+sum(2-1)4、 4+3+2+1+sum(1-1)  ---&gt;4+3+2+1+0=10所以最后的结果输出是10
+arguments 实现递归：12345678910function sum(num)&#123;    if(num&gt;0)&#123;        return num + argument.callee(num-1);    &#125;else&#123;        return 0    &#125;&#125;var result = sum;sum = null;console.log(result(15));   // 120
+命名函数的递归：12345678910var newMethod = function f(num)&#123;    if(num&gt;0)&#123;        return num + f (num - 1)    &#125;else&#123;        return 0    &#125;&#125;;var result = newMethod;newMethod = null;console.log(result(6))
+
+附加：在JS中()的作用：创建一个块级作用域，独立，闭合的私有空间；在数学代码执行和数学运算中，优先运算执行。
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/06/27/recur/#more" rel="contents">
@@ -973,6 +1068,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -993,8 +1106,14 @@ $(function() {
           
           1.什么叫匿名函数，顾名思义就是：没有名字的函数2.匿名函数分为两种：
 一种是：函数表达式（函数没有名字，直接把函数体赋值给一个变量）
-12345var method = function(params1,params2)&#123;    alert('这就是函数表达式'+params1+para
-          ...
+12345var method = function(params1,params2)&#123;    alert('这就是函数表达式'+params1+params2)&#125;//函数名（实参）method('我就是这个函数','我代表了它');
+
+另一种是：自执行函数
+123456789101112131415161718192021222324252627//下面的这些都是自执行函数(function(params1,params2)&#123;    alert(params1+params2)&#125;)(1,2)//小括号 （function 小括号（形参）&#123;代码块&#125;）（实参）(function(params1,params2)&#123;    alert(params1+params2)&#125;)(1,2);//把外边包含的小括号删除了，换了一些东西~function(params1,params2)&#123;    alert(params1+params2);    alert(arguments)&#125;(1,2);!function(shui,dou)&#123;    var doujiang = shui+dou;    alert(doujiang+'的豆浆');&#125;('农夫山泉','红豆');-function()&#123;    alert('water');&#125;();+function()&#123;    alert('water~~~~~~~');&#125;()
+
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/06/18/annoyfun/#more" rel="contents">
@@ -1144,6 +1263,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1164,8 +1301,13 @@ $(function() {
           
           document.ready 和 window.onload的区别？（JQ中$(document).ready()和window.onload的区别？）window.onload，是采用DOM0级事件绑定监听的load事件
 
-1） load事件本身就是当所有资源加载完成才会触发，window.onl
-          ...
+1） load事件本身就是当所有资源加载完成才会触发，window.onload指的是浏览器中的资源文件(HTML结构、图片、文字、音视频…)加载完成就会被触发
+2） DOM0绑定方式决定了他只能绑定一个方法，绑定多个，后面把前面会覆盖掉$(document).ready()是JQ拿原生JS封装好的方法，等同于$(function(){}),JQ在封装这个方法的时候，采用DOM2级事件绑定，而且监听的是DOMContentLoaded(在IE6~8下监听的是onreadystatechange事件)；
+1） DOMContentLoaded事件本身就是DOM结构渲染完成就会被触发，所以只要页面中的HTML结构加载完成，就会触发对应的事件，把绑定的方法执行
+2） 采用DOM2绑定，所以可以绑定多个方法
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/05/27/jq/#more" rel="contents">
@@ -1315,6 +1457,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1333,7 +1493,13 @@ $(function() {
       
         
           
-          预解释是一种毫无节操的机制（自从学了预解释，从此节操是路人）in：‘num’ in window 是判断num是否是window这个对象的一个属性，是的话就返回true，不是返回false123456var obj = &#123;    name:"高佳睿",    age:18&#125;;co
+          预解释是一种毫无节操的机制（自从学了预解释，从此节操是路人）in：‘num’ in window 是判断num是否是window这个对象的一个属性，是的话就返回true，不是返回false123456var obj = &#123;    name:"高佳睿",    age:18&#125;;console.log("name" in obj);  //trueconsole.log("eat" in obj);  //false
+1.预解释的时候不管条件是否成立，都要把带var的进行提前声明window的预解释：var num； -&gt; window.num;1234if(!("num" in window))&#123;   //"num" in window -&gt; true    var num = 12;&#125;console.log(num);  //undefined
+2.预解释的时候只先预解释“=”左边的，右边的是值，不参与预解释匿名函数之函数表达式：把函数定义的部分当做一个值赋给我们的变量/元素的某一事件12//window下的预解释：var fn；fn(); //-&gt; undefined() Uncaught TypeError: fn is not a function
+123456789var fn = function()&#123;    console.log("OK");&#125;;fn();  //-&gt;"OK"function()&#123;    console.log("ok")&#125;;fn();  //-&gt;"ok"
+3.函数执行定义的那个function在全局作用域下不进行预解释；当代码执行到这个位置的时候定义和执行一起完成了自执行函数：定义和执行一起完成了
+123456//自执行函数的几张方式    (function()&#123;&#125;)(100)    !function()&#123;&#125;(100)    +function()&#123;&#125;(100)    -function()&#123;&#125;(100)    ~function()&#123;&#125;(100)
+4.函数体中的return下边的代码虽然不执行了，但是需要进行预解释；ret
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1484,6 +1650,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1504,8 +1688,25 @@ $(function() {
           
           1.如何区私有变量还是全局变量1）在全局作用域下声明（预解释的时候）的变量是全局变量
 2）在“私有作用域中声明的变量”和“函数的形参”都是私有变量
-在私有作用域中，我们代码执行的时候遇到一个变量，首先我们需要确定它是否为私有变量，那么这个变量和外边的没有任何关系；如果不是私有的，则往当前作用域的上级
-          ...
+在私有作用域中，我们代码执行的时候遇到一个变量，首先我们需要确定它是否为私有变量，那么这个变量和外边的没有任何关系；如果不是私有的，则往当前作用域的上级作用域进行查找，如果上级作用域也没有则继续查找，一直找到window为止…（作用域链）
+2.当函数执行的时候（直接目的：让函数体中的代码执行），首先会形成一个新的私有作用域，然后按照如下的步骤执行：+ 1）如果有形参，则先给形参赋值
++ 2）进行私有作用域中的预解释
++ 3）私有作用域中的代码从上到下执行
+...
+函数执行形成一个新的私有作用域保护了里边的私有变量不受外界的干扰（外边修改不了私有的，私有的也修改不了外边的）-&gt;“闭包”
+console.log(total);  //undefined
+var total = 0;
+function fn(num1,num2){
+    console.log(total);
+    // -&gt; total不是私有的，找全局下的total，也就是在这里出现的所有的total其实应该都是全局的，-&gt;0
+    total = num1 + num2;
+    console.log(total); //-&gt; 300
+};
+fn(100,200);
+console.log(total); //300
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/05/11/private/#more" rel="contents">
@@ -1655,6 +1856,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1678,8 +1897,12 @@ $(function() {
 基本数据类型（简单数据类型）  包括:Number、String、Boolean、null、undefined
 
 引用数据类型（复杂数据类型）  包括：Object：object（对象）、Array（数组）、RegExp（正则）、Date（日期）、
-Functi
-          ...
+Function：Math（数学）
+
+
+1234567891011var num = 12;var obj = &#123;    name:"高佳睿",    age:18&#125;;function fn()&#123;    console.log("勿忘初心，方得始终！");&#125;;console.log(fn); //把整个函数的定义部分（函数本身）在控制台输出console.log(fn()); //把当前函数执行的返回结果（return后边写的是什么，返回值就是什么，如果没有return，默认返回值就是undefined）
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/05/06/numType/#more" rel="contents">
@@ -1829,6 +2052,24 @@ Functi
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1847,7 +2088,9 @@ Functi
       
         
           
-          1.原型继承（是JS中很常用的一种继承方式）子类children想要继承父类father中所有的属性和方法（私有+公有），只需要让children.prototype=new father;即可。特点： 它是把父类中私有的+公有的都继承在了子类原型上（子类公有的）核心： 原型继承并不是把父类中的属性
+          1.原型继承（是JS中很常用的一种继承方式）子类children想要继承父类father中所有的属性和方法（私有+公有），只需要让children.prototype=new father;即可。特点： 它是把父类中私有的+公有的都继承在了子类原型上（子类公有的）核心： 原型继承并不是把父类中的属性和方法克隆一份一模一样的给子类，而是让子类和父类之间增加了原型链的连接，以后子类的实例想要使用父类中的方法，需要一级一级的向上查找来使用123456789101112function father()&#123;    this.x = 100;&#125;father.prototype.getX = function()&#123;    console.log(this.x)&#125;;function children()&#123;    this.x = 200;&#125;;children.prototype = new father;children.prototype.constructor = children;
+2. call继承：把父类私有的属性和方法克隆一份一模一样的作为子类私有的属性1234567891011121314function father()&#123;    this.x = 100;&#125;father.prototype.getX = function()&#123;    console.log(this.x);&#125;;function children()&#123;    //this-&gt;n    father.call(this);  // father.call(n) 把father执行让father中的this变为了n&#125;var n = new B;console.log(n.x);
+3. 冒充对象继承：把子类私有的 + 公有的 克隆一份一模一样的给子类私有的123456789101112131415161718function father()&#123;    this.x = 100;&#125;;father.prototype.getX = function()&#123;    console.log(this.x);&#125;;function children()&#1
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1998,6 +2241,24 @@ Functi
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -2016,7 +2277,12 @@ Functi
       
         
           
-          jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方
+          jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/
+jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；12345678910111213141516171819202122232425(function(window,undefined) &#123;    /*        selector:jQuery选择器内容        context：获取元素上下文           */    var version = "1.11.3",    jQuery = function(selector,context) &#123;        return new jQuery.fn.init(selector,context);    &#125;        jQuery.fn = jQuery.prototype = &#123;        ...        addClass:...,        init:function (selector,context) &#123;                    &#125;    &#125;    jQuery.ajax = function...    window.jQuery = window.$ = jQuery;&#125;)();jQuery();  &lt;==&gt; $()$().addClass()$.ajax()
+1.jQuery的实现原理JQ本身就是一个类，在外面使用的$和jQuery是同一个东西，JQ中提供的方法分为两部分：
+
+写在jQuery原型上的方法，专门给JQ的实例使用
+写在jQuery私有属性上的，通过$.xxx可以获取进行操作等 jQuery() / $() =&gt;创建JQ的实例，需要传递两个参数，第一个参数一般是选择器内容；第二个参数是获取的上下文，如果不传递默认是docum
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2224,6 +2490,15 @@ Functi
   </span>
   <span class="author" itemprop="copyrightHolder">高佳睿</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">76.8k</span>
   
 </div>
 

@@ -466,6 +466,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -486,7 +504,24 @@ $(function() {
           
           null和undefined都代表没有,但是null是属性存在但是值不存在,undefined是连这个属性都不存在例如：
 
-document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) -&gt;null(因为一个页面中的document已经是最顶级元素了,它没有父亲)docu
+document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) -&gt;null(因为一个页面中的document已经是最顶级元素了,它没有父亲)document.parentnode -&gt;undefined(因为没有parentnode属性)
+
+null:空对象指针-&gt;没有具体的值 -&gt;一般都是我们手动设置初始的值为null,后期的话会给其赋值undefined:未定义-&gt;连东西都没有 -&gt;一般都是浏览器默认的值null:
+1、我们设定一个变量,后期需要使用,那么前期我们设置默认值为null     
+1234567var timer = null;function move() &#123;    window.clearTimeout(timer);    //js code    timer = window.setTimeout(move,1000)&#125;move();
+
+2、在JS内存释放中，我们想释放一个堆内存，就让其值变为null即可var obj={name:”高佳睿”};obj=null;-&gt;刚开始开辟的这个堆内存没有被占用,浏览器会在空闲的时候把它销毁掉
+
+3、我们通过DOM中提供的属性和方法获取页面中的某一个元素标签，如果当前这个标签不存在，获取的结果是null，而不是undefineddocument.getElementById(“div1”) -&gt;如果页面中没有#div1,获取的结果就是null
+
+4、在正则的exec/字符串的match捕获中,如果当前要捕获的字符串和正则不匹配的话，捕获到的结果为null1234var reg = /\d+?/g;var str = "gjr";reg.exec(str);  //nullreg.match(reg);   //null
+
+
+undefined:
+1、在JS预解释的时候，只声明未定义，默认的值是undefined
+12console.log(num);  //undefinedvar num = 13;
+
+2、在一个函数中，如果没有写return,或者return后啥都没返回，默认的返回值是un
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -636,6 +671,24 @@ document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) 
 
           
 
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
           
 
           
@@ -812,6 +865,24 @@ document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) 
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -835,8 +906,39 @@ document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) 
 安装
 使用npm install -g less 全局安装less
 在node.js and NPM中激活
-在file watchers中打开le
-          ...
+在file watchers中打开less监听
+webstorm建立的less文件将会被自动的预编译
+
+使用方法
+注释
+“//“表示的注释是不会被预编译成css的
+“/**/“表示的注释是会被预编译的
+
+
+变量
+通过关键词@+变量名来创建变量,变量只能在less文件中使用,而不会被编译
+变量能在不同的地方调用相同的css值
+在给属性赋值时,变量可以进行基本的数学计算
+
+
+函数
+创建:”.”+方法样式名+(@变量名:添加默认值){};
+调用:”.”+样式名+(值),没有值的情况下添加的是默认值
+不同样式之间,变量互不影响
+less函数不会被预编译,只能在less文件中被调用
+
+
+混合嵌套(函数写法)
+类名可以当成函数使用,也就是即能被预编译成,也能在less文件中当成函数被其他的样式调用
+
+
+子代选择器
+在父类元素对应的less样式中,可以直接写子类的样式,支持多重子类的样式编写,最后编译成子代选择器的css样式
+
+
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/26/less/#more" rel="contents">
@@ -986,6 +1088,24 @@ document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) 
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1008,7 +1128,14 @@ document.parentNode(浏览器天生自带的一个属性:父亲节点的属性) 
 
 swiper是一个应用于移动端的动画插件,原理类似于轮播图
 
-1234567891011121314151617&lt;div class="swiper-container"&gt;    &lt;div class=
+1234567891011121314151617&lt;div class="swiper-container"&gt;    &lt;div class="swiper-wrapper"&gt;        &lt;div class="swiper-slide"&gt;Slide 1&lt;/div&gt;        &lt;div class="swiper-slide"&gt;Slide 2&lt;/div&gt;        &lt;div class="swiper-slide"&gt;Slide 3&lt;/div&gt;    &lt;/div&gt;        &lt;!-- 如果需要分页器 --&gt;    &lt;div class="swiper-pagination"&gt;&lt;/div&gt;        &lt;!-- 如果需要导航按钮 --&gt;    &lt;div class="swiper-button-prev"&gt;&lt;/div&gt;    &lt;div class="swiper-button-next"&gt;&lt;/div&gt;        &lt;!-- 如果需要滚动条 --&gt;    &lt;div class="swiper-scrollbar"&gt;&lt;/div&gt;&lt;/div&gt;
+导航等组件可以放在container之外
+
+引入css样式文件和js文件
+初始化
+
+创建Swiper的实例
+1234567891011121314var mySwiper = new Swiper ('.swiper-container', &#123;    direction: 'vertical',    loop: true,    // 如果需要分页器    pagination: '.swiper-pagination',    // 如果需要前进后退按钮    nextButton: '.swiper-button-next',    prevButton: '.swiper-button-prev',    // 如
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1159,6 +1286,24 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1181,7 +1326,43 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
 
 把一个动态页面的地址重写为静态页面的地址,为了方便网站的SEO优化
 真实地址:http://item.jd.com/detail.php?id=12261336038
-后缀名:php,aspx,asp,jsp….这些后缀名的地址都是动态地址,百度的搜索引擎是很
+后缀名:php,aspx,asp,jsp….这些后缀名的地址都是动态地址,百度的搜索引擎是很难把这些地址中的内容进行收录的,所以需要伪装成静态的URL
+伪装地址:http://item.jd.com/12261336038.html
+
+
+
+二. 浏览器解析机制
+开发者按照W3C规范编写代码
+浏览器开发商也会按照相同的规范开发浏览器
+当我们把代码交给浏览器的时候,浏览器使用GPU按照相关的规范绘制图形和页面
+各个浏览器拥有属于自己的内核和渲染引擎
+webkit内核+V8引擎:chrome,移动端中APP的webView
+
+
+
+三. NODE
+node.js也是webkit内核的:node不是编程语言,它和浏览器类似只是一个工具(基于V8引擎解析的)
+如果我把node工具安装在服务器上,这样的话,我们就可以使用JS来编写服务器端的程序了,最后把编写好的JS代码运行在服务器的node环境下即可,node会帮我们进行解析和渲染-&gt;”JS页可以开发后台程序了”
+无阻塞的(异步的)I/O操作
+基于事件驱动,单线程异步
+JS运行在客户端浏览器中,能否对客户端的本地文件进行I/O操作?
+不能,如果能的话将会对客户端的安全造成恶劣的影响;但是有些操作是可以进行:例如上传图片.但是这种情况都是需要当前用户手动操作的
+
+
+JS运行在服务器的node环境中,是否可以对服务器进行I/O操作?
+可以
+
+
+模块
+
+内置模块
+
+NODE环境天生为JS提供的
+HTTP
+
+这个模块中提供了一系列的方法,让我们创建服务并且监听端口号已经接受客户端的请求信息,把需要的内容返回给客户端
+我们一般会把创建服务的代码放在server自定义模块中,而且会把这个js放在当前项目的根目录下,所以:如果server在哪,相当于当前的服务所负责的项目就是哪一个
+  1234567let http=require("http");let server=http.createServer();//创建一个新的服务//[callback]:不仅仅是服务创建成功,而且需要客户端向当前这个服务发生请求,回调函数才会被执行
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1332,6 +1513,24 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1350,7 +1549,12 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
       
         
           
-          异步编程是我们JS中非常重要也是逼格非常高的编程方式JS中的任务队列-&gt;不管是定时器还是我们的点击事件,我们都是事先把需要做的事情存储到任务队列中排队等待,当需要去执行的时候,我们在执行;JS是单线程的-&gt;当我在主线程上执行一个任务的时候,只有当当前的任务执行完成了,才会在到任务队列中找
+          异步编程是我们JS中非常重要也是逼格非常高的编程方式JS中的任务队列-&gt;不管是定时器还是我们的点击事件,我们都是事先把需要做的事情存储到任务队列中排队等待,当需要去执行的时候,我们在执行;JS是单线程的-&gt;当我在主线程上执行一个任务的时候,只有当当前的任务执行完成了,才会在到任务队列中找下一个任务执行例如: 先把任务队列中10ms后执行的这个任务拿出来执行,输出2,并且循环了1000次,当本次任务结束后(不管多长时间),在到任务队列中把15ms这个到时间的任务拿出来执行
+123456789101112131415161718192021222324252627window.setTimeout(function() &#123;    console.log(1)&#125;,15)window.setTimeout(function() &#123;    console.log(2);    var i = 0;    while (i &lt; 1000) &#123;        console.log(i);        i++    &#125;&#125;,10);window.setTimeout(function() &#123;    console.log(3)&#125;,20);window.setTimeout(function() &#123;    console.log(4)&#125;,19)window.setTimeout(function() &#123;  console.log(5)  var i = 0;  while (i &lt; 100000) &#123;      i++  &#125;&#125;,0)
+1、什么是异步编程?什么是同步编程?所谓”异步”，简单说就是一个任务分成两段，先执行第一段，然后转而执行其他任务，等做好了准备，再回过头执行第二段,比如，有一个任务是读取文件进行处理，异步的执行过程就是下面这样。
+这种不连续的执行，就叫做异步。相应地，连续的执行，就叫做同步。
+同步:当前JS主线程上的事情都完成了才能进行下一次事情12345function fn1() &#123;&#125;function fn2() &#123;&#125;fn2();fn1();
+异步:当前的操作排列
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1501,6 +1705,24 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1520,7 +1742,7 @@ swiper是一个应用于移动端的动画插件,原理类似于轮播图
         
           
           下边分为两个版本，一种是点击切换选项(index.js)，一种是滑过切换选项(index1.js)(jq使用jquery-1.11.3.js版本)
-HTML文件：123456789101112131415161718192021222324252627282930313233343536373839
+HTML文件：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head lang="en"&gt;    &lt;meta charset="UTF-8"&gt;    &lt;title&gt;jQuery选项卡&lt;/title&gt;    &lt;link rel="stylesheet" href="css/reset.min.css"/&gt;    &lt;link rel="stylesheet" href="css/index.css"/&gt;&lt;/head&gt;&lt;body&gt;&lt;div class="container"&gt;    &lt;!--&lt;span class="select"&gt;选项一&lt;/span&gt;&lt;span&gt;选项二&lt;/span&gt;&lt;span&gt;选项三&lt;/span&gt;--&gt;    &lt;ul class="tip clear"&gt;        &lt;li class="cur"&gt;选项一&lt;/li&gt;        &lt;li&gt;选项二&lt;/li&gt;        &lt;li&gt;选项三&lt;/li&gt;    &lt;/ul&gt;    &lt;div class="contain cur"&gt;页卡一&lt;/div&gt;    &lt;div class="contain"&gt;页卡二&lt;/div&gt;    &lt;div class="contain"&gt;页卡三&lt;/div&gt;&lt;/div&gt;&lt;div class="container"&gt;    &lt;!--&lt;span class="select"&gt;选项一&lt;/span&gt;&
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1671,6 +1893,24 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1690,8 +1930,21 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
         
           
           1、try catch -&gt;在try中执行我们的代码,如果在执行的过程中发生了异常信息,我们在catch中写代替的执行方案前提:不兼容的情况下,执行对应的代码,需要发生异常错误才可以检测到弊端:不管是否兼容,都要先执行不兼容的代码,相对来说浪费一些性能
-2、利用是否为这个对象的一个属性,来检测
-          ...
+2、利用是否为这个对象的一个属性,来检测是否兼容例如:window.getComputedStyle,在标准浏览器中兼容,window有getComputedStyle这个属性,我们获取的属性值是一个[function];而在IE6~8中是不兼容的,window下没有getComputedStyle这个属性,我们获取的属性值是undefined;
+
+1)第一种写法
+12345if(typeof window.getComputedStyle==="function")&#123;//兼容&#125;else&#123;//不兼容&#125;
+
+2)第二种写法
+12345if(window.getComputedStyle)&#123;//兼容&#125;else&#123;//不兼容&#125;
+
+3)第三种写法(我个人比较喜欢这种,在性能上提升了那么一丢丢)
+12345if("getComputedStyle" in window)&#123;//兼容&#125;else&#123;//不兼容&#125;
+
+
+3、我们已知在哪些浏览器不兼容了,那么我们只需要单独的检测浏览器类型,然后在进行特殊的处理即可1navigator.userAgent -&gt;获取当前浏览器的版本信息
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/12/09/compatible/#more" rel="contents">
@@ -1841,6 +2094,24 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1859,7 +2130,19 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
       
         
           
-          JS中检测数据类型只有四种方式1、typeof 用来检测数据类型的运算符   [typeof value]12341)返回值:首先是一个字符串,然后包含了我们常用的数据类型,例如:"number"、"string"、"boolean"、"undefined"、"object"、"function"t
+          JS中检测数据类型只有四种方式1、typeof 用来检测数据类型的运算符   [typeof value]12341)返回值:首先是一个字符串,然后包含了我们常用的数据类型,例如:"number"、"string"、"boolean"、"undefined"、"object"、"function"typeof typeof typeof [12] -&gt; "string"2)typeof null -&gt;"object" 因为null是一个空对象指针3)typeof不能具体的细分对象、数组、正则等,因为不管检测哪一个返回的都是"object"
+2、instanceof / constructor
+1)instanceof:检测当前实例是否属于某一个类,属于的话返回true,不属于返回false
+1234var ary=[];ary instanceof Array -&gt;trueary instanceof RegExp -&gt;falseary instanceof Object -&gt;true 所有的对象都是Object这个基类的一个实例
+
+2)constructor
+1ary.constructor===Array -&gt;true 说明ary是Array这个类的一个实例(constructor可以让用户自己来修改,所有我们一般不用这个来检测)
+
+3)instanceof的局限性:只要在这个实例的原型链上的类,用instanceof检测的时候都为true
+
+
+在类的继承中,我们只是单纯通过instanceof来检测数据类型的话是不准确的
+案例1234567891011function Fn() &#123;this.x=100;&#125;Fn.prototype = new Array;var f = new Fn;//f只是继承了数组中常用的方法,但是不是数组,例如：在梨树上嫁接苹果树,苹果树只是继承使用了梨树的水分和营养,但是长出来的果实还是苹果而不是梨//console.log(f instanceof Fn);//-&gt;true//console.log(f instanceof Array);//-&gt;true//console.log(f instanceof Object);//-&gt;truevar oDiv=d
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2010,6 +2293,24 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -2032,7 +2333,17 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
 1)作用域的销毁一般情况下，函数执行形成一个私有的作用域，当执行完成后就销毁了-&gt;节省内存空间
 
 2)作用域的不立即销毁
-123456789function fn()&#123;var i=10;return funct
+123456789function fn()&#123;var i=10;return function(n)&#123;console.log(n+i++);&#125;&#125;fn()(15);//-&gt;先执行fn,有一个私有的变量i=10,返回一个堆内存地址 xxxfff111,我们发现这个地址还用到了一次,那么当前的这个fn形成私有作用域（A）就不能立即销毁了,xxxfff111(15)-&gt;输出25,A中的i变为11；当xxxfff111执行完了,发现这个地址没用了,浏览器就把A、xxxfff111都释放了fn()(20);//-&gt;在执行fn的时候一切都从新开始了,和上面的步骤是一样的-&gt;输出30
+
+3)作用域的不销毁：形成一个私有作用域,里面的内容被外面占用了
+12345678910function fn()&#123;var i=10;return function(n)&#123;console.log(n+i++);&#125;&#125;var f=fn();//-&gt;fn执行形成一个私有的作用域A,A中有一个私有的变量i=10,A中返回一个地址xxxfff11,被外面的f占用了,那么当前的A就不能销毁了f(15);//-&gt;输出25,让A中的i=11f(20);//-&gt;输出31,让A中的i=12...
+
+
+当我们知道f用完的时候,为了优化性能,我们让f=null,这样的话A中的xxxfff111没人占用了,浏览器会把A和xxxfff111都释放了
+几种不销毁常用到的形式:
+1)函数执行,返回一个引用数据类型的值,并且在函数的外面被别人接收了,那么当前函数形成的私有作用域就不在销毁了–&gt;例如上面的案例
+2)在函数执行的时候,里面的一个小函数的地址赋值给了我们的外面元素的点击事件,那么当前小函数也相当于被外面占用了,大函数执行形成的私有的作用域也不销毁了
+每一次循环都执行自执行函数形成一个私有的作用域(循环三次就有三个作用域,每一个作用域中都有一个i,第一个存储的是0,第二个存数的是1..)，在每一个私有的
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2240,6 +2551,15 @@ HTML文件：1234567891011121314151617181920212223242526272829303132333435363738
   </span>
   <span class="author" itemprop="copyrightHolder">高佳睿</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">76.8k</span>
   
 </div>
 

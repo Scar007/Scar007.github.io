@@ -466,6 +466,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -485,7 +503,20 @@ $(function() {
         
           
           Git 、CVS、SVN比较项目源代码的版本管理工具中，比较常用的主要有：CVS、SVN、Git 和 Mercurial  （其中，关于SVN，请参见博客：SVN常用命令 和 SVN服务器配置）
-目前Google Code支持SVN、Git、Mercurial三种方式，例如： linux-kerne
+目前Google Code支持SVN、Git、Mercurial三种方式，例如： linux-kernel-source（Git 方式）、sdk-java（SVN方式），那么它们各有什么区别呢？
+Git与CVS 的区别
+分支更快、更容易。
+支持离线工作；本地提交可以稍后提交到服务器上。
+Git 提交都是原子的，且是整个项目范围的，而不像 CVS 中一样是对每个文件的。
+Git 中的每个工作树都包含一个具有完整项目历史的仓库。
+没有哪一个 Git 仓库会天生比其他仓库更重要。
+
+Git与SVN 的区别Git 不 仅仅是个版本控制系统，它也是个内容管理系统(CMS)、工作管理系统等。如果你曾是一个使用过SVN背景的人，那么你可以很容易的做一定的思想转换，来 适应Git提供的一些概念和特征。这篇文章的主要目的就是通过介绍Git能做什么，以及它和SVN在深层次上究竟有什么不同，通过比较来帮助你更好的认识 Git
+
+Git是分布式的，SVN不是这是Git和其它非分布式的版本控制系统（SVN，CVS）最核心的区别。如果你能理解这个概念，那么你就已经上手一半了。需要做一点声明，Git并不是目前第一个或唯一的分布式版本控制系统。还有一些系统如 Bitkeeper, Mercurial 等也是运行在分布式模式上的，但Git在这方面做的更好，而且有更多强大的功能特征。
+
+Git 跟SVN一样有自己的集中式版本库或服务器。但 Git 更倾向于被使用于分布式模式，也就是每个开发人员从中心版本库的服务器上chect out代码后会在自己的机器上克隆一个自己的版本库。可以这样说，如果你被困在一个不能连接网络的地方时，就像在飞机上，地下室，电梯里等，你仍然能够提交文件，查看历史版本记录，创建项目分支等。对一些人来说，这好像没多大用处，但当你突然遇到没有网络的环境时，这个将解决你的大麻烦。
+同样，这种分布式的操作模式对于开源软件社区的开发来说也是个巨大的恩赐，你不必再像以前那样做出补丁包，通过email方式发送出去，你只需要创建一个分支，向项目团队发送一个推请求。这能让你的代码保持最新，而且不会在传输过程
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -635,6 +666,24 @@ $(function() {
 
           
 
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
           
 
           
@@ -808,6 +857,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -828,7 +895,16 @@ $(function() {
           
           多维数组转一维数组
 方法一：使用数组concat方法，这个方法是属于取巧的一种
-1234567var arr= [[0,0,1],[2,3,3],[4,4,5]];var newArr = [];for(var i=0;i&lt;arr.length;i++)&#123;     newArr=ne
+1234567var arr= [[0,0,1],[2,3,3],[4,4,5]];var newArr = [];for(var i=0;i&lt;arr.length;i++)&#123;     newArr=newArr.concat(arr[i])            &#125;console.log(arr)  //[[0,0,1],[2,3,3],[4,4,5]];console.log(newArr)  // [0, 0, 1, 2, 3, 3, 4, 4, 5]
+
+方法二：也是数组 join 方法，但是有一个缺点就是使数组每一项都变成了字符串
+12345var arr=[1,[2,[[3,4],5],6]];function getArr(arr)&#123;    return arr.join().split(","); &#125; console.log(getArr(arr));
+
+方法三：递归
+1234567891011121314var arr = [1,[2,[[3,4],5],6]];var newArr = [];    function fun(arr)&#123;        for(var i=0;i&lt;arr.length;i++)&#123;            if(Array.isArray(arr[i]))&#123;                fun(arr[i]);            &#125;else&#123;                newArr.push(arr[i]);            &#125;        &#125;    &#125;fun(arr);console.log(newArr);//[1, 2, 3, 4, 5, 6]
+
+方法四：for in循环  递归其实第四种跟第三种差不多，换用写法而已
+123456789101112var arr =[1,[2,[[3,4],5],6]];var newArr=[]; function getArr(arr) &#123;     for(var k in arr) &#123;        if( arr[k] inst
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -979,6 +1055,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1001,7 +1095,32 @@ $(function() {
 普通函数执行-&gt;createJsPerson()
 构造函数模式-&gt;new CreateJsPerson() 通过new执行后,我们的CreateJsPerson就是一个类了而函数执行的返回值(p1)就是CreateJsPerson这个类的一个实例
 
-2、在函数代码执行的时
+2、在函数代码执行的时候
+相同:都是形成一个私有的作用域,然后 形参赋值-&gt;预解释-&gt;代码从上到下执行 (类和普通函数一样,它也有普通的一面)
+不同:在代码执行之前,不用自己在手动的创建obj对象了,浏览器会默认的创建一个对象数据类型的值(这个对象其实就是我们当前类的一个实例)接下来代码从上到下执行，以当前的实例为执行的主体(this代表的就是当前的实例),然后分别的把属性名和属性值赋值给当前的实例最后浏览器会默认的把创建的实例返回
+
+创建一个数组12var ary = [];  //字面量方式var ary = new Array();  //实例创建的方式 -&gt; 构造函数模式执行的方式
+
+不管哪一种方式ary都是Array这个类的一个实例
+
+
+1.
+JS中所有的类都是函数数据类型的,它通过new执行变成了一个类,但是它本身也是一个普通的函数
+JS中所有的实例都是对象数据类型的
+
+
+2、在构造函数模式中,类中(函数体中)出现的this.xxx=xxx中的this是当前类的一个实例
+3、
+p1和p2都是CreateJsPerson这个类的实例,所以都拥有writeJs这个方法,但是不同实例之间的方法是不一样的
+在类中给实例增加的属性(this.xxx=xxx)属于当前实例的私有的属性,实例和实例之间是单独的个体,所以私有的属性之间是不相等的
+
+
+
+构造函数深入扩展
+1、在构造函数模式中new Fn()执行,如果Fn不需要传递参数的话,后面的小括号可以省略
+2、this的问题:在类中出现的this.xxx=xxx中的this都是当前类的实例,而某一个属性值(方法),方法中的this需要看方法执行的时候,前面是否有”.”才能知道this是谁
+3、类有普通函数的一面,当函数执行的时候,var num其实只是当前形成的私有作用域中的私有变量而已,它和我们的f1这个实例没有任何的关系;只有this.xxx=xxx才相当于给f1这个实例增加私有的属相和方法,才和我们的f1有关系…
+4、在
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1152,6 +1271,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1173,7 +1310,15 @@ $(function() {
           1.对象:JS中万物皆对象,它是一个泛指类:对象的具体的细分 (物以类聚，人与群分。具有相同属性和方法的实例的一个集合总称)实例:某一个类别中具体的一个事物
 对象是一个抽象的概念,类似于我们的自然界；我们自然界中分为了 人类、动物类、植物类…,而我们每一个人都是人类中的一个实例
 
-2.单例模式对象数
+2.单例模式对象数据类型的作用:把描述同一个事物(同一个对象)的属性和方法放在一个内存空间下,起到了分组的作用,这样不同事物之间的属性即使属性名相同,相互也不会发生冲突
+
+-&gt;我们把这种分组编写代码的模式叫做”单例模式”
+-&gt;在单例模式中我们把person1或者person2也叫做”命名空间”12345678var person1 = &#123;    name:"吴亦凡",    age:18&#125;var person2 = &#123;    name:"李嘉恒",    age:20&#125;
+
+
+单例模式是一种项目开发中经常使用的模式,因为项目中我们可以使用单例模式来进行我们的”模块化开”“模块化开”:对于一个相对来说比较大的项目,需要多人协作的开发的,我们一般情况下会根据当前项目的需求划分成几个功能版块,每个人负责一部分,同时开发,最后把每个人的代码进行合并3.工厂模式
+单例模式虽然解决了分组的作用,但是不能实现批量的生产,属于手工作业模式-&gt;”工厂模式”
+把实现同一件事情的相同的代码放到一个函数中，以后如果在想实现这个功能，不需要从新的编写这些代码来了，只需要执行当前的函数即可–&gt;”函数的封装” –&gt;”低耦合高内聚”:减少页面中的冗余代码,提高代码的重复利用率12345678910111213function createJsPerson(name,age) &#123;    var obj = &#123;&#125;;    obj.name = name;    obj.age = age;    obj.writeJs = function()&#123;        console.log("my name is"+this.name+"my age is"+ this.age +",i can write Js la~")    &#125;    return obj&#125;var p1 = createJsPers
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1324,6 +1469,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1342,7 +1505,52 @@ $(function() {
       
         
           
-          你是如何理解编程语言中的面向对象的?我们研究JS和使用JS编程本身就是基于面向对象的思想来开发的，JS中的一切内容都可以统称为要研究的“对象”，我们按照功能特点把所有内容划分成“几个大类，还可以基于大类划分小类”，我们开发研究的时候拿出类中的一个具体事物“类的实例”来操作，当前实例具备的一些特点，同
+          你是如何理解编程语言中的面向对象的?我们研究JS和使用JS编程本身就是基于面向对象的思想来开发的，JS中的一切内容都可以统称为要研究的“对象”，我们按照功能特点把所有内容划分成“几个大类，还可以基于大类划分小类”，我们开发研究的时候拿出类中的一个具体事物“类的实例”来操作，当前实例具备的一些特点，同属于当前类的其他实例也具备这些特点；我们还要研究关于类的“封装、继承、多态”，这样有助于我们的编程开发。
+JS中的类：内置类、自定义类
+Function：所有的函数数据类型都是它的一个实例，普通函数、类(自定义的类、内置的一些类)这些都是函数数据类型的
+Object：对象类，所有的对象数据类型(普通对象{}、数组[]、正则/^$/、Math、日期对象、类的实例、类.prototype、函数本身也具备普通对象的特点)都是它的一个实例；Object是一个大类，也是基类，下面可以划分跟多的小类：  
+Array
+RegExp
+Date
+String
+Number
+Null
+Undefined
+Boolean
+EventTarget
+Node
+Element
+HTMLElement
+HTMLDivElement
+HTMLParagraphElement
+HTMLAnchorElement
+HTMLImageElement
+…
+
+
+…
+
+
+Text
+
+
+Comment
+Document
+…
+
+
+…
+HTMLCollection：通过getElementsByTagName/getElementsByClassName等获取的元素集合就是它的一个实例
+NodeList：通过getElementsByName和childNodes等获取的节点集合都是它的一个实例
+…
+
+
+面向对象中的实例和类的关系：实例除了可以调取自己的私有属性方法使用之外，还可以调取自己率属类原型上的公共属性方法；一个类可以创造很多很多的实例，不同实例之间既具备独立性也具备共同性；
+构造函数模式中的原型链
+
+
+
+1234567891011121314//在内置类的原型上扩展一个方法：myHasPubPrototype,检测某一个属性是否属于当前这个对象的公有属性Object.prototype.myHasPubPrototype = function myHasPubPrototype()&#123;    //th
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1493,6 +1701,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1514,7 +1740,51 @@ $(function() {
           1 如果只有一个值,判断这个值是真还是假,遵循只有0,NaN,’’,null,undefined这五个是假的,其余的都是真2 如果是两个值比较是否相等,遵循以下规则:
 ![]-&gt;false
 []==[]-&gt;false
-//val==val 两个值可能不是同一个数据类型的,如果是两个等于号
+//val==val 两个值可能不是同一个数据类型的,如果是两个等于号比较的话,会默认的进行数据类型转换
+规则:
+1 对象==对象 永远不相等
+2 对象==字符串
+先将对象转换成字符串(调用toString的方法),然后再进行比较
+[]空数组转化为字符串是’’
+{}转化为字符串”[object,objec]”
+
+
+
+
+3 对象==布尔类型
+对象先转化字符串(toString方法),然后再把字符串转化为数字(Number,””空字符串为0) ,布尔类型也转化为数字(true是1,false是0),最后让两个数字比较[]==false-&gt;true
+
+
+4 对象==数字
+先将字符串转化为字符串(toString), 然后把字符串再转化为数字(Number),然后再进行比较
+
+
+5 数字==布尔
+将布尔转化为数字
+
+
+6 数字==字符串
+字符串转化为数字
+
+
+7 字符串==布尔
+都转化为数字
+
+
+8 null==undefined 结果为true;
+9 null或者undefined 和其他任何的数据类型比较都不相等
+
+
+
+3 除了==是比较,===也是比较(绝对比较)val === val2 比较的是数据类型,如果数据类型不一样肯定不相等
+
+
+1234// 两个值之间的比较：[] === false -&gt;true;[] === false -&gt;false;![] === false -&gt;true;
+两个值进行比较,如果数据类型不一样的话,会进行默认的数据类型转换
+-&gt;对象 == 对象：比较的是各自代表的内存地址,地址相同则相等,地址不同则不相等
+-&gt;对象 == 数字：先把对象toString,然后把结果再Number,最后和数字比较
+-&gt;对象 == 字符串：先把对象toString,然后再比较
+-&gt;对象 == 布尔：都转换成数字123[] === false =&gt; [].toString() -&gt;""-&gt;Number("")-&gt;0                =&gt; f
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1664,6 +1934,24 @@ $(function() {
 
           
 
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
           
 
           
@@ -1834,6 +2122,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1852,7 +2158,9 @@ $(function() {
       
         
           
-          call方法：让调用对象执行，然后第一参数是谁。调用对象的this就改变,指向谁，后边跟参数，依次对应传入apply方法：让调用对象执行，然后第一参数是谁。调用对象的this就改变指向是谁，后边跟参数，以数组的形式传入1234567891011121314function a(n,age)&#123
+          call方法：让调用对象执行，然后第一参数是谁。调用对象的this就改变,指向谁，后边跟参数，依次对应传入apply方法：让调用对象执行，然后第一参数是谁。调用对象的this就改变指向是谁，后边跟参数，以数组的形式传入1234567891011121314function a(n,age)&#123;    this.per = n;    this.age = age;    this.num = "100";    //console.log(this.age)&#125;var b = &#123;    per:"h"   //这里的"h"只是做比较用的&#125;console.log(b);a.call(b,"sss",666,"hhh");  //第一个是调用，后边的参数是改变里边的值，a先执行才能使用call改变b里边的东西console.log(b);a.apply(b,["cc",888]);  //跟call一样，只是形式变了一下console.log(b)
+123456789101112Array.prototype.sum = function () &#123;    var num = null;    for (var i=0;i&lt;this.length;i++) &#123;        var pre = parseFloat(this[i]);        if (!isNaN(pre)) &#123;            num+=pre;        &#125;    &#125;    return num&#125;;var ary = [1,2,3,4,5,"h","6","7px","8.1"];console.log(ary.sum())
+call继承 — 改变调用对象this的指向call 继承  把父类（A）设置私有的属性，克隆一份作为子类(B)私有的1234567891011121314function A()&#123;    this.name = "aaa";    this.age = 333;&#125;function B()&#123;    this.age = 888&#125;B.prototype.showtime = "good good study,day day u
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2003,6 +2311,24 @@ $(function() {
           
 
           
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -2025,8 +2351,27 @@ $(function() {
 数组排序(SORT的原理-&gt;localeCompare实现汉字比较)，取头取尾
 假设法
 利用APPLY传参传递的是一个数组的机制，借用Math.max/Math.min获取最大值最小值
-利用EVAL获取最大最小：把需要执行的代码拼接成字符
-          ...
+利用EVAL获取最大最小：把需要执行的代码拼接成字符串，在使用EVAL转换为JS表达式执行
+
+求平均数
+把类数组转化为数组
+TRY、CATCH、FINALLY 异常捕获
+抛出异常错误信息
+使用EVAL实现快速求和
+
+JSON：一种数据格式，一般应用于前后台的数据传输和数据交互
+JSON.parse
+JSON.stringify
+AJAX四步操作
+
+封装toArray/toJSONDOM的重绘回流：当HTML结构发生改变(增删改、位置改变等)浏览器都需要重新渲染整个页面的DOM树结构,非常耗性能
+动态创建DOM(文档碎片)
+字符串拼接(会对原容器中内容产生影响)
+模板引擎(kTemplate、jade、ejs…) =&gt;原理也是字符串拼接
+ES6中的模板字符串
+
+DOM映射：页面中的HTML标签和JS中通过DOM方法获取的元素对象，存在映射机制综合实战案例：表格排序 https://scar007.github.io/2016/09/04/sort/
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/11/probase/#more" rel="contents">
@@ -2233,6 +2578,15 @@ $(function() {
   </span>
   <span class="author" itemprop="copyrightHolder">高佳睿</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">76.8k</span>
   
 </div>
 
