@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/06/29/wp/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
 <meta property="og:description" content="1. webpack基本概念Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。Loader：模块转换器，用于把模块原内容按照需求转换成新内">
-<meta property="og:updated_time" content="2018-07-01T08:46:49.853Z">
+<meta property="og:updated_time" content="2018-07-01T09:05:17.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Webpack详述系列文章 （第四篇）">
 <meta name="twitter:description" content="1. webpack基本概念Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。Loader：模块转换器，用于把模块原内容按照需求转换成新内">
@@ -586,10 +586,93 @@ $(function() {
 </tr>
 </tbody>
 </table>
-<p>在编译阶段中，最重要的要数 compilation 事件了，因为在 compilation 阶段调用了 Loader 完成了每个模块的转换操作，在 compilation 阶段又包括很多小的事件，它们分别是：<br>事件名|                            解释                            |/<br>——|—-|—-|——|——|——–|——–|——-|——|———|——–|——<br>should-emit |所有需要输出的文件已经生成好，询问插件哪些文件需要输出，哪些不需要。| webpack/lib/Compiler.js:146<br>emit | 确定好要输出哪些文件后，执行文件输出，可以在这里获取和修改输出内容。    | webpack/lib/Compiler.js:287<br>after-emit | 文件输出完毕。    | webpack/lib/Compiler.js:278<br>done | 成功完成一次完成的编译和输出流程。| webpack/lib/Compiler.js:166<br>failed | 如果在编译和输出流程中遇到异常导致 Webpack 退出时，就会直接跳转到本步骤，插件可以在本事件中获取到具体的错误原因。</p>
+<p>在编译阶段中，最重要的要数 compilation 事件了，因为在 compilation 阶段调用了 Loader 完成了每个模块的转换操作，在 compilation 阶段又包括很多小的事件，它们分别是：</p>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>解释</th>
+<th>/</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>should-emit</td>
+<td>所有需要输出的文件已经生成好，询问插件哪些文件需要输出，哪些不需要。</td>
+<td>webpack/lib/Compiler.js:146</td>
+</tr>
+<tr>
+<td>emit</td>
+<td>确定好要输出哪些文件后，执行文件输出，可以在这里获取和修改输出内容。</td>
+<td>webpack/lib/Compiler.js:287</td>
+</tr>
+<tr>
+<td>after-emit</td>
+<td>文件输出完毕。</td>
+<td>webpack/lib/Compiler.js:278</td>
+</tr>
+<tr>
+<td>done</td>
+<td>成功完成一次完成的编译和输出流程。</td>
+<td>webpack/lib/Compiler.js:166</td>
+</tr>
+<tr>
+<td>failed</td>
+<td>如果在编译和输出流程中遇到异常导致 Webpack 退出时，就会直接跳转到本步骤，插件可以在本事件中获取到具体的错误原因。</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>在输出阶段已经得到了各个模块经过转换后的结果和其依赖关系，并且把相关模块组合在一起形成一个个 Chunk。 在输出阶段会根据 Chunk 的类型，使用对应的模版生成最终要要输出的文件内容。</p>
 </blockquote>
+<h2 id="4-代码流程"><a href="#4-代码流程" class="headerlink" title="4. 代码流程"></a>4. 代码流程</h2><h4 id="4-1-node-modules-bin-webpack-cli"><a href="#4-1-node-modules-bin-webpack-cli" class="headerlink" title="4.1 node_modules/.bin/webpack-cli"></a>4.1 node_modules/.bin/webpack-cli</h4><ul>
+<li>通过yargs获得shell中的参数</li>
+<li>把webpack.config.js中的参数和shell参数整合到options对象上</li>
+<li>调用webpack-cli/bin/webpack.js开始编译和打包</li>
+<li>webpack-cli/bin/webpack.js中返回一个compiler对象，并调用了compiler.run()</li>
+<li>lib/Compiler.js中，run方法触发了before-run、run两个事件，然后通过readRecords读取文件，通过compile进行打包,该方法中实例化了一个Compilation类</li>
+<li>打包时触发before-compile、compile、make等事件</li>
+<li>make事件会触发SingleEntryPlugin监听函数，调用compilation.addEntry方法</li>
+<li>这个方法通过调用其私有方法_addModuleChain完成了两件事：根据模块的类型获取对应的模块工厂并创建模块；构建模块<ul>
+<li>调用loader处理模块之间的依赖</li>
+<li>将loader处理后的文件通过acorn抽象成抽象语法树AST</li>
+<li>遍历AST，构建该模块的所有依赖</li>
+</ul>
+</li>
+<li>调用Compilation的finish及seal方法</li>
+</ul>
+<h4 id="4-2-关键事件"><a href="#4-2-关键事件" class="headerlink" title="4.2 关键事件"></a>4.2 关键事件</h4><ul>
+<li>entry-option：初始化options</li>
+<li>after-plugins</li>
+<li>after-resolvers</li>
+<li>environment</li>
+<li>after-environment</li>
+<li>before-run</li>
+<li>run：开始编译</li>
+<li>watch-run</li>
+<li>normal-module-factory</li>
+<li>context-module-factory</li>
+<li>before-compile</li>
+<li>compile</li>
+<li>this-compilation</li>
+<li>compilation</li>
+<li>make：从entry开始递归分析依赖并对依赖进行build</li>
+<li>build-module：使用loader加载文件并build模块</li>
+<li>normal-module-loader：对loader加载的文件用acorn编译，生成抽象语法树AST</li>
+<li>program：开始对AST进行遍历，当遇到require时触发call require事件</li>
+<li>after-compile</li>
+<li>should-emit</li>
+<li>need-additional-pass</li>
+<li>seal：所有依赖build完成，开始对chunk进行优化（抽取公共模块、加hash等）</li>
+<li>optimize-chunk-assets：优化代码</li>
+<li>emit：把各个chunk输出到结果文件</li>
+<li>after-emit</li>
+<li>done</li>
+<li>failed</li>
+<li>invalid</li>
+<li>watch-close</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>plugins：<a href="https://github.com/webpack/docs/wiki/plugins" target="_blank" rel="external">https://github.com/webpack/docs/wiki/plugins</a><br>how to write a plugins:<a href="https://github.com/webpack/docs/wiki/how-to-write-a-plugin" target="_blank" rel="external">https://github.com/webpack/docs/wiki/how-to-write-a-plugin</a><br>Webpack编写一个插件：<a href="https://www.webpackjs.com/contribute/writing-a-plugin/" target="_blank" rel="external">https://www.webpackjs.com/contribute/writing-a-plugin/</a><br>Webpack编写一个loader：<a href="https://www.webpackjs.com/contribute/writing-a-loader/" target="_blank" rel="external">https://www.webpackjs.com/contribute/writing-a-loader/</a></p>
 
       
     </div>
@@ -874,7 +957,7 @@ $(function() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-webpack基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. webpack基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-流程概括"><span class="nav-number">2.</span> <span class="nav-text">2. 流程概括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-详细流程"><span class="nav-number">3.</span> <span class="nav-text">3.详细流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-初始化阶段"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 初始化阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-编译阶段"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 编译阶段</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-webpack基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. webpack基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-流程概括"><span class="nav-number">2.</span> <span class="nav-text">2. 流程概括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-详细流程"><span class="nav-number">3.</span> <span class="nav-text">3.详细流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-初始化阶段"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 初始化阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-编译阶段"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 编译阶段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-代码流程"><span class="nav-number">4.</span> <span class="nav-text">4. 代码流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-node-modules-bin-webpack-cli"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 node_modules/.bin/webpack-cli</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-关键事件"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 关键事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -894,7 +977,7 @@ $(function() {
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
