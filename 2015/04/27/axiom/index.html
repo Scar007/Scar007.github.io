@@ -96,16 +96,16 @@
 
 
 
-<meta name="description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
+<meta name="description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：可以自己扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery的实现原理和核心">
 <meta property="og:url" content="http://yoursite.com/2015/04/27/axiom/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
-<meta property="og:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
-<meta property="og:updated_time" content="2018-06-26T03:41:23.043Z">
+<meta property="og:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：可以自己扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
+<meta property="og:updated_time" content="2018-07-25T02:38:23.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery的实现原理和核心">
-<meta name="twitter:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
+<meta name="twitter:description" content="jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了jquery-3.xxx：可以自己扩展一下，看看新增加或者修改了哪些方法[JQ的API中文速查:] http://jquery.cuishifeng.cn/ jQuery">
 
 
 
@@ -526,7 +526,7 @@ $(function() {
       
 
       
-        <p>jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器<br>jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了<br>jquery-3.xxx：自己回去扩展一下，看看新增加或者修改了哪些方法<br><b>[JQ的API中文速查:]</b> <a href="http://jquery.cuishifeng.cn/" target="_blank" rel="external">http://jquery.cuishifeng.cn/</a></p>
+        <p>jquery-1.xxx ：专门为PC端诞生的类库，兼容所有的浏览器<br>jquery-2.xxx：当初是为了移动端而准备的，所以IE低版本浏览器一般不兼容，但是这个版本针对移动端的事件等操作也不是特别的完善，被Zepto这个类库取代了<br>jquery-3.xxx：可以自己扩展一下，看看新增加或者修改了哪些方法<br><b>[JQ的API中文速查:]</b> <a href="http://jquery.cuishifeng.cn/" target="_blank" rel="external">http://jquery.cuishifeng.cn/</a></p>
 <h2 id="jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；"><a href="#jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；" class="headerlink" title="jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；"></a>jQuery充分利用了JS中函数的三种特性：普通函数、类、普通对象；jQuery就是这个类；</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window,undefined</span>) </span>&#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line">        selector:jQuery选择器内容</div><div class="line">        context：获取元素上下文</div><div class="line">       </div><div class="line">    */</div><div class="line">    <span class="keyword">var</span> version = <span class="string">"1.11.3"</span>,</div><div class="line">    jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector,context);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    jQuery.fn = jQuery.prototype = &#123;</div><div class="line">        ...</div><div class="line">        addClass:...,</div><div class="line">        <span class="attr">init</span>:<span class="function"><span class="keyword">function</span> (<span class="params">selector,context</span>) </span>&#123;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    jQuery.ajax = <span class="function"><span class="keyword">function</span>...</span></div><div class="line">    <span class="title">window</span>.<span class="title">jQuery</span> = <span class="title">window</span>.<span class="title">$</span> = <span class="title">jQuery</span>;</div><div class="line">&#125;)(<span class="params"></span>);</div><div class="line"></div><div class="line"><span class="title">jQuery</span>(<span class="params"></span>);  &lt;==&gt; <span class="title">$</span>(<span class="params"></span>)</div><div class="line"><span class="title">$</span>(<span class="params"></span>).<span class="title">addClass</span>(<span class="params"></span>)</div><div class="line"><span class="title">$</span>.<span class="title">ajax</span>(<span class="params"></span>)</div></pre></td></tr></table></figure>
 <h2 id="1-jQuery的实现原理"><a href="#1-jQuery的实现原理" class="headerlink" title="1.jQuery的实现原理"></a>1.jQuery的实现原理</h2><p>JQ本身就是一个类，在外面使用的$和jQuery是同一个东西，JQ中提供的方法分为两部分：</p>
 <ul>
@@ -908,7 +908,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">77.2k</span>
+    <span title="Site words total count">77.1k</span>
   
 </div>
 

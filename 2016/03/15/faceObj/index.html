@@ -103,7 +103,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/03/15/faceObj/index.html">
 <meta property="og:site_name" content="Scar&#39;s Blog">
 <meta property="og:description" content="什么是面向对象：对象由两部分构成：属性 和 方法； 面向对象的特点：1.封装：对于相同功能的代码，放在一个函数中，以后再用到此功能，只需要调用即可，无需再重写；避免大量冗余代码； 专业话说：低耦合，高内聚； 2.继承：子类继承父类原有的属性和方法； 类：’Object’,’Function’,’Number’,’String’,’Array’,’RegExp’,’Date’….. 具体的继承可看下">
-<meta property="og:updated_time" content="2018-06-26T03:52:56.765Z">
+<meta property="og:updated_time" content="2018-07-25T02:43:43.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于JS的面向对象总结">
 <meta name="twitter:description" content="什么是面向对象：对象由两部分构成：属性 和 方法； 面向对象的特点：1.封装：对于相同功能的代码，放在一个函数中，以后再用到此功能，只需要调用即可，无需再重写；避免大量冗余代码； 专业话说：低耦合，高内聚； 2.继承：子类继承父类原有的属性和方法； 类：’Object’,’Function’,’Number’,’String’,’Array’,’RegExp’,’Date’….. 具体的继承可看下">
@@ -490,7 +490,7 @@ $(function() {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,286 字
+                  2,285 字
                 </span>
               
 
@@ -529,7 +529,7 @@ $(function() {
       
         <h2 id="什么是面向对象："><a href="#什么是面向对象：" class="headerlink" title="什么是面向对象："></a>什么是面向对象：</h2><p>对象由两部分构成：属性 和 方法；</p>
 <h2 id="面向对象的特点："><a href="#面向对象的特点：" class="headerlink" title="面向对象的特点："></a>面向对象的特点：</h2><h3 id="1-封装：对于相同功能的代码，放在一个函数中，以后再用到此功能，只需要调用即可，无需再重写；避免大量冗余代码；"><a href="#1-封装：对于相同功能的代码，放在一个函数中，以后再用到此功能，只需要调用即可，无需再重写；避免大量冗余代码；" class="headerlink" title="1.封装：对于相同功能的代码，放在一个函数中，以后再用到此功能，只需要调用即可，无需再重写；避免大量冗余代码；"></a>1.封装：对于相同功能的代码，放在一个函数中，以后再用到此功能，只需要调用即可，无需再重写；避免大量冗余代码；</h3><p> 专业话说：低耦合，高内聚；</p>
-<h3 id="2-继承：子类继承父类原有的属性和方法；"><a href="#2-继承：子类继承父类原有的属性和方法；" class="headerlink" title="2.继承：子类继承父类原有的属性和方法；"></a>2.继承：子类继承父类原有的属性和方法；</h3><p> 类：’Object’,’Function’,’Number’,’String’,’Array’,’RegExp’,’Date’…..<br> 具体的继承可看下述文章（链接如下）：<br> <a href="https://scar007.github.io/2015/05/03/faceinherit/" target="_blank" rel="external">https://scar007.github.io/2015/05/03/faceinherit/</a></p>
+<h3 id="2-继承：子类继承父类原有的属性和方法；"><a href="#2-继承：子类继承父类原有的属性和方法；" class="headerlink" title="2.继承：子类继承父类原有的属性和方法；"></a>2.继承：子类继承父类原有的属性和方法；</h3><p> 类：’Object’,’Function’,’Number’,’String’,’Array’,’RegExp’,’Date’…..<br> 具体的继承可看下述文章：<a href="https://scar007.github.io/2015/05/03/faceinherit/" target="_blank" rel="external">关于JS面向对象继承问题</a></p>
 <h3 id="3-多态：重载和重写；"><a href="#3-多态：重载和重写；" class="headerlink" title="3.多态：重载和重写；"></a>3.多态：重载和重写；</h3><p> 重载：在JS中不存在严格意义上的重载；但是，JS中有类似重载的功能:同一个函数，传不同的参数，实现不同的功能；<br> 重写：子类可以重写父类的属性和方法；<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">n,m</span>)</span>&#123;</div><div class="line">n=<span class="built_in">Number</span>(n);</div><div class="line">m=<span class="built_in">Number</span>(m);</div><div class="line"><span class="keyword">if</span>(<span class="built_in">isNaN</span>(n) || <span class="built_in">isNaN</span>(m))&#123;</div><div class="line"><span class="keyword">return</span> <span class="built_in">Math</span>.random();</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(n&gt;m)&#123;</div><div class="line">n=m+n;</div><div class="line">m=n-m;</div><div class="line">n=n-m;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*(m-n)+n);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="4-会学到的设计模式：单例模式，工厂模式，构造函数模式，原型模式；"><a href="#4-会学到的设计模式：单例模式，工厂模式，构造函数模式，原型模式；" class="headerlink" title="4.会学到的设计模式：单例模式，工厂模式，构造函数模式，原型模式；"></a>4.会学到的设计模式：单例模式，工厂模式，构造函数模式，原型模式；</h3><p>.单例模式：把描述同一事物的属性和方法，放在同一个命名空间下，避免了变量名冲突的问题<br> 命名空间：浏览器开辟了一个堆内存，给他分配的名字person1就是命名空间<br> 单例模式本质：普通对象；</p>
 <h3 id="6-模块化开发：对于一个大型项目，项目组会分配给不同的工程师去开发（这些开发是同步进行的）；等所-有人开发完成，合在一起，整个项目就完成了；"><a href="#6-模块化开发：对于一个大型项目，项目组会分配给不同的工程师去开发（这些开发是同步进行的）；等所-有人开发完成，合在一起，整个项目就完成了；" class="headerlink" title="6.模块化开发：对于一个大型项目，项目组会分配给不同的工程师去开发（这些开发是同步进行的）；等所 有人开发完成，合在一起，整个项目就完成了；"></a>6.模块化开发：对于一个大型项目，项目组会分配给不同的工程师去开发（这些开发是同步进行的）；等所 有人开发完成，合在一起，整个项目就完成了；</h3><ul>
@@ -996,7 +996,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">77.2k</span>
+    <span title="Site words total count">77.1k</span>
   
 </div>
 

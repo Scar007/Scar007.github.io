@@ -491,7 +491,7 @@ $(function() {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,995 字
+                  1,964 字
                 </span>
               
 
@@ -507,7 +507,7 @@ $(function() {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -530,9 +530,10 @@ $(function() {
       
         
           
-          1. webpack基本概念Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。Loader：模块转换器，用于把模块原内容按照需求转换成新内容。Plugin：扩展插件，在 Webpack 构建流程中的特定时机会广播出对应的事件，插件可以监听这些事件的发生，在特定时机做对应的事情。
+           WebPack官网
+1. webpack基本概念Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。Loader：模块转换器，用于把模块原内容按照需求转换成新内容。Plugin：扩展插件，在 Webpack 构建流程中的特定时机会广播出对应的事件，插件可以监听这些事件的发生，在特定时机做对应的事情。
 2. 流程概括
-初始化参数：从配置文件和 Shell 语句
+初始化参数：从配置文
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -698,7 +699,7 @@ $(function() {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,108 字
+                  3,111 字
                 </span>
               
 
@@ -737,7 +738,8 @@ $(function() {
       
         
           
-          类图
+           WebPack官网
+类图
 1. 模块Module是webpack中最核心的类，要加载定的一切和依赖都是Module. 它有很多子类
 
 RawModule
@@ -751,7 +753,7 @@ ExternalModule
 2. 依赖
 Module类继承自DependenciesBlock，它有一个dependencies数组，表示此模块依赖的其他模块。
 webpack使用Dependency的各种子类来表示不同的模块加载规范，每个规范都有自己的DependencyParserPlugin来加载
-AMDRequireDep
+AM
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -917,7 +919,7 @@ AMDRequireDep
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,930 字
+                  3,933 字
                 </span>
               
 
@@ -956,7 +958,8 @@ AMDRequireDep
       
         
           
-          1.缩小文件搜索范围1.1.1 include &amp; exclude12345678910module:&#123;        rules:[            &#123;                 test:/\.js$/,                 use:['babel-loader?cacheDirectory'],                include:path.resolve(__dirname,'src'),                exclude:/node_modules/            &#125;        ]    
+           WebPack官网
+1.缩小文件搜索范围1.1.1 include &amp; exclude12345678910module:&#123;        rules:[            &#123;                 test:/\.js$/,                 use:['babel-loader?cacheDirectory'],                include:path.resolve(__dirname,'src'),                exclude:/node_modules/            &#125;  
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1122,7 +1125,7 @@ AMDRequireDep
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,897 字
+                  2,891 字
                 </span>
               
 
@@ -1161,13 +1164,13 @@ AMDRequireDep
       
         
           
-           WebPack官网地址:https://webpack-china.org/
+           WebPack官网
 1. 什么是WebPackWebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的格式以供浏览器使用。
 构建就是把源代码转换成发布到线上的可执行 JavaScrip、CSS、HTML 代码，包括如下内容。
 
 代码转换：TypeScript 编译成 JavaScript、SCSS 编译成 CSS 等。
 文件优化：压缩 JavaScript、CSS、HTML 代码，压缩合并图片等。
-
+代码分割：提取多个页面的公共代码、提取首屏不需要执行部分的
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1333,7 +1336,7 @@ AMDRequireDep
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  576 字
+                  571 字
                 </span>
               
 
@@ -1373,10 +1376,11 @@ AMDRequireDep
         
           
           注：在搭建项目之前，请先安装一些全局的工具（如：node，vue-cli等）
-node安装：去node官网 https://nodejs.org/en/下载并安装node即可，安装node以后就可以正常使用npm命令
+node安装：node官网下载并安装node即可，安装node以后就可以正常使用npm命令
 全局安装vue-cli工具：1npm install vue-cli -g
 开始创建项目：找一个合适的位置，打开命令窗口，使用vue初始化基于webpack的新项目1vue init webpack vue-demo  //注意名称太长的话它会有错误提示，就像VueDemo 我们可以写成vue-demo就可以了
- 如上图，它会又各种提示，还有需要安装的东西，可以自行按照自己的需求
+ 如上图，它会又各种提示，还有需要安装的东西，可以自行按照自己的需求去安装东西。
+ 生成以后它会在你刚开始选择的位置
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2649,7 +2653,7 @@ Vue属性el
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">77.2k</span>
+    <span title="Site words total count">77.1k</span>
   
 </div>
 
