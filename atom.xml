@@ -320,11 +320,11 @@
       <category term="SVN" scheme="http://yoursite.com/categories/SVN/"/>
     
     
-      <category term="GIT" scheme="http://yoursite.com/tags/GIT/"/>
-    
       <category term="SVN" scheme="http://yoursite.com/tags/SVN/"/>
     
       <category term="CVS" scheme="http://yoursite.com/tags/CVS/"/>
+    
+      <category term="GIT" scheme="http://yoursite.com/tags/GIT/"/>
     
   </entry>
   
