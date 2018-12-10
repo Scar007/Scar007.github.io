@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>React</title>
+      <link href="/2018/09/18/React/"/>
+      <url>/2018/09/18/React/</url>
+      <content type="html"><![CDATA[<h2 id="React-基础篇"><a href="#React-基础篇" class="headerlink" title="React 基础篇"></a>React 基础篇</h2><h3 id="什么是React？"><a href="#什么是React？" class="headerlink" title="什么是React？"></a>什么是React？</h3><p>React是一个用于构建用户界面的JavaScript库，核心专注于视图，目的实现组件化开发。</p><h3 id="组件化概念"><a href="#组件化概念" class="headerlink" title="组件化概念"></a>组件化概念</h3><p>我们可以很直观的将一个复杂的页面分割成若干个独立组件，每个组件包含自己的逻辑和样式，再将这些独立组件组合完成一个复杂的页面。这样既减少了逻辑复杂度，又实现了代码的重用</p><ul><li>可组合：一个组件可以和其他组件一起使用或者可以直接嵌套在另一个组件内部</li><li>可重用：每个组件都具有独立功能，他可以被使用在多个场景中</li><li>可维护：每个小的组件仅仅包含自身的逻辑，更容易被理解和维护</li></ul><h3 id="跑通React开发环境"><a href="#跑通React开发环境" class="headerlink" title="跑通React开发环境"></a>跑通React开发环境</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install create-react-app -g</div><div class="line">create-react-app &lt;项目名&gt;</div><div class="line">cd &lt;项目名&gt;</div><div class="line">npm start</div></pre></td></tr></table></figure><p>默认会自动安装React，React由两部分组成，分别是：</p><ul><li>react.js 是React的核心库</li><li>react-dom.js 是提供与DOM相关的功能，会在window下增加ReactDOM属性，内部比较重要的方法是render，将react元素或者react组件插入到页面中。</li></ul><h3 id="简介JSX"><a href="#简介JSX" class="headerlink" title="简介JSX"></a>简介JSX</h3><p>是一种JS和HTML混合的语法，将组织的结构，数据甚至样式都聚合在一起定义组件，会编译成普通的JavaScript。需要注意的是JSX并不是HTML，在JSX中属性不能包含关键字，像class需要写成className，for需要写成htmlFor，并且属性名需要采用驼峰命名！</p><h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><p>JSX其实只是一种语法糖，最终会通过babel转译成createElement语法，以下代码等价<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>高<span class="tag">&lt;<span class="name">span</span>&gt;</span>佳睿<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>);</div><div class="line">ReactDOM.render(React.createElement(<span class="string">"div"</span>,<span class="literal">null</span>,<span class="string">"高"</span>,React.createElement(<span class="string">"span"</span>,<span class="literal">null</span>,<span class="string">"佳睿"</span>)));</div></pre></td></tr></table></figure></p><p>我们一般使用React.createElement来创建一个虚拟dom元素。</p><h3 id="react元素-JSX元素"><a href="#react元素-JSX元素" class="headerlink" title="react元素/JSX元素"></a>react元素/JSX元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ReactElement</span>(<span class="params">type,props</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">    <span class="keyword">this</span>.props = props;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">let</span> React = &#123;</div><div class="line">    createElement(type,props = &#123;&#125;,...childrens)&#123;</div><div class="line">        childrens.length === <span class="number">1</span> ? childrens = childrens[<span class="number">0</span>]: viod <span class="number">0</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ReactElement(type,&#123;...props,<span class="attr">children</span>:childrens&#125;)</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p>ReactElement就是虚拟dom的概念，具有一个type属性代表当前的节点类型，还有节点的属性props</p><h3 id="模拟render实现"><a href="#模拟render实现" class="headerlink" title="模拟render实现"></a>模拟render实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> render = <span class="function">(<span class="params">eleObj,container</span>)=&gt;</span>&#123;</div><div class="line">    <span class="comment">// 先取出第一层 进行创建真实dom</span></div><div class="line">    <span class="keyword">let</span> &#123;type,props&#125; = eleObj;</div><div class="line">    <span class="keyword">let</span> elementNode = <span class="built_in">document</span>.createElement(type); <span class="comment">// 创建第一个元素</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> attr <span class="keyword">in</span> props)&#123; <span class="comment">// 循环所有属性</span></div><div class="line">        <span class="keyword">if</span>(attr === <span class="string">'children'</span>)&#123; <span class="comment">// 如果是children表示有嵌套关系</span></div><div class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> props[attr] == <span class="string">'object'</span>)&#123; <span class="comment">// 看是否是只有一个文本节点</span></div><div class="line">                props[attr].forEach(<span class="function"><span class="params">item</span>=&gt;</span>&#123; <span class="comment">// 多个的话循环判断 如果是对象再次调用render方法</span></div><div class="line">                    <span class="keyword">if</span>(<span class="keyword">typeof</span> item === <span class="string">'object'</span>)&#123;</div><div class="line">                        render(item,elementNode)</div><div class="line">                    &#125;<span class="keyword">else</span>&#123; <span class="comment">//是文本节点 直接创建即可</span></div><div class="line">                        elementNode.appendChild(<span class="built_in">document</span>.createTextNode(item));</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">            &#125;<span class="keyword">else</span>&#123; <span class="comment">// 只有一个文本节点直接创建即可</span></div><div class="line">                elementNode.appendChild(<span class="built_in">document</span>.createTextNode(props[attr]));</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(attr === <span class="string">'className'</span>)&#123; <span class="comment">// 是不是class属性 class 属性特殊处理</span></div><div class="line">            elementNode.setAttribute(<span class="string">'class'</span>,props[attr]);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            elementNode.setAttribute(attr,props[attr]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    container.appendChild(elementNode)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+      
+      <categories>
+          
+          <category> React </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Session</title>
       <link href="/2018/09/01/Session/"/>
       <url>/2018/09/01/Session/</url>
@@ -292,11 +313,11 @@
       
         <tags>
             
+            <tag> GIT </tag>
+            
             <tag> SVN </tag>
             
             <tag> CVS </tag>
-            
-            <tag> GIT </tag>
             
         </tags>
       
@@ -628,9 +649,9 @@
       
         <tags>
             
-            <tag> 函数 </tag>
-            
             <tag> 预解释 </tag>
+            
+            <tag> 函数 </tag>
             
         </tags>
       
@@ -1012,9 +1033,9 @@
       
         <tags>
             
-            <tag> 函数 </tag>
-            
             <tag> 作用域 </tag>
+            
+            <tag> 函数 </tag>
             
         </tags>
       
@@ -1042,27 +1063,6 @@
     </entry>
     
     <entry>
-      <title>移动端知识梳理</title>
-      <link href="/2016/06/11/mobile/"/>
-      <url>/2016/06/11/mobile/</url>
-      <content type="html"><![CDATA[<h3 id="插件："><a href="#插件：" class="headerlink" title="插件："></a>插件：</h3><ul><li>swiper</li><li>iscroll</li><li>ejs(主要应用于node.js)</li><li>zepto(同jq用法一样，更适合于移动端)</li><li>less</li></ul><h3 id="H5"><a href="#H5" class="headerlink" title="H5:"></a>H5:</h3><ul><li>新增标签<ul><li>header</li><li>footer</li><li>section</li><li>time</li><li>main</li><li>nav</li><li>…</li></ul></li><li>对于input新增表单元素属性，以及新增类型的优势<ul><li>email</li><li>tel</li><li>url</li><li>search</li><li>date</li><li>time</li><li>number</li><li>color</li><li>week</li><li>month</li><li>range(音量)</li></ul></li><li>-&gt;在移动端表单元素中没有keydown/keyup事件(移动端的见怕是虚拟键盘)，这两个事件(输入内容事件)统一使用input事件代替:[ELEMENT].oninput=function(){}</li><li>-&gt;placeholder:在IE(10以下，10兼容，但是不是很好，可以理解为不兼容)下不兼容，如何使用JS来模拟。</li></ul><h3 id="audio-video-移动端音频-视频-公认为本次升级最伟大之处"><a href="#audio-video-移动端音频-视频-公认为本次升级最伟大之处" class="headerlink" title="audio/video:移动端音频/视频(公认为本次升级最伟大之处)"></a>audio/video:移动端音频/视频(公认为本次升级最伟大之处)</h3><ul><li>-&gt;在真实项目中应用audio都是做背景音乐播放(专门做音乐播放器的很少，基本上就是做音乐的公司)：src、preload、autoplay、loop、controls、play()、pause()、paused…</li><li>-&gt;真实项目中的video不是直接使用最简单的内置播放器(用到的属性和方法和audio差不多)，就是直接使用别人封装好的播放器插件：tvplayer、腾讯视频插件…</li></ul><h3 id="新增加的一些JS的API"><a href="#新增加的一些JS的API" class="headerlink" title="新增加的一些JS的API"></a>新增加的一些JS的API</h3><ul><li>-&gt;本地存储:webStorage(localStorage/sessionStorage)</li><li>-&gt;离线缓存(不是很稳定):xxx.manifest(手机断网情况下依然可以观看网页中的内容，就是应用离线缓存技术事先把内容存储到本地)</li><li>-&gt;webSocket/socket.io</li><li>-&gt;获取地理位置的方法:真实项目中获取到经纬度、精准度后，会把这些信息发送给第三方地图接口，从而获取到我们需要的一些信息<h3 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h3></li><li>选择器</li><li>倒入字体图标</li><li>常用属性:border-radius/box-shadow/text-shadow…</li><li>背景变革:background-image/-color/-position(雪碧图、图片精灵、)CSS-Sprite/-attachment</li><li>background-size/-clip/-origin</li><li>背景颜色的线性和放射性渐变</li><li>filter的高级应用：反色、灰度</li><li>盒子模型：<ul><li>box-sizing：border-box/content-box(默认)</li><li>columns：多列布局</li><li>flex：弹性伸缩盒子模型</li><li>变形：transform</li><li>动画：transition animation</li></ul></li><li>响应式布局： + -&gt;PC和移动端用一套的使用(外层盒子宽度百分比，其余都是写死的，拿@media(国际通用规范)在不同设备中一点点的调整样式) + -&gt;REM(懒人做法)，一般应用于当卡项目仅仅是在移动端设备上访问的(在PC端部兼容) + -&gt;flex不是响应式布局方案，仅仅是某些特殊的效果用这个来做而已</li><li>webApp/Hybrid模式： 把我们做的H5页面运行在浏览器中或者其他App的webView中就是基于Hybrid混合模式开发的webApp项目 微信二次开发仅仅是在我们写好的H5页面基础上调取微信提供的接口(调取接口的时候需要配合后台使用)： <a href="https://mp.weixin.qq.com/wiki" target="_blank" rel="external">https://mp.weixin.qq.com/wiki</a></li><li>兼容：<ul><li>兼容ios和安卓<ul><li>-webkit-transfrom：</li><li>transfrom：</li></ul></li></ul></li></ul>]]></content>
-      
-      <categories>
-          
-          <category> 移动端 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 移动端 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>逻辑运算的优先级</title>
       <link href="/2016/06/11/logic/"/>
       <url>/2016/06/11/logic/</url>
@@ -1078,6 +1078,27 @@
         <tags>
             
             <tag> 逻辑优先级 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>移动端知识梳理</title>
+      <link href="/2016/06/11/mobile/"/>
+      <url>/2016/06/11/mobile/</url>
+      <content type="html"><![CDATA[<h3 id="插件："><a href="#插件：" class="headerlink" title="插件："></a>插件：</h3><ul><li>swiper</li><li>iscroll</li><li>ejs(主要应用于node.js)</li><li>zepto(同jq用法一样，更适合于移动端)</li><li>less</li></ul><h3 id="H5"><a href="#H5" class="headerlink" title="H5:"></a>H5:</h3><ul><li>新增标签<ul><li>header</li><li>footer</li><li>section</li><li>time</li><li>main</li><li>nav</li><li>…</li></ul></li><li>对于input新增表单元素属性，以及新增类型的优势<ul><li>email</li><li>tel</li><li>url</li><li>search</li><li>date</li><li>time</li><li>number</li><li>color</li><li>week</li><li>month</li><li>range(音量)</li></ul></li><li>-&gt;在移动端表单元素中没有keydown/keyup事件(移动端的见怕是虚拟键盘)，这两个事件(输入内容事件)统一使用input事件代替:[ELEMENT].oninput=function(){}</li><li>-&gt;placeholder:在IE(10以下，10兼容，但是不是很好，可以理解为不兼容)下不兼容，如何使用JS来模拟。</li></ul><h3 id="audio-video-移动端音频-视频-公认为本次升级最伟大之处"><a href="#audio-video-移动端音频-视频-公认为本次升级最伟大之处" class="headerlink" title="audio/video:移动端音频/视频(公认为本次升级最伟大之处)"></a>audio/video:移动端音频/视频(公认为本次升级最伟大之处)</h3><ul><li>-&gt;在真实项目中应用audio都是做背景音乐播放(专门做音乐播放器的很少，基本上就是做音乐的公司)：src、preload、autoplay、loop、controls、play()、pause()、paused…</li><li>-&gt;真实项目中的video不是直接使用最简单的内置播放器(用到的属性和方法和audio差不多)，就是直接使用别人封装好的播放器插件：tvplayer、腾讯视频插件…</li></ul><h3 id="新增加的一些JS的API"><a href="#新增加的一些JS的API" class="headerlink" title="新增加的一些JS的API"></a>新增加的一些JS的API</h3><ul><li>-&gt;本地存储:webStorage(localStorage/sessionStorage)</li><li>-&gt;离线缓存(不是很稳定):xxx.manifest(手机断网情况下依然可以观看网页中的内容，就是应用离线缓存技术事先把内容存储到本地)</li><li>-&gt;webSocket/socket.io</li><li>-&gt;获取地理位置的方法:真实项目中获取到经纬度、精准度后，会把这些信息发送给第三方地图接口，从而获取到我们需要的一些信息<h3 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h3></li><li>选择器</li><li>倒入字体图标</li><li>常用属性:border-radius/box-shadow/text-shadow…</li><li>背景变革:background-image/-color/-position(雪碧图、图片精灵、)CSS-Sprite/-attachment</li><li>background-size/-clip/-origin</li><li>背景颜色的线性和放射性渐变</li><li>filter的高级应用：反色、灰度</li><li>盒子模型：<ul><li>box-sizing：border-box/content-box(默认)</li><li>columns：多列布局</li><li>flex：弹性伸缩盒子模型</li><li>变形：transform</li><li>动画：transition animation</li></ul></li><li>响应式布局： + -&gt;PC和移动端用一套的使用(外层盒子宽度百分比，其余都是写死的，拿@media(国际通用规范)在不同设备中一点点的调整样式) + -&gt;REM(懒人做法)，一般应用于当卡项目仅仅是在移动端设备上访问的(在PC端部兼容) + -&gt;flex不是响应式布局方案，仅仅是某些特殊的效果用这个来做而已</li><li>webApp/Hybrid模式： 把我们做的H5页面运行在浏览器中或者其他App的webView中就是基于Hybrid混合模式开发的webApp项目 微信二次开发仅仅是在我们写好的H5页面基础上调取微信提供的接口(调取接口的时候需要配合后台使用)： <a href="https://mp.weixin.qq.com/wiki" target="_blank" rel="external">https://mp.weixin.qq.com/wiki</a></li><li>兼容：<ul><li>兼容ios和安卓<ul><li>-webkit-transfrom：</li><li>transfrom：</li></ul></li></ul></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 移动端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 移动端 </tag>
             
         </tags>
       
@@ -1600,9 +1621,9 @@
       
         <tags>
             
-            <tag> 作用域 </tag>
-            
             <tag> 预解释 </tag>
+            
+            <tag> 作用域 </tag>
             
         </tags>
       
@@ -1700,6 +1721,33 @@
           
       </categories>
       
+      
+    </entry>
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2014/08/02/undefined/"/>
+      <url>/2014/08/02/undefined/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
+      
+      <categories>
+          
+          <category> 测试文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+            <tag> blog </tag>
+            
+            <tag> 基础篇 </tag>
+            
+            <tag> 用法 </tag>
+            
+        </tags>
       
     </entry>
     
