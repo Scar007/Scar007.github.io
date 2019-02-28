@@ -313,11 +313,11 @@
       
         <tags>
             
-            <tag> GIT </tag>
-            
             <tag> SVN </tag>
             
             <tag> CVS </tag>
+            
+            <tag> GIT </tag>
             
         </tags>
       
@@ -649,9 +649,9 @@
       
         <tags>
             
-            <tag> 预解释 </tag>
-            
             <tag> 函数 </tag>
+            
+            <tag> 预解释 </tag>
             
         </tags>
       
@@ -1033,9 +1033,9 @@
       
         <tags>
             
-            <tag> 作用域 </tag>
-            
             <tag> 函数 </tag>
+            
+            <tag> 作用域 </tag>
             
         </tags>
       
@@ -1621,9 +1621,9 @@
       
         <tags>
             
-            <tag> 预解释 </tag>
-            
             <tag> 作用域 </tag>
+            
+            <tag> 预解释 </tag>
             
         </tags>
       
