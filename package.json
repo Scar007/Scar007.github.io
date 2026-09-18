@@ -1,0 +1,15 @@
+{
+  "name": "scar007-github-io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scar007 的学习笔记与博客（基于 VitePress）",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.5.0"
+  }
+}
