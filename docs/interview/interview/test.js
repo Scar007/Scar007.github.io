@@ -1,0 +1,11 @@
+var name = '123';
+var obj = {
+  name: '456',
+  getName: function () {
+  function printName () {
+    console.log(this.name);
+  }
+  printName();
+  }
+}
+obj.getName()
