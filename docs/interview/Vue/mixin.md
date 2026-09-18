@@ -1,4 +1,5 @@
 ---
+publish: false
 title: mixin
 ---
 ## 什么是 mixin ？

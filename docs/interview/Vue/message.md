@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 通信
 ---
 ## Vue组件通信有哪些方式？

@@ -1,4 +1,5 @@
 ---
+publish: false
 title: MVVM
 ---
 ## MVVM、MVC、MVP的区别？

@@ -1,9 +1,3 @@
-import DefaultTheme from 'vitepress/theme'
-import BlogList from './BlogList.vue'
+import BlogTheme from '@sugarat/theme'
 
-export default {
-  extends: DefaultTheme,
-  enhanceApp({ app }) {
-    app.component('BlogList', BlogList)
-  },
-}
+export default BlogTheme

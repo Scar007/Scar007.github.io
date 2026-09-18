@@ -1,4 +1,5 @@
 ---
+publish: false
 title: vuex
 ---
 ## 说一说vuex使用及其理解？

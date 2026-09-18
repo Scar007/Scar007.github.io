@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 对象
 ---
 ## JavaScript 宿主对象 (host objects) 和原生对象 (native objects) 以及内置（build-in objects）对象的区别？

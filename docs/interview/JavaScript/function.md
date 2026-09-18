@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 函数
 ---
 ## 同步 (synchronous) 和异步 (asynchronous) 函数的区别在哪里?

@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 数据类型
 ---
 ## javascript 有哪几种数据类型

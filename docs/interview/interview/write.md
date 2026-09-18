@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 ## 手写
 - new<br>
 ```js

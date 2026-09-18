@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 原型链
 ---
 ## 文章链接

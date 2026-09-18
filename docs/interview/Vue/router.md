@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 路由
 ---
 ## vue路由hash模式和history模式实现原理分别是什么，他们的区别是什么？

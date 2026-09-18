@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 实现axios
 ---
 axios 是目前最常用的 http 请求库，可以用于浏览器和 node.js 。

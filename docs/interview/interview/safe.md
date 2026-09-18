@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 ## 安全
 [安全攻防](https://interview.scar.vip/safe/safe.html)
 - XSS，如何防范<br>

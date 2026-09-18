@@ -1,4 +1,5 @@
 ---
+publish: false
 title: ECMAScript
 ---
 ## ES6中的class 和 ES5的类 有什么区别？

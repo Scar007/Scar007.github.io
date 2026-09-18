@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 # JavaScript
 
 JavaScript 基础与进阶笔记。

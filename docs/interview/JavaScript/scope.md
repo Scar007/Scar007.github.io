@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 作用域
 ---
 ## let、const、和 var 的区别？

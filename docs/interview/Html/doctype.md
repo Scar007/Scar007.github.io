@@ -1,4 +1,5 @@
 ---
+publish: false
 title: Doctype
 ---
 ## doctype 是什么，如何区分严格模式与混杂模式，分别有何意义，举例常见 doctype 及特点?

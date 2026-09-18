@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 数组篇
 ---
 [数组知识总结](https://www.scar.vip/%e5%89%8d%e7%ab%af/%e6%95%b0%e7%bb%84%e7%9f%a5%e8%af%86%e6%80%bb%e7%bb%93/)

@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 [字节跳动最爱考的前端面试题：JavaScript 基础](https://juejin.cn/post/6934500357091360781?utm_source=gold_browser_extension)
 [字节跳动最爱考的前端面试题：计算机网络基础](https://juejin.cn/post/6939691851746279437)
 [字节跳动最爱考的前端面试题：CSS 基础](https://juejin.cn/post/6936913689115099143)

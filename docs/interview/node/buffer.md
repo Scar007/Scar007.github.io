@@ -1,4 +1,5 @@
 ---
+publish: false
 title: Buffer
 ---
 ## 新建Buffer会占用V8分配的内存吗?

@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 闭包
 ---
 ## 什么闭包，闭包有什么用？

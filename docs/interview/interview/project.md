@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 ## 项目问题
 - 如何搭建的Vue项目？<br>
   [面试官：自己搭建过vue开发环境吗？](https://juejin.cn/post/6844903833160646663)

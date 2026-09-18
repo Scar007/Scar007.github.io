@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 规范
 ---
 ## 如何看待AMD和CommonJS？

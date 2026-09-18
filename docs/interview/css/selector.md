@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 选择器
 ---
 ## 选择器优先级

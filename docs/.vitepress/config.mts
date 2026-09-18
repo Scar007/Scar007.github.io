@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { getThemeConfig } from '@sugarat/theme/node'
 import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -87,6 +88,17 @@ function buildInterviewSidebar() {
   })
 }
 
+// @sugarat/theme 博客主题配置（首页博客信息 + 内置插件等）
+const blogTheme = getThemeConfig({
+  themeColor: 'vp-default',
+  home: {
+    name: '学习笔记',
+    motto: 'Scar007 的个人博客与学习资料库',
+    inspiring: ['记录学习，持续成长', 'Stay hungry, stay foolish', '好记性不如烂笔头'],
+    inspiringTimeout: 5000,
+  },
+})
+
 export default defineConfig({
   lang: 'zh-CN',
   title: '学习笔记 / Notes',
@@ -94,7 +106,26 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
 
+  ...blogTheme,
+
+  // @sugarat/theme 依赖的 vitepress-plugin-product-card 在 SSR 时携带 .vue 源码，
+  // 需加入 ssr.noExternal 让其被 Vite 内联打包，否则 Node 无法加载 .vue 文件
+  vite: {
+    ...(blogTheme.vite || {}),
+    ssr: {
+      ...(blogTheme.vite?.ssr || {}),
+      noExternal: [
+        ...(Array.isArray(blogTheme.vite?.ssr?.noExternal)
+          ? blogTheme.vite.ssr.noExternal
+          : []),
+        'vitepress-plugin-product-card',
+      ],
+    },
+  },
+
   themeConfig: {
+    ...blogTheme.themeConfig,
+
     nav: [
       { text: '首页', link: '/' },
       { text: '博客', link: '/blog/' },

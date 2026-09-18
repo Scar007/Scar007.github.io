@@ -1,4 +1,5 @@
 ---
+publish: false
 title: rem
 ---
 ## rem的原理

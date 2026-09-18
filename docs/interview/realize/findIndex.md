@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 实现findIndex
 ---
 

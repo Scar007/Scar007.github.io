@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 手写promise
 ---
 [Promise详解](https://www.scar.vip/%e5%89%8d%e7%ab%af/promise%e8%af%a6%e8%a7%a3/)

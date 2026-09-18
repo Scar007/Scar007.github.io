@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 跨域
 ---
 [什么是跨域](https://www.scar.vip/%e6%96%87%e7%ab%a0/%e4%bb%80%e4%b9%88%e6%98%af%e8%b7%a8%e5%9f%9f%ef%bc%9f/)

@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 实现call、apply、bind
 ---
 ## call

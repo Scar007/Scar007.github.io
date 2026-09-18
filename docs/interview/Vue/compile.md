@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 编译
 ---
 ## vue中compile的过程是什么，进⾏AST的作⽤是什么？

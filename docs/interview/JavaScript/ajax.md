@@ -1,4 +1,5 @@
 ---
+publish: false
 title: AJAX
 ---
 ## XMLHttpRequest 通用属性和方法

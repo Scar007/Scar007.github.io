@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 ## CSS
 - 居中布局<br>
 [居中布局(垂直、水平、垂直水平)](https://interview.scar.vip/css/layout.html#%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD%E5%B8%83%E5%B1%80)
