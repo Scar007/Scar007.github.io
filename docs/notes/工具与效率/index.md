@@ -1,5 +1,8 @@
 ---
 publish: false
+title: 工具与效率
+createTime: 2026/09/18 20:17:17
+permalink: /notes/zhx2d4t5/
 ---
 
 # 工具与效率

@@ -1,0 +1,16 @@
+:root {
+  /* Esyka 同款正文字体：霞鹜文楷屏幕阅读版 */
+  --vp-font-family-base: 'LXGW WenKai Screen', 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+
+  /* 主题色（可自行调整） */
+  --vp-c-brand-1: #5086a1;
+  --vp-c-brand-2: #6aa1b7;
+  --vp-c-brand-3: #8cccd5;
+  --vp-c-brand-soft: rgba(131, 208, 218, 0.314);
+}
+
+/* 博客分类页：用自定义钻取导航，隐藏主题自带的整棵展开树 */
+.vp-post-categories > .categories-title,
+.vp-post-categories > .content {
+  display: none !important;
+}

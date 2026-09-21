@@ -1,5 +1,8 @@
 ---
 publish: false
+title: JavaScript
+createTime: 2026/09/18 20:17:15
+permalink: /notes/bzo8v7kt/
 ---
 
 # JavaScript

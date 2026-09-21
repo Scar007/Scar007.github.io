@@ -1,5 +1,8 @@
 ---
 publish: false
+title: 前端
+createTime: 2026/09/18 20:17:14
+permalink: /notes/8w4oqhi6/
 ---
 
 # 前端
@@ -8,7 +11,7 @@ publish: false
 
 ## 子目录
 
-- [JavaScript](/notes/前端/JavaScript/)
+- [JavaScript](/notes/bzo8v7kt/)
 
 ## 待补充
 
