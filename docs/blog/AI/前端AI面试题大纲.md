@@ -2,7 +2,7 @@
 publish: false
 title: 前端AI面试题大纲
 createTime: 2026/03/07 02:20:47
-permalink: /blog/
+permalink: /blog/aioutline/
 ---
 # 前端AI面试题大纲
 

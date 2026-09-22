@@ -2,7 +2,7 @@
 publish: false
 title: TypeScript与类型系统
 createTime: 2026/03/07 02:20:47
-permalink: /blog/
+permalink: /blog/ai-ts/
 ---
 
 # 一、TypeScript与类型系统（20题）
@@ -17,7 +17,7 @@ permalink: /blog/
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义印客学院支持的AI提供商和消息角色
 type InkeProvider = 'openai' | 'anthropic' | 'moonshot' | 'inke-internal';
 type InkeMessageRole = 'student' | 'tutor' | 'system' | 'tool'; // 印客学院特有角色
@@ -88,7 +88,7 @@ async function handleInkeResponse<P extends InkeProvider>(response: InkeAPIRespo
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义基础类型和版本常量
 type InkeModelVersion = 'moonshot-v1' | 'moonshot-v2' | 'gpt-4';
 interface InkeBaseResponse {
@@ -159,7 +159,7 @@ function processInkeAnswer(response: InkeDynamicResponse) {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 使用模板字面量类型提取变量名（高级用法，用于复杂场景）
 // 这是一个简化示例，实际提取所有`${var}`中的`var`需要较复杂的递归类型工具
 // 此处我们定义一个工具类型，概念上表示从模板字符串中提取的变量名集合
@@ -239,7 +239,7 @@ console.log(finalPrompt);
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义印客学院系统的各种ID格式
 type InkeMessageID = `msg_${string}`;
 type InkeSessionID = `sess_${string}_${number}`; // 示例: sess_cs101_1734567890
@@ -300,7 +300,7 @@ sendMessageToInkeSession(dynamicId as InkeMessageID, "Hi");
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义所有可能的状态，使用 `type` 字段作为可区分标识
 type InkeAgentState =
   | { type: 'idle'; sessionId: string }
@@ -405,7 +405,7 @@ console.log(`工具执行后状态: ${agentState.type}`); // completed
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 使用可区分联合类型定义多模态输出
 type InkeMultimodalOutput =
   | {
@@ -512,7 +512,7 @@ aiResponse.output.forEach(item => {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义印客学院支持的事件类型
 type InkeStreamEventType = 'message' | 'error' | 'tool_call' | 'done' | 'metrics';
 
@@ -616,7 +616,7 @@ handleInkeStreamEvent(simulatedSSEEvent);
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 方案A：标准递归类型（适用于大多数情况，但深度过深时可能影响TS性能）
 interface InkeComment {
   id: string;
@@ -708,7 +708,7 @@ function addReplyToComment(
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义印客学院支持的模型能力，使用 as const 获取字面量类型
 const INKE_MODEL_CAPABILITIES = {
   TEXT_GENERATION: 'text-generation',
@@ -835,7 +835,7 @@ function callCodeGeneration(model: InkeModelMetadata<any>, prompt: string) {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 假设有以下几种不同的AI供应商响应类型
 interface InkeOpenAIStreamChunk {
   id: string;
@@ -949,7 +949,7 @@ type Extracted = DeepExtractText<ComplexChunk>; // "Hello" | "World"
 
 **项目结构**
 
-```Plain Text
+```ts
 inke-academy-platform/
 ├── package.json (workspace 根配置)
 ├── packages/
@@ -971,7 +971,7 @@ inke-academy-platform/
 
 1. **共享类型包 (**`@inke-academy/types`**) 配置**
 
-```Plain Text
+```ts
 // packages/types/package.json
 {
   "name": "@inke-academy/types",
@@ -989,7 +989,7 @@ inke-academy-platform/
 }
 ```
 
-```Plain Text
+```ts
 // packages/types/src/ai/messages.ts
 export type InkeMessageRole = 'student' | 'tutor' | 'system';
 export interface InkeAIMessage {
@@ -1005,7 +1005,7 @@ export * from './models';
 
 1. **微前端应用中使用共享类型**
 
-```Plain Text
+```ts
 // packages/microfrontend-chat/package.json
 {
   "name": "@inke-academy/microfrontend-chat",
@@ -1015,7 +1015,7 @@ export * from './models';
 }
 ```
 
-```Plain Text
+```ts
 // packages/microfrontend-chat/src/components/Chat.tsx
 import { InkeAIMessage, InkeModel } from '@inke-academy/types';
 // 现在可以安全地使用共享类型
@@ -1024,7 +1024,7 @@ const [messages, setMessages] = useState<InkeAIMessage[]>([]);
 
 1. **Monorepo 根配置 (简化示例)**
 
-```Plain Text
+```ts
 // package.json
 {
   "private": true,
@@ -1055,7 +1055,7 @@ const [messages, setMessages] = useState<InkeAIMessage[]>([]);
 
 如果微应用需要独立部署或提供给第三方，可将`@inke-academy/types`发布到私有NPM仓库。各微应用像引用其他NPM包一样引用其特定版本。
 
-```Plain Text
+```ts
 # 发布类型包
 cd packages/types
 npm version patch
@@ -1076,7 +1076,7 @@ npm install @inke-academy/types@latest
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 方案：使用 zod 作为运行时验证库
 import { z } from 'zod';
 
@@ -1197,7 +1197,7 @@ async function executeToolCall(request: InkeToolCallRequest) {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义单个作业评分请求和响应的类型
 interface InkeCodeSubmission {
   studentId: string;
@@ -1306,7 +1306,7 @@ async function runBatchGrading() {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义引用片段的核心接口
 interface InkeCitation {
   // 标识信息
@@ -1431,7 +1431,7 @@ const sampleRAGResponse: InkeRAGResponse = {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义一个用于AI服务方法的通用接口，以便提取类型
 interface InkeAIService {
   analyzeStudentCode(submission: string, language: string): Promise<{ score: number; feedback: string[] }>;
@@ -1535,7 +1535,7 @@ class InkeAITutor {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义节点端口类型
 type DataType = 'string' | 'number' | 'boolean' | 'string[]' | 'any' | 'model-response';
 
@@ -1670,7 +1670,7 @@ console.log(validateConnection(myWorkflow, validEdge)); // { isValid: true }
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义版本字面量类型
 type InkeModelVersion = 'v1' | 'v2' | 'v3';
 
@@ -1789,7 +1789,7 @@ function adaptToLegacy<T>(item: T): ToLegacyType<T> {
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 使用品牌类型（Branded Type）标记“已过滤”的内容
 declare const __filtered: unique symbol; // 使用 unique symbol 创建唯一标记
 type FilteredString = string & { readonly [__filtered]: true };
@@ -1895,7 +1895,7 @@ type HasDuplicates<T extends readonly any[]> = T extends readonly [infer F, ...i
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义AI实验配置接口
 interface InkeExperimentConfig {
   experimentId: string;
@@ -1997,7 +1997,7 @@ const fullConfig = { ...validatedConfig, experimentId: 'exp_dyn', promptTemplate
 
 **代码示例与思路**：
 
-```Plain Text
+```ts
 // 1. 定义系统支持的租户字面量联合类型
 type TenantId = 'pioneer_school' | 'future_high' | 'inke_internal' | 'demo_academy';
 
@@ -2081,7 +2081,7 @@ if (config.permissions.canUseCodeInterpreter) {
 function ModelSelector({ tenantId }: { tenantId: TenantId }) {
   const { availableModels, uiTheme } = getCurrentTenantConfig(tenantId);
   return (
-    <select style={{ borderColor: uiTheme.primaryColor }}>
+    <select style={ { borderColor: uiTheme.primaryColor } }>
       {availableModels.map(model => (
         <option key={model} value={model}>
           {model}

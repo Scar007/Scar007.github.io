@@ -28,6 +28,16 @@ export default defineUserConfig({
     },
   },
 
+  // Shiki 高亮后仍可能留下连续的 {{ }}（如 JSX style={{...}}），会被 Vue 模板编译器当成插值。
+  // 在最终 HTML 中转义，保证按字面展示。
+  extendsMarkdown: (md) => {
+    const rawRender = md.render.bind(md)
+    md.render = (src, env) =>
+      rawRender(src, env)
+        .replace(/\{\{/g, '&#123;&#123;')
+        .replace(/\}\}/g, '&#125;&#125;')
+  },
+
   theme: plumeTheme({
     // 部署域名，用于生成 sitemap、SEO 等
     hostname: 'https://scar007.github.io',
