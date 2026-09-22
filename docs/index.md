@@ -8,6 +8,7 @@ config:
 
   - type: HomeSkill
     skills:
+      - AI
       - JavaScript
       - TypeScript
       - Vue
