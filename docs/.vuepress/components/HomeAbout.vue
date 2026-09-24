@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<{
   intro?: string
   avatar?: string
 }>(), {
-  name: 'Scar007',
+  name: 'Yolo',
   intro: '记录学习，持续成长',
   avatar: '',
 })
@@ -73,7 +73,7 @@ onUnmounted(() => clearTimeout(copyTimer))
 
       <h1 class="greeting">{{ GREETING }}</h1>
       <p class="name-line">
-        你可以叫我 <span class="name">{{ name }}</span> .
+        你可以叫我 <span class="name">{{ name }}</span> 
       </p>
       <p class="intro">{{ intro }}</p>
 

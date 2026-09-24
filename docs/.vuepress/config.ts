@@ -5,7 +5,7 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   lang: 'zh-CN',
   title: '学习笔记',
-  description: 'Scar007 的个人博客与学习资料库',
+  description: 'Yolo 的个人博客与学习资料库',
 
   head: [
     // Esyka 同款字体：霞鹜文楷屏幕阅读版（LXGW WenKai Screen）
@@ -44,7 +44,7 @@ export default defineUserConfig({
 
     // 首页博主信息卡（对应 Esyka 首页右侧的个人资料）
     profile: {
-      name: 'Scar007',
+      name: 'Yolo',
       description: '记录学习，持续成长',
       // avatar: '/images/logo.png', // 有 logo 后放到 docs/.vuepress/public/images/ 下并取消注释
       circle: true,

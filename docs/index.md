@@ -2,7 +2,7 @@
 pageLayout: home
 config:
   - type: HomeAbout
-    name: Scar007
+    name: Yolo
     intro: 记录学习，持续成长
     avatar: https://github.com/Scar007.png
 

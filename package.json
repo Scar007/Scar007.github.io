@@ -2,7 +2,7 @@
   "name": "scar007-github-io",
   "version": "1.0.0",
   "private": true,
-  "description": "Scar007 的学习笔记与博客（基于 VuePress + Plume）",
+  "description": "Yolo 的学习笔记与博客（基于 VuePress + Plume）",
   "type": "module",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
