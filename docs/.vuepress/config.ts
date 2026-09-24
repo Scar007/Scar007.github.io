@@ -55,7 +55,7 @@ export default defineUserConfig({
       { text: '首页', link: '/' },
       { text: '博客', link: '/blog/' },
       { text: '学习资料', link: '/notes/' },
-      // { text: '面试', link: '/interview/' },
+      { text: '业软导航', link: '/links/' },
     ],
 
     social: [{ icon: 'github', link: 'https://github.com/Scar007' }],
@@ -86,13 +86,13 @@ export default defineUserConfig({
         title: '学习资料',
         sidebar: 'auto',
       },
-      // {
-      //   type: 'doc',
-      //   dir: 'interview',
-      //   link: '/interview/',
-      //   title: '面试',
-      //   sidebar: 'auto',
-      // },
+      {
+        type: 'doc',
+        dir: 'link',
+        link: '/links/',
+        title: '业软导航',
+        sidebar: 'auto',
+      },
     ],
 
     search: { provider: 'local' },
